@@ -36,7 +36,7 @@ public class Manche {
 			int tabIng11[][] = {{2, 2, 0, 3},{1, 1, 4, 1},{1, 2, 1, 3}};
 			int tabIng12[][] = {{2, 2, 3, 1},{2, 3, 0, 3},{1, 1, 3, 3}};	
 			int tabIng13[][] = {{2, 2, 3, 1},{2, 3, 0, 3},{1, 1, 3, 3}};
-			int tabIng14[][] = {{2, 2, 2,2},{0, 4, 4,0},{1, 3, 2, 2}};
+			int tabIng14[][] = {{2, 2, 2, 2},{0, 4, 4, 0},{1, 3, 2, 2}};
 			int tabIng15[][] = {{3, 1, 3, 1},{1, 4, 2, 1},{2, 4, 1, 1}};
 			int tabIng16[][] = {{4, 1, 1, 1},{1, 2, 1, 3},{1, 2, 2, 2}};
 			int tabIng17[][] = {{2, 3, 2, 0},{0, 4, 3, 0},{2, 1, 1, 3}};
@@ -119,7 +119,7 @@ public class Manche {
 			int tabIng11[][] = {{2, 2, 0, 3},{1, 1, 4, 1},{1, 2, 1, 3}};
 			int tabIng12[][] = {{2, 2, 3, 1},{2, 3, 0, 3},{1, 1, 3, 3}};	
 			int tabIng13[][] = {{2, 2, 3, 1},{2, 3, 0, 3},{1, 1, 3, 3}};
-			int tabIng14[][] = {{2, 2, 2,2},{0, 4, 4,0},{1, 3, 2, 2}};
+			int tabIng14[][] = {{2, 2, 2, 2},{0, 4, 4, 0},{1, 3, 2, 2}};
 			int tabIng15[][] = {{3, 1, 3, 1},{1, 4, 2, 1},{2, 4, 1, 1}};
 			int tabIng16[][] = {{4, 1, 1, 1},{1, 2, 1, 3},{1, 2, 2, 2}};
 			int tabIng17[][] = {{2, 3, 2, 0},{0, 4, 3, 0},{2, 1, 1, 3}};
@@ -187,7 +187,7 @@ public class Manche {
 				for(Joueur joueur: p.getListeJoueur()){
 					for(Carte carte: this.listeCartesJ){
 						joueur.getMainDuJoueur().add(carte);
-						// on distribue que cartes par joueur 
+						// on distribue que 4 cartes par joueur 
 						if(cpt == 4){
 							break;
 						}else{

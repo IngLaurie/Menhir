@@ -18,6 +18,7 @@ public class Carte {
 	public Carte(String nom, int[] tabValCarte) {
 		this.nom = nom;
 	}
+	//Constructeur carte alli�
 	
 	public String getNom(){
 		return this.nom;
@@ -30,6 +31,10 @@ public class Carte {
 	public String afficherCarte(){
 		//System.out.println(this.nom);
 		return this.nom ;
+	}
+	
+	public int[][] getTableau() {
+		return this.tableau;
 	}
 	
 	
