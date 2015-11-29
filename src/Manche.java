@@ -97,6 +97,10 @@ public class Manche {
 			this.listeCartesJ.add(new ChienDeGarde("TaupeG2", tabTaupeGeante2));
 			this.listeCartesJ.add(new ChienDeGarde("TaupeG3", tabTaupeGeante3));
 			
+
+			// on mélange les cartes 
+			Collections.shuffle(listeCartesJ);	
+			
 			// 
 		}else{  // partie rapide
 			this.nbManche = 1;

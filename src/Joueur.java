@@ -38,7 +38,7 @@ public class Joueur {
 		int i = 1;
 		for(Carte c: this.mainDuJoueur){
 			// pour permettre au USER de faire afficher les valeurs de la carte
-			System.out.println(c.afficherCarte() + " taper " + i);
+			System.out.println(c.afficherCarte() + "\n taper " + i);
 			i++;
 		}
 	}
