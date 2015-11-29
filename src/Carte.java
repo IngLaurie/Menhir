@@ -11,6 +11,7 @@ public class Carte {
 		//super();
 		//this.num = numero;
 		this.nom = nom;
+		this.tableau = tabValCarte;
 		//this.identifiant = id;
 		//this.cheminImage = "img/" + nom + ".png";
 	}
@@ -18,7 +19,7 @@ public class Carte {
 	public Carte(String nom, int[] tabValCarte) {
 		this.nom = nom;
 	}
-	//Constructeur carte alliï¿½
+	//Constructeur carte allié
 	
 	public String getNom(){
 		return this.nom;
