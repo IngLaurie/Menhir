@@ -15,7 +15,7 @@ public class Ingredient extends Carte {
 		//sb.append(this.getTableau());
 		return sb.toString();
 	}
-	//AFfichage d'une carte ingrédient
+	//Affichage d'une carte ingrédient (ne marche pas pour l'instant)
 
 
 }
