@@ -34,10 +34,11 @@ public class Carte {
 		return this.nom ;
 	}
 	
-	//public int[][] getTableau() {
-		//return this.tableau;
-	//} Faire le getForce d'une carte
+	public int getForce(int action, int saison) {
+		return this.tableau[action][saison];
+	}
 	
+
 	
 	// public static Carte[] initialiserCarte(){}
 	

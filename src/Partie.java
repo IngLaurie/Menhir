@@ -53,7 +53,10 @@ public class Partie {
 			for(int i=1; i<= nbJPhysique; i++){
 				this.listeJoueur.add(new Joueur());
 			}
-		} // gérer les joueurs virtuels / constr
+		}else{
+		System.out.println("Nombre non valide, veuillez saisir 0 ou 1");
+	}
+		// gérer les joueurs virtuels / constr
 		
 		// gérer le nombre de manche 
 		// tester le nb manche joué 

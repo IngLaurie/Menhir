@@ -16,12 +16,6 @@ public class JeuDuMenhir {
 		
 		System.out.println("test"); 
 		
-		StringBuffer sb = new StringBuffer();
-		sb.append(" P  E  A  H\n");
-		sb.append("blabla");
-		
-		System.out.println(sb);
-		System.out.println(sb.toString());
 		
 		//Test de l'affichage des cartes OK BORDEL J'AI COMPRIS
 		
