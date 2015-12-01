@@ -1,16 +1,22 @@
 import java.util.*;
 
-public class Joueur {
+public abstract class Joueur {
 //   /!\ GRAINES 
 	private String nom;
 	private int age;
+
 	private int nombreDePointTotal;
 	private ArrayList<Carte> mainDuJoueur = new ArrayList<Carte>();
 	private int nbMenhirDuJoueur;
-	private int nbGraineDuJoueur; 
+	protected int nbGraineDuJoueur; 
 	private boolean actif;
 	private int choixAction;
-	private int nbGraine;
+	//private int nbGraine;
+	//private Joueur jQuiCommence;
+	//private int cptLJ;
+	//private int nbJoueur;
+
+	
 
 	// /!\ gérer pour 2 à 6 joueurs
 	public Joueur(){
@@ -39,24 +45,26 @@ public class Joueur {
 		for(Carte c: this.mainDuJoueur){
 			// pour permettre au USER de faire afficher les valeurs de la carte
 			System.out.println(c.afficherCarte() + " taper " + i);
+			// travailler la méthode afficherCarte() de carte pour permettre l'affichage de chaque cartes des joueurs
 			i++;
 		}
 	}
 	
-	public int getGraine(){
-		return nbGraine;
+	
+	public int getNbGraineDuJoueur(){
+		return nbGraineDuJoueur;
 	}
 	
-	public void setGraine(int nbGraineDuJoueur){
-		this.nbGraineDuJoueur = nbGraineDuJoueur +1;
+	public void setNbGraineDuJoueur(int nbGraineDuJoueur, int nbAAjouterGraine){
+		this.nbGraineDuJoueur = nbGraineDuJoueur + nbAAjouterGraine;
 	}
 	
-	public int getMenhir(){
+	public int getNbMenhirDuJoueur(){
 		return nbMenhirDuJoueur;
 	}
 	
-	public void setMenhir(int nbMenhirDuJoueur){
-		this.nbMenhirDuJoueur = nbMenhirDuJoueur + 1;
+	public void setNbMenhirDuJoueur(int nbMenhirDuJoueur, int nbAAjouterMenhir){
+		this.nbMenhirDuJoueur = nbMenhirDuJoueur + nbAAjouterMenhir;
 	}
 	
 	
@@ -65,8 +73,27 @@ public class Joueur {
 		return this.mainDuJoueur;
 	}
 
-	public void jouerCarte(){
+	//public abstract void jouerCarte(){
+	public abstract void jouerCarte();
+	
+	/*public void faireAction(){		
 		
+	}*/
+	
+	/*public String getJoueurDeDebut() {
+		return jQuiCommence;
 	}
 
+	public void setJoueurDeDebut(String jQuiCommence) {
+		this.jQuiCommence = jQuiCommence;
+	}*/
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+	
 }

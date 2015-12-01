@@ -9,4 +9,7 @@ public class Ingredient extends Carte {
 
 	//private Arrays valeurCarteIngredient;
 	
+	public void choisirJoueur(){
+		
+	}
 }

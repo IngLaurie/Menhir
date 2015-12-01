@@ -9,5 +9,14 @@ public class JoueurVirtuel extends Joueur {
 		
 	}
 
+	public JoueurVirtuel() {
+		super();
+	}
+
+	@Override
+	public void jouerCarte() {
+		
+	}
+
 
 }

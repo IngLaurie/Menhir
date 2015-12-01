@@ -1,9 +1,11 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import javax.swing.text.html.HTMLDocument.Iterator;
-// gérer le nombre de points de chaque joueurs 
+// gérer le nombre de points de chaque joueurs - partie complexe surtout
+// /!\ si demande d'ajouter une carte au jeu..
 
 public class Manche {
 
@@ -11,7 +13,6 @@ public class Manche {
 	private int nbManche;
 	// private int saisonEnCours;
 	private String listeSaison[] = new String[4]; // hiver printemps été automne
-	
 	private ArrayList<Carte> listeCartesJ = new ArrayList<Carte>();
 
 		
@@ -25,8 +26,6 @@ public class Manche {
 			// 
 		}else{  // partie rapide
 			this.nbManche = 1;
-			// création de la manche
-			// voir avec le prof comment on instancie chaque carte : valeurs excates ou aléatoires ?
 			int tabIng1[][] = {{1, 1, 1, 1},{2, 0, 1, 1},{2, 0, 2, 0}};
 			int tabIng2[][] = {{2, 0, 1, 1},{1, 3, 0, 0},{0, 1, 2, 1}};
 			int tabIng3[][] = {{0, 0, 4, 0},{0, 2, 2, 0},{0, 0, 1, 3}};
@@ -51,6 +50,8 @@ public class Manche {
 			int tabIng22[][] = {{1, 2, 2, 1},{1, 2, 3, 0},{0, 2, 2, 2}};
 			int tabIng23[][] = {{4, 0, 1, 1},{1, 1, 3, 1},{0, 0, 3, 3}};
 			int tabIng24[][] = {{2, 0, 1, 3},{0, 3, 0, 3},{1, 2, 2, 1}};
+			//int tabIng25[][] = {{2, 0, 1, 3},{0, 3, 0, 3},{1, 2, 2, 1}};      // vérifier s'il faut l'ajouter 
+			
 			
 			int tabChienDeGarde1[] = {1, 1, 1, 1};
 			int tabChienDeGarde2[] = {0, 2, 2, 0};
@@ -92,6 +93,7 @@ public class Manche {
 			this.listeCartesJ.add(new Ingredient("ing22", tabIng22));
 			this.listeCartesJ.add(new Ingredient("ing23", tabIng23));
 			this.listeCartesJ.add(new Ingredient("ing24", tabIng24));
+			//this.listeCartesJ.add(new Ingredient("ing25", tabIng25));
 			
 			
 			this.listeCartesJ.add(new ChienDeGarde("CdG1", tabChienDeGarde1));
@@ -113,10 +115,8 @@ public class Manche {
 		}else{ // partie rapide
 			// une partie rapide = 4 tours de jeu 
 			// chaque joueur place devant lui un champ et pose à côté 2 graines 
-			
-			
-			
-			// on distribue 4 cartes ingrédient par joueur	
+			// VOIR AVEC DOYEN POUR LE SEUL JOUEUR PHYSIQUE
+				
 			int cpt = 1;
 				for(Joueur joueur: p.getListeJoueur()){
 					for(Carte carte: this.listeCartesJ){
@@ -129,22 +129,40 @@ public class Manche {
 						}
 					}
 					
-					// on supprime les cartes dans listeCartesJ
-					/* on supp uniquement les cartes que l'on a mis dans la main du joueur
-					   pour que les joueurs aient des cartes différentes */
 					this.listeCartesJ.removeAll(joueur.getMainDuJoueur());
 					cpt = 1;
 				}
+				
+				// ATTENTION :
+				// FAIRE COMMENCER LA MANCHE PAR LE PLUS JEUNE JOUEUR
+				// ENSUITE PARCOURIR LA LISTE A PARTIR DU JOUEUR SELECTIONNE
+				// permutation des joueurs pour mettre le plus jeune au début de la liste 
+				Joueur JoueurTmp;
+				JoueurTmp = this.attribuerJoueurDeDebut(p);
+				p.getListeJoueur().set(p.getListeJoueur().indexOf(JoueurTmp),p.getListeJoueur().get(0));
+				p.getListeJoueur().set(0, JoueurTmp);
+				
+
 		}
 	}
+
+	////// VOIR L'ALGO
+	public Joueur attribuerJoueurDeDebut(Partie p){
+		Joueur jQuiCommence = null;
+		int cptLJ = 0;
+		for(Joueur jdeb: p.getListeJoueur()){
+			int temp = jdeb.getAge();
+			// trouver l'indice qui permet de parcourir la liste et de comparer avec le suivant
+			if(jdeb.getAge() < temp){
+				cptLJ = cptLJ++;
+			}
+		}
+		return jQuiCommence;
+	}
 	
-	public void jouerManche(){
-		// gérer les graines 	
-		// faire jouer le plus jeune joueur
-		
-		// à tour de rôle, les joueurs posent une carte 
-		// + choisir action à effectuer
-		
+	public void jouerManche(Joueur joueurQuiJoue){
+		// attention, faire jouer tous les joueurs 
+		joueurQuiJoue.jouerCarte();   //  /!\ PB
 	}
 	
 	public void nouvelleManche(){

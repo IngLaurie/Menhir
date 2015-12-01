@@ -1,28 +1,19 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
+// PENSER AU SINGLETON
+// THREAD ?
+// MVC ?
+// 
 public class Partie {
 
 	private boolean partieAvancee;
 	private ArrayList<Joueur> listeJoueur = new ArrayList<Joueur>();
 	private ArrayList<Manche> listeManche = new ArrayList<Manche>();
 	
-	private Joueur J1;
-	
 	private int nbJPhysique;
 	private int nbJVirtuel;
-	private int nbManche;
-	
-	/*
-	 * 
-	 * private void initialiserPartie()
-	 * public void lancerPartie()
-	 * public void finirPartie()
-	 * public void finirTour()
-	 * // public Joueur ajouterJoueur()
-	 *    // donnerNomJoueur() ?
-	 */
+	private int nbManche = 0;
 	
 	public Partie(){
 		
@@ -44,24 +35,34 @@ public class Partie {
 		}
 		
 		// vérifier ce que USER a entré (try catch)
-		
 		System.out.println("Combien y a t'il de joueur(s) physique(s) ?");
 		Scanner scanNbJ = new Scanner(System.in);
 		this.nbJPhysique = scanNbJ.nextInt();
 		
 		if(nbJPhysique >= 1 && nbJPhysique <= 6){
 			for(int i=1; i<= nbJPhysique; i++){
-				this.listeJoueur.add(new Joueur());
+				this.listeJoueur.add(new JoueurPhysique());
 			}
-		} // gérer les joueurs virtuels / constr
+		}
 		
-		// gérer le nombre de manche 
-		// tester le nb manche joué 
-		//Manche manche = new Manche(this); 
-		this.listeManche.add(new Manche(this));
-		this.listeManche.get(0).distribuerCarteJoueur(this);
-		for (Joueur j : this.listeJoueur)
-			j.afficherMainJoueur();
+		if(partieAvancee){
+			this.nbManche = this.nbJPhysique + this.nbJVirtuel;
+			for(int i=0; i<=this.nbManche; i++){
+				this.listeManche.add(new Manche(this));
+				this.listeManche.get(i).distribuerCarteJoueur(this);  // i ok ?
+			}
+			
+			for (Joueur j : this.listeJoueur)
+				j.afficherMainJoueur();
+		}else{
+			this.listeManche.add(new Manche(this));
+			
+			this.listeManche.get(0).distribuerCarteJoueur(this);
+			for (Joueur j : this.listeJoueur)
+				j.afficherMainJoueur();
+		}
+
+		// Manche manche = new Manche(this); 
 	}
 	
 	public int getNbJPhysique(){
@@ -84,6 +85,5 @@ public class Partie {
 	public ArrayList<Joueur> getListeJoueur(){
 		return listeJoueur;
 	}
-	
 
 }
