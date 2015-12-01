@@ -93,9 +93,9 @@ public class Manche {
 			this.listeCartesJ.add(new ChienDeGarde("CdG1", tabChienDeGarde1));
 			this.listeCartesJ.add(new ChienDeGarde("CdG2", tabChienDeGarde2));
 			this.listeCartesJ.add(new ChienDeGarde("CdG3", tabChienDeGarde3));
-			this.listeCartesJ.add(new ChienDeGarde("TaupeG1", tabTaupeGeante1));
-			this.listeCartesJ.add(new ChienDeGarde("TaupeG2", tabTaupeGeante2));
-			this.listeCartesJ.add(new ChienDeGarde("TaupeG3", tabTaupeGeante3));
+			this.listeCartesJ.add(new TaupeGeante("TaupeG1", tabTaupeGeante1));
+			this.listeCartesJ.add(new TaupeGeante("TaupeG2", tabTaupeGeante2));
+			this.listeCartesJ.add(new TaupeGeante("TaupeG3", tabTaupeGeante3));
 			
 
 			// on mélange les cartes 
