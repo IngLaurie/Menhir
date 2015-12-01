@@ -43,8 +43,11 @@ public class Partie {
 			for(int i=1; i<= nbJPhysique; i++){
 				this.listeJoueur.add(new JoueurPhysique());
 			}
-		}
-		
+
+		}else{
+		System.out.println("Nombre non valide, veuillez saisir 0 ou 1");
+	}
+		// gérer les joueurs virtuels / constr
 		if(partieAvancee){
 			this.nbManche = this.nbJPhysique + this.nbJVirtuel;
 			for(int i=0; i<=this.nbManche; i++){

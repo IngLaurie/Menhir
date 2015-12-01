@@ -23,9 +23,11 @@ public class Manche {
 			// autant de manches que de joueurs
 			this.nbManche = p.getNbJPhysique() + p.getNbJVirtuel();
 			// cartes de la partie rapide + cartes alliés
+
 			// 
-		}else{  // partie rapide
+		//}else{  // partie rapide
 			this.nbManche = 1;
+
 			int tabIng1[][] = {{1, 1, 1, 1},{2, 0, 1, 1},{2, 0, 2, 0}};
 			int tabIng2[][] = {{2, 0, 1, 1},{1, 3, 0, 0},{0, 1, 2, 1}};
 			int tabIng3[][] = {{0, 0, 4, 0},{0, 2, 2, 0},{0, 0, 1, 3}};
@@ -39,7 +41,7 @@ public class Manche {
 			int tabIng11[][] = {{2, 2, 0, 3},{1, 1, 4, 1},{1, 2, 1, 3}};
 			int tabIng12[][] = {{2, 2, 3, 1},{2, 3, 0, 3},{1, 1, 3, 3}};	
 			int tabIng13[][] = {{2, 2, 3, 1},{2, 3, 0, 3},{1, 1, 3, 3}};
-			int tabIng14[][] = {{2, 2, 2,2},{0, 4, 4,0},{1, 3, 2, 2}};
+			int tabIng14[][] = {{2, 2, 2, 2},{0, 4, 4, 0},{1, 3, 2, 2}};
 			int tabIng15[][] = {{3, 1, 3, 1},{1, 4, 2, 1},{2, 4, 1, 1}};
 			int tabIng16[][] = {{4, 1, 1, 1},{1, 2, 1, 3},{1, 2, 2, 2}};
 			int tabIng17[][] = {{2, 3, 2, 0},{0, 4, 3, 0},{2, 1, 1, 3}};
@@ -99,10 +101,80 @@ public class Manche {
 			this.listeCartesJ.add(new ChienDeGarde("CdG1", tabChienDeGarde1));
 			this.listeCartesJ.add(new ChienDeGarde("CdG2", tabChienDeGarde2));
 			this.listeCartesJ.add(new ChienDeGarde("CdG3", tabChienDeGarde3));
-			this.listeCartesJ.add(new ChienDeGarde("TaupeG1", tabTaupeGeante1));
-			this.listeCartesJ.add(new ChienDeGarde("TaupeG2", tabTaupeGeante2));
-			this.listeCartesJ.add(new ChienDeGarde("TaupeG3", tabTaupeGeante3));
-	
+			this.listeCartesJ.add(new TaupeGeante("TaupeG1", tabTaupeGeante1));
+			this.listeCartesJ.add(new TaupeGeante("TaupeG2", tabTaupeGeante2));
+			this.listeCartesJ.add(new TaupeGeante("TaupeG3", tabTaupeGeante3));
+			
+
+			// on mélange les cartes 
+			Collections.shuffle(listeCartesJ);	
+			
+			// 
+		}else{  // partie rapide
+			this.nbManche = 1;
+			// création de la manche
+			// cartes de la partie rapide seulement
+			int tabIng1[][] = {{1, 1, 1, 1},{2, 0, 1, 1},{2, 0, 2, 0}};
+			int tabIng2[][] = {{2, 0, 1, 1},{1, 3, 0, 0},{0, 1, 2, 1}};
+			int tabIng3[][] = {{0, 0, 4, 0},{0, 2, 2, 0},{0, 0, 1, 3}};
+			int tabIng4[][] = {{1, 3, 1, 0},{1, 2, 1, 1},{0, 1, 4, 0}};
+			int tabIng5[][] = {{2, 1, 1, 1},{1, 0, 2, 2},{3, 0, 0, 2}};
+			int tabIng6[][] = {{1, 2, 2, 0},{1, 1, 2, 1},{2, 0, 1, 2}};
+			int tabIng7[][] = {{2, 1, 1, 2},{1, 1, 1, 3},{2, 0, 2, 2}};
+			int tabIng8[][] = {{0, 3, 0, 3},{2, 1, 3, 0},{1, 1, 3, 1}};
+			int tabIng9[][] = {{1, 2, 1, 2},{1, 0, 1, 4},{2, 4, 0, 0}};
+			int tabIng10[][] = {{1, 3, 1, 2},{2, 1, 2, 2},{0, 0, 3, 4}};
+			int tabIng11[][] = {{2, 2, 0, 3},{1, 1, 4, 1},{1, 2, 1, 3}};
+			int tabIng12[][] = {{2, 2, 3, 1},{2, 3, 0, 3},{1, 1, 3, 3}};	
+			int tabIng13[][] = {{2, 2, 3, 1},{2, 3, 0, 3},{1, 1, 3, 3}};
+			int tabIng14[][] = {{2, 2, 2, 2},{0, 4, 4, 0},{1, 3, 2, 2}};
+			int tabIng15[][] = {{3, 1, 3, 1},{1, 4, 2, 1},{2, 4, 1, 1}};
+			int tabIng16[][] = {{4, 1, 1, 1},{1, 2, 1, 3},{1, 2, 2, 2}};
+			int tabIng17[][] = {{2, 3, 2, 0},{0, 4, 3, 0},{2, 1, 1, 3}};
+			int tabIng18[][] = {{2, 2, 3, 0},{1, 1, 1, 4},{2, 0, 3, 2}};
+			int tabIng19[][] = {{3, 1, 4, 1},{2, 1, 3, 3},{2, 3, 2, 2}};
+			int tabIng20[][] = {{2, 4, 1, 2},{2, 2, 2, 3},{1, 4, 3, 1}};	
+			int tabIng21[][] = {{3, 3, 3, 0},{1, 3, 3, 2},{2, 3, 1, 3}};
+			int tabIng22[][] = {{1, 2, 2, 1},{1, 2, 3, 0},{0, 2, 2, 2}};
+			int tabIng23[][] = {{4, 0, 1, 1},{1, 1, 3, 1},{0, 0, 3, 3}};
+			int tabIng24[][] = {{2, 0, 1, 3},{0, 3, 0, 3},{1, 2, 2, 1}};
+			
+			
+			/* CARTES RESTANTES :
+			 * 
+			 * verso Menhir
+			 * champ
+			 * autre verso (verso alliés ?)
+			 * comptage de points
+			 */
+			
+			// max 6 joueurs / 1 type de cartes = 3 actions possibles 
+			this.listeCartesJ.add(new Ingredient("ing1", tabIng1));
+			this.listeCartesJ.add(new Ingredient("ing2", tabIng2));
+			this.listeCartesJ.add(new Ingredient("ing3", tabIng3));
+			this.listeCartesJ.add(new Ingredient("ing4", tabIng4));
+			this.listeCartesJ.add(new Ingredient("ing5", tabIng5));
+			this.listeCartesJ.add(new Ingredient("ing6", tabIng6));
+			this.listeCartesJ.add(new Ingredient("ing7", tabIng7));
+			this.listeCartesJ.add(new Ingredient("ing8", tabIng8));
+			this.listeCartesJ.add(new Ingredient("ing9", tabIng9));
+			this.listeCartesJ.add(new Ingredient("ing10", tabIng10));
+			this.listeCartesJ.add(new Ingredient("ing11", tabIng11));
+			this.listeCartesJ.add(new Ingredient("ing12", tabIng12));
+			this.listeCartesJ.add(new Ingredient("ing13", tabIng13));
+			this.listeCartesJ.add(new Ingredient("ing14", tabIng14));
+			this.listeCartesJ.add(new Ingredient("ing15", tabIng15));
+			this.listeCartesJ.add(new Ingredient("ing16", tabIng16));
+			this.listeCartesJ.add(new Ingredient("ing17", tabIng17));
+			this.listeCartesJ.add(new Ingredient("ing18", tabIng18));
+			this.listeCartesJ.add(new Ingredient("ing19", tabIng19));
+			this.listeCartesJ.add(new Ingredient("ing20", tabIng20));
+			this.listeCartesJ.add(new Ingredient("ing21", tabIng21));
+			this.listeCartesJ.add(new Ingredient("ing22", tabIng22));
+			this.listeCartesJ.add(new Ingredient("ing23", tabIng23));
+			this.listeCartesJ.add(new Ingredient("ing24", tabIng24));
+			
+			
 			// on mélange les cartes 
 			Collections.shuffle(listeCartesJ);	
 			
@@ -121,7 +193,7 @@ public class Manche {
 				for(Joueur joueur: p.getListeJoueur()){
 					for(Carte carte: this.listeCartesJ){
 						joueur.getMainDuJoueur().add(carte);
-						// on distribue que cartes par joueur 
+						// on distribue que 4 cartes par joueur 
 						if(cpt == 4){
 							break;
 						}else{

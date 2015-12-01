@@ -21,11 +21,11 @@ public abstract class Joueur {
 	// /!\ gérer pour 2 à 6 joueurs
 	public Joueur(){
 		System.out.println("Nom du joueur :");
-		Scanner scanNom = new Scanner(System.in);
+		Scanner scanNom = new Scanner(System.in); //Créer une exception si on ne rentre pas des caractères
 		String nomJPhysique = scanNom.nextLine();
 		
 		System.out.println("Age du joueur :");
-		Scanner scanAge = new Scanner(System.in);
+		Scanner scanAge = new Scanner(System.in); //Créer une exception si on ne rentre pas un nombre
 		int ageJoueurPhysique = scanAge.nextInt();
 		
 		this.age = ageJoueurPhysique;
@@ -44,8 +44,11 @@ public abstract class Joueur {
 		int i = 1;
 		for(Carte c: this.mainDuJoueur){
 			// pour permettre au USER de faire afficher les valeurs de la carte
+
 			System.out.println(c.afficherCarte() + " taper " + i);
 			// travailler la méthode afficherCarte() de carte pour permettre l'affichage de chaque cartes des joueurs
+
+			System.out.println(c.afficherCarte() + "\n taper " + i);
 			i++;
 		}
 	}
