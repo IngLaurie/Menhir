@@ -34,7 +34,6 @@ public class Partie {
 			}
 		}
 		
-		// vérifier ce que USER a entré (try catch)
 		System.out.println("Combien y a t'il de joueur(s) physique(s) ?");
 		Scanner scanNbJ = new Scanner(System.in);
 		this.nbJPhysique = scanNbJ.nextInt();
@@ -47,7 +46,6 @@ public class Partie {
 		}else{
 		System.out.println("Nombre non valide, veuillez saisir 0 ou 1");
 	}
-		// gérer les joueurs virtuels / constr
 		if(partieAvancee){
 			this.nbManche = this.nbJPhysique + this.nbJVirtuel;
 			for(int i=0; i<=this.nbManche; i++){
@@ -63,9 +61,8 @@ public class Partie {
 			this.listeManche.get(0).distribuerCarteJoueur(this);
 			for (Joueur j : this.listeJoueur)
 				j.afficherMainJoueur();
+				//j.toString();
 		}
-
-		// Manche manche = new Manche(this); 
 	}
 	
 	public int getNbJPhysique(){

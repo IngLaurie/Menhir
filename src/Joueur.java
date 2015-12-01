@@ -35,11 +35,6 @@ public abstract class Joueur {
 		this.nbMenhirDuJoueur = 0;
 	}
 	
-	// getGraine ?
-	public void prendreGraine(){
-		//this.nbGraineDuJoueur = nbGraineDuJoueur + 1;
-	}
-	
 	public void afficherMainJoueur(){
 		int i = 1;
 		for(Carte c: this.mainDuJoueur){
@@ -52,7 +47,6 @@ public abstract class Joueur {
 			i++;
 		}
 	}
-	
 	
 	public int getNbGraineDuJoueur(){
 		return nbGraineDuJoueur;

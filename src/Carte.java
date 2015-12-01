@@ -9,8 +9,6 @@ public class Carte {
 	private int[] tableauAlli;
 	
 	public Carte(String nom, int[][] tabValCarte) {
-		//super();
-		//this.num = numero;
 		this.nom = nom;
 		this.tableauIng = tabValCarte;
 		this.tableauAlli = null;
@@ -23,7 +21,6 @@ public class Carte {
 		this.tableauIng = null;
 		this.tableauAlli = tabValCarte;
 	}
-	//Constructeur carte allié
 	
 	public String getNom(){
 		return this.nom;

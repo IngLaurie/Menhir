@@ -24,10 +24,6 @@ public class Manche {
 			this.nbManche = p.getNbJPhysique() + p.getNbJVirtuel();
 			// cartes de la partie rapide + cartes alliés
 
-			// 
-		//}else{  // partie rapide
-			this.nbManche = 1;
-
 			int tabIng1[][] = {{1, 1, 1, 1},{2, 0, 1, 1},{2, 0, 2, 0}};
 			int tabIng2[][] = {{2, 0, 1, 1},{1, 3, 0, 0},{0, 1, 2, 1}};
 			int tabIng3[][] = {{0, 0, 4, 0},{0, 2, 2, 0},{0, 0, 1, 3}};
@@ -114,6 +110,7 @@ public class Manche {
 			this.nbManche = 1;
 			// création de la manche
 			// cartes de la partie rapide seulement
+			// voir pour créer 2 listes que l'on utilise ensuite au niveau des manche
 			int tabIng1[][] = {{1, 1, 1, 1},{2, 0, 1, 1},{2, 0, 2, 0}};
 			int tabIng2[][] = {{2, 0, 1, 1},{1, 3, 0, 0},{0, 1, 2, 1}};
 			int tabIng3[][] = {{0, 0, 4, 0},{0, 2, 2, 0},{0, 0, 1, 3}};
@@ -138,15 +135,6 @@ public class Manche {
 			int tabIng22[][] = {{1, 2, 2, 1},{1, 2, 3, 0},{0, 2, 2, 2}};
 			int tabIng23[][] = {{4, 0, 1, 1},{1, 1, 3, 1},{0, 0, 3, 3}};
 			int tabIng24[][] = {{2, 0, 1, 3},{0, 3, 0, 3},{1, 2, 2, 1}};
-			
-			
-			/* CARTES RESTANTES :
-			 * 
-			 * verso Menhir
-			 * champ
-			 * autre verso (verso alliés ?)
-			 * comptage de points
-			 */
 			
 			// max 6 joueurs / 1 type de cartes = 3 actions possibles 
 			this.listeCartesJ.add(new Ingredient("ing1", tabIng1));
@@ -205,26 +193,26 @@ public class Manche {
 					cpt = 1;
 				}
 				
-				// ATTENTION :
-				// FAIRE COMMENCER LA MANCHE PAR LE PLUS JEUNE JOUEUR
-				// ENSUITE PARCOURIR LA LISTE A PARTIR DU JOUEUR SELECTIONNE
-				// permutation des joueurs pour mettre le plus jeune au début de la liste 
-				Joueur JoueurTmp;
+			   /*	
+			    Joueur JoueurTmp;
 				JoueurTmp = this.attribuerJoueurDeDebut(p);
 				p.getListeJoueur().set(p.getListeJoueur().indexOf(JoueurTmp),p.getListeJoueur().get(0));
 				p.getListeJoueur().set(0, JoueurTmp);
+				*/
+				int a = p.getListeJoueur().indexOf(p.getListeJoueur().get(0));
+				int b =  p.getListeJoueur().indexOf(this.attribuerJoueurDeDebut(p));
 				
+				Collections.swap(p.getListeJoueur(), a, b);
 
 		}
 	}
 
-	////// VOIR L'ALGO
 	public Joueur attribuerJoueurDeDebut(Partie p){
-		Joueur jQuiCommence = null;
+		Joueur jQuiCommence; // = null;
 		int cptLJ = 0;
 		for(Joueur jdeb: p.getListeJoueur()){
 			int temp = jdeb.getAge();
-			// trouver l'indice qui permet de parcourir la liste et de comparer avec le suivant
+			
 			if(jdeb.getAge() < temp){
 				cptLJ = cptLJ++;
 			}
