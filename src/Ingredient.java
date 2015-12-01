@@ -20,7 +20,7 @@ public class Ingredient extends Carte {
 	public void choisirJoueur(){
 		
 	}
-	public String toString() {
+	public String toString(){
 		StringBuffer sb = new StringBuffer();
 		sb.append("                   " + this.getNom() + "\n");
 		sb.append("         Primpt.  Ete  Automne  Hiver\n");

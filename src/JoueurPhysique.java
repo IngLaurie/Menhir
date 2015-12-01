@@ -58,7 +58,7 @@ public class JoueurPhysique extends Joueur {
 				this.setNbMenhirDuJoueur(this.getNbMenhirDuJoueur(), 1);  // /!\ incrémenter en fonction du nb indiqué
 				int nbAjouteSurChamp = 0;  // récupérer la valeur de la carte 
 				this.setNbGraineDuJoueur(getNbGraineDuJoueur(), - nbAjouteSurChamp);  // /!\ décrémenter du nombre ajouté
-				// /!\ si moins de graines que demandé
+				
 			}else{
 				if(choixAction == 3){ // FARFADET
 					this.choisirJoueur();  // return un joueur 
