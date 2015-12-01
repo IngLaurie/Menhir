@@ -34,9 +34,6 @@ public class JoueurPhysique extends Joueur {
 			case 5: System.out.println("Vous avez choisi la carte 5\n");
 					this.faireAction(c);
 				break;
-			case 6: System.out.println("Vous avez choisi la carte 6\n");
-					this.faireAction(c);
-				break;
 			default: System.out.println("Veuillez choisir une carte existante\n\n");
 				break;
 		}	
