@@ -57,10 +57,10 @@ public class Manche {
 			
 			/* CARTES RESTANTES :
 			 * 
-			 * verso Menhir
-			 * champ
-			 * autre verso (verso alliés ?)
-			 * comptage de points
+			 * verso Menhir (vraiment besoin du verso? pas d'importance pour la console de toute façon)
+			 * champ (nécessaire?)
+			 * autre verso (verso alliés ?) (pas encore besoin)
+			 * comptage de points (nécessaire?)
 			 */
 			
 			// max 6 joueurs / 1 type de cartes = 3 actions possibles 
