@@ -143,7 +143,21 @@ public class Manche {
 	}
 	
 	public void changerSaison(){
-		
+		String nouvSaison;
+		if(this.saisonEnCours == "Printemps"){
+			nouvSaison = "Ete";
+		}else{
+			if(this.saisonEnCours == "Ete"){
+				nouvSaison = "Automne";
+			}else{
+				if(this.saisonEnCours == "Automne"){
+					nouvSaison = "Hiver";
+				}else{
+					nouvSaison = "Printemps";
+				}
+			}
+		}	
+		this.saisonEnCours = nouvSaison;
 	}
 	
 	public int recupSaisonNb(){
