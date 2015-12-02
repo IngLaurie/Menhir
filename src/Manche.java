@@ -12,7 +12,6 @@ public class Manche {
 	private static final int NBMAXCARTEPRAPIDE = 4;
 	private int nbManche;
 	private int saisonEnCours;
-	
 	private int saisonNb = 0;
 
 	//private String listeSaison[] = new String[4]; // hiver printemps été automne
@@ -22,7 +21,8 @@ public class Manche {
 	private ArrayList<Carte> listeCPAvancee = new ArrayList<Carte>();
 		
 	
-	// faire un SET ? 
+	// faire un SET ?
+	// vérifier s'il y a pas trop de choses / à déplacer
 	public Manche(Partie p){
 		
 		String listeSaison[] = new String[4];
@@ -31,7 +31,7 @@ public class Manche {
 		listeSaison[2] = "Automne";
 		listeSaison[3] = "Hiver";
 		
-		saisonEnCours = 3;
+		saisonEnCours = 0;
 		
 		if(p.getPartieAvancee()){
 			// autant de manches que de joueurs
@@ -189,9 +189,6 @@ public class Manche {
 	}
 
 	public void initialisationListeCarte(){
-		
-		/*private ArrayList<Carte> listeCPRapide = new ArrayList<Carte>();
-		private ArrayList<Carte> listeCPAvancee = new ArrayList<Carte>();*/
 		
 		int tabIng1[][] = {{1, 1, 1, 1},{2, 0, 1, 1},{2, 0, 2, 0}};
 		int tabIng2[][] = {{2, 0, 1, 1},{1, 3, 0, 0},{0, 1, 2, 1}};

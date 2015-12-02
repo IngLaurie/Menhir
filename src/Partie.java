@@ -48,7 +48,10 @@ public class Partie {
 
 		}else{
 		System.out.println("Nombre non valide, veuillez saisir 0 ou 1");
-	}
+	    }
+		
+		// ds lancer partie ????
+		// déplacer au bon endroit 
 		if(partieAvancee){
 			/*this.nbManche = this.nbJPhysique + this.nbJVirtuel;
 			for(int i=0; i<=this.nbManche; i++){
