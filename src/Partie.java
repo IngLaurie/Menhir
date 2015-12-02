@@ -26,6 +26,7 @@ public class Partie {
 		
 		if(typePartie == 0){
 			this.partieAvancee = false;
+			
 		}else{
 			if(typePartie == 1){
 				this.partieAvancee = true;
@@ -34,6 +35,8 @@ public class Partie {
 			}
 		}
 		
+		
+		// /!\ 1 seul joueur physique !
 		System.out.println("Combien y a t'il de joueur(s) physique(s) ?");
 		Scanner scanNbJ = new Scanner(System.in);
 		this.nbJPhysique = scanNbJ.nextInt();
@@ -56,14 +59,14 @@ public class Partie {
 			for (Joueur j : this.listeJoueur)
 				j.afficherMainJoueur();
 		}else{
+			// Partie rapide 
 			this.listeManche.add(new Manche(this));
 			
 			this.listeManche.get(0).distribuerCarteJoueur(this);
 			for (Joueur j : this.listeJoueur){
 				j.afficherMainJoueur();
-				j.jouerCarte(this.listeManche.get(0));
+				j.jouerCarte(this.listeManche.get(0), this);
 			}
-				//j.afficherMainJoueur();
 		}
 	}
 	

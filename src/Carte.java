@@ -35,7 +35,9 @@ public class Carte {
 		return this.nom ;
 	}
 	
+	// test
 	public int getForce(int action, int saison) {
+	//public int getForce(int action, String saison) {
 		return this.tableauIng[action][saison];
 	}
 	

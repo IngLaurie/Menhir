@@ -11,10 +11,6 @@ public abstract class Joueur {
 	protected int nbGraineDuJoueur; 
 	private boolean actif;
 	private int choixAction;
-	//private int nbGraine;
-	//private Joueur jQuiCommence;
-	//private int cptLJ;
-	//private int nbJoueur;
 
 	
 
@@ -73,7 +69,7 @@ public abstract class Joueur {
 	}
 
 	//public abstract void jouerCarte(){
-	public abstract void jouerCarte(Manche m);
+	public abstract void jouerCarte(Manche m, Partie p);
 	
 	/*public void faireAction(){		
 		

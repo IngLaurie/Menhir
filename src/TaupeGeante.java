@@ -10,7 +10,7 @@ public class TaupeGeante extends Carte {
 	}
 	
 	private Joueur choisirJoueur(Joueur joueur){
-		
+		// cf manche 
 		return joueur;
 	}
 	

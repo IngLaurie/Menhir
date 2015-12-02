@@ -10,7 +10,7 @@ public class JoueurPhysique extends Joueur {
 	}
 
 	@Override
-	public void jouerCarte(Manche m) { /// vérifier la liste de carte en possession du joueur
+	public void jouerCarte(Manche m, Partie p) { /// vérifier la liste de carte en possession du joueur
 		//Carte c = null;
 		//this.afficherMainJoueur();
 		System.out.println("Choisir une carte à jouer : \n\n");
@@ -20,26 +20,26 @@ public class JoueurPhysique extends Joueur {
 		
 		switch(choixCarte){  
 			case 1: System.out.println("Vous avez choisi la carte 1\n");
-					this.faireAction(this.mainDuJoueur.get(choixCarte), m);  // indiquer les actions et valeurs de la bonne carte
+					this.faireAction(this.mainDuJoueur.get(choixCarte), m, p);  // indiquer les actions et valeurs de la bonne carte
 				break;
 			case 2: System.out.println("Vous avez choisi la carte 2\n");
-					this.faireAction(this.mainDuJoueur.get(choixCarte), m);
+					this.faireAction(this.mainDuJoueur.get(choixCarte), m, p);
 				break;
 			case 3: System.out.println("Vous avez choisi la carte 3\n");
-					this.faireAction(this.mainDuJoueur.get(choixCarte), m);
+					this.faireAction(this.mainDuJoueur.get(choixCarte), m, p);
 				break;
 			case 4: System.out.println("Vous avez choisi la carte 4\n");
-					this.faireAction(this.mainDuJoueur.get(choixCarte), m);
+					this.faireAction(this.mainDuJoueur.get(choixCarte), m, p);
 				break;
 			case 5: System.out.println("Vous avez choisi la carte 5\n");
-					this.faireAction(this.mainDuJoueur.get(choixCarte), m);
+					this.faireAction(this.mainDuJoueur.get(choixCarte), m, p);
 				break;
 			default: System.out.println("Veuillez choisir une carte existante\n\n");
 				break;
 		}	
 	}
 	
-	public void faireAction(Carte c, Manche m){
+	public void faireAction(Carte c, Manche m, Partie p){
 		System.out.println("Choisir action à effectuer : \n\n");
 		System.out.println("1- Géant\n");
 		System.out.println("2- Engrais\n");
@@ -49,22 +49,21 @@ public class JoueurPhysique extends Joueur {
 		int choixAction = scanAction.nextInt();
 		
 		if(choixAction == 1){ // GEANT
-			// parcourir la carte et voir le nb graine 
-			// /!\ en fonction de la saison = indice de la carte 
-			m.getSaisonEnCours();
-			this.setNbGraineDuJoueur(this.getNbGraineDuJoueur(), 1); // incrémenter en fonction du nb indiqué
-			
-			
+			String saison = m.getSaisonEnCours();
+			this.setNbGraineDuJoueur(this.getNbGraineDuJoueur(), m.getSaisonNb());
 		}else{
 			if(choixAction == 2){ // ENGRAIS 
-				this.setNbMenhirDuJoueur(this.getNbMenhirDuJoueur(), 1);  // /!\ incrémenter en fonction du nb indiqué
-				int nbAjouteSurChamp = 0;  // récupérer la valeur de la carte 
-				this.setNbGraineDuJoueur(getNbGraineDuJoueur(), - nbAjouteSurChamp);  // /!\ décrémenter du nombre ajouté
+				this.setNbMenhirDuJoueur(this.getNbMenhirDuJoueur(), m.getSaisonNb()); 
+				// // int nbAjouteSurChamp = c.getForce(saison);
+				int nbAjouteSurChamp = 0;
+				this.setNbGraineDuJoueur(getNbGraineDuJoueur(), - nbAjouteSurChamp); 
 				
 			}else{
 				if(choixAction == 3){ // FARFADET
-					this.choisirJoueur();  // return un joueur 
+					//choisirJoueur();  // return un joueur 
 					//nbGraineRecupAuJ = joueurChoisi.getNbGraineDuJoueur(); // prendre nb graines indiqué sur la carte
+					
+					//joueurChoisi.getNbGraineDuJoueur(this.getNbGraineDuJoueur(), m.getSaisonNb());
 					// voler graines à un autre joueur 
 					// nb graines du joueur ++ et de l'autre --
 				}else{
@@ -72,13 +71,6 @@ public class JoueurPhysique extends Joueur {
 				}
 			}
 		}
-	}
-	
-	public Joueur choisirJoueur(){
-		// choisir le joueur parmi la liste de joueurs 
-	//	Joueur joueurChoisi = null;
-		
-		return joueurChoisi;
 	}
 
 
