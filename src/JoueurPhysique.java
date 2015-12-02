@@ -40,10 +40,10 @@ public class JoueurPhysique extends Joueur {
 	}
 	
 	public void faireAction(Carte c, Manche m, Partie p){
-		System.out.println("Choisir action à effectuer : \n\n");
-		System.out.println("1- Géant\n");
-		System.out.println("2- Engrais\n");
-		System.out.println("3- Farfadet\n");
+		System.out.println("Choisir action à effectuer : \n");
+		System.out.println("1- Géant");
+		System.out.println("2- Engrais");
+		System.out.println("3- Farfadet");
 		
 
 		int saison = m.getSaisonEnCours();

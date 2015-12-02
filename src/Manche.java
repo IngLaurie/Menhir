@@ -31,7 +31,7 @@ public class Manche {
 		listeSaison[2] = "Automne";
 		listeSaison[3] = "Hiver";
 		
-		saisonEnCours = 0;
+		saisonEnCours = 3;
 		
 		if(p.getPartieAvancee()){
 			// autant de manches que de joueurs
@@ -39,21 +39,15 @@ public class Manche {
 			this.listeCartesPA.addAll(listeCPAvancee);
 			this.listeCartesPA.addAll(listeCPRapide);
 			// cartes de la partie rapide + cartes alliés
-			// on a ici l'ensemble des cartes nécessaires pour la partie avancee  
-
-			
-
+			// on a ici l'ensemble des cartes nécessaires pour la partie avancee 
 			// on mélange les cartes 
-			Collections.shuffle(listeCartesPA);	
-			
+			// Collections.shuffle(listeCartesPA);	
 			// 
 		}else{  // partie rapide
 			this.nbManche = 1;
 			// création de la manche
 			// cartes de la partie rapide seulement
-			
 			// on mélange les cartes 
-			Collections.shuffle(listeCPRapide);	
 			
 		}
 	}
@@ -64,15 +58,9 @@ public class Manche {
 
 	public void distribuerCarteJoueur(Partie p){
 		if(p.getPartieAvancee()){
-			
-			
-			// ici on utilise les cartes de listeCPRapide + listeCPAvancee 
-			
-			
+			// ici on utilise les cartes de listeCPRapide + listeCPAvancee 			
 			// constructeur de manche mettre en param la liste de cartes  //
 			// mettre en static final .. //
-			
-			
 		}else{ // partie rapide
 			// une partie rapide = 4 tours de jeu 
 			// chaque joueur place devant lui un champ et pose à côté 2 graines
@@ -80,6 +68,7 @@ public class Manche {
 			// ici on utilise les cartes de listeCPRapide
 			
 			this.initialisationListeCarte();
+			Collections.shuffle(listeCPRapide);
 			
 			int cpt = 1;
 				for(Joueur joueur: p.getListeJoueur()){
@@ -97,6 +86,8 @@ public class Manche {
 					cpt = 1;
 				}
 				
+				
+
 			   /*	
 			    Joueur JoueurTmp;
 				JoueurTmp = this.attribuerJoueurDeDebut(p);
@@ -142,7 +133,7 @@ public class Manche {
 		
 	}
 	
-	public void changerSaison(){
+	/*public void changerSaison(){
 		String nouvSaison;
 		if(this.saisonEnCours == "Printemps"){
 			nouvSaison = "Ete";
@@ -158,7 +149,7 @@ public class Manche {
 			}
 		}	
 		this.saisonEnCours = nouvSaison;
-	}
+	}*/
 	
 	/*public int recupSaisonNb(){
 		
