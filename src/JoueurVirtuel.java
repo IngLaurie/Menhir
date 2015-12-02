@@ -5,7 +5,10 @@ public class JoueurVirtuel extends Joueur {
 	
 	private int strategie;
 	
-	
+	// IA :: gérer les stratégies de différents joueurs 
+	// voleur
+	// espion
+	//
 
 	public JoueurVirtuel() {
 		super();

@@ -11,7 +11,7 @@ public class Manche {
 
 	private static final int NBMAXCARTEPRAPIDE = 4;
 	private int nbManche;
-	private String saisonEnCours;
+	private int saisonEnCours;
 	
 	private int saisonNb = 0;
 
@@ -31,8 +31,7 @@ public class Manche {
 		listeSaison[2] = "Automne";
 		listeSaison[3] = "Hiver";
 		
-		String saisonEnCours;
-		saisonEnCours = "Printemps";
+		saisonEnCours = 3;
 		
 		if(p.getPartieAvancee()){
 			// autant de manches que de joueurs
@@ -59,7 +58,7 @@ public class Manche {
 		}
 	}
 	
-	public void setSaisonEnCours(String saisonEnCours) {
+	public void setSaisonEnCours(int saisonEnCours) {
 		this.saisonEnCours = saisonEnCours;
 	}
 
@@ -70,7 +69,8 @@ public class Manche {
 			// ici on utilise les cartes de listeCPRapide + listeCPAvancee 
 			
 			
-			
+			// constructeur de manche mettre en param la liste de cartes  //
+			// mettre en static final .. //
 			
 			
 		}else{ // partie rapide
@@ -134,7 +134,7 @@ public class Manche {
 		return jQuiCommence;
 	}
 	
-	public String getSaisonEnCours() {
+	public int getSaisonEnCours() {
 		return this.saisonEnCours;
 	}
 	
@@ -160,7 +160,7 @@ public class Manche {
 		this.saisonEnCours = nouvSaison;
 	}
 	
-	public int recupSaisonNb(){
+	/*public int recupSaisonNb(){
 		
 		if(this.saisonEnCours == "Printemps"){
 			saisonNb = 1;
@@ -177,12 +177,12 @@ public class Manche {
 		}
 		
 		return saisonNb;
-	}
+	}*/
 
 
-	public int getSaisonNb() {
+	/*public int getSaisonNb() {
 		return saisonNb;
-	}
+	}*/
 
 	public void setSaisonNb(int saisonNb) {
 		this.saisonNb = saisonNb;
