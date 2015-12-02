@@ -63,6 +63,7 @@ public class Partie {
 				j.afficherMainJoueur();
 		}else{
 			// Partie rapide 
+			// Lancer la fonction nouvelle manche!
 			this.listeManche.add(new Manche(this));
 			
 			this.listeManche.get(0).distribuerCarteJoueur(this);

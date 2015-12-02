@@ -62,8 +62,7 @@ public abstract class Joueur {
 		this.nbMenhirDuJoueur = nbMenhirDuJoueur + nbAAjouterMenhir;
 	}
 	
-	
-	
+		
 	public ArrayList<Carte> getMainDuJoueur() {
 		return this.mainDuJoueur;
 	}
