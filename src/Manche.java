@@ -26,10 +26,10 @@ public class Manche {
 	public Manche(Partie p){
 		
 		String listeSaison[] = new String[4];
-		listeSaison[1] = "Printemps";
-		listeSaison[2] = "Ete";
-		listeSaison[3] = "Automne";
-		listeSaison[4] = "Hiver";
+		listeSaison[0] = "Printemps";
+		listeSaison[1] = "Ete";
+		listeSaison[2] = "Automne";
+		listeSaison[3] = "Hiver";
 		
 		String saisonEnCours;
 		saisonEnCours = "Printemps";
@@ -52,8 +52,6 @@ public class Manche {
 			this.nbManche = 1;
 			// création de la manche
 			// cartes de la partie rapide seulement
-			
-			
 			
 			// on mélange les cartes 
 			Collections.shuffle(listeCPRapide);	
@@ -81,7 +79,7 @@ public class Manche {
 				
 			// ici on utilise les cartes de listeCPRapide
 			
-			
+			this.initialisationListeCarte();
 			
 			int cpt = 1;
 				for(Joueur joueur: p.getListeJoueur()){
@@ -110,6 +108,8 @@ public class Manche {
 				int b = p.getListeJoueur().indexOf(this.attribuerJoueurDeDebut(p));
 				
 				Collections.swap(p.getListeJoueur(), a, b);
+				
+			
 
 		}
 	}
