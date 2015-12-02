@@ -62,26 +62,34 @@ public class JoueurPhysique extends Joueur {
 			System.out.println("Vous avez pris " + c.getForce(choixAction, saison) + " graines dans le pot commun !");
 		}else{
 			if(choixAction == 2){ // ENGRAIS 
-				this.setNbMenhirDuJoueur(this.getNbMenhirDuJoueur(), m.getSaisonEnCours()); 
+				this.setNbMenhirDuJoueur(this.getNbMenhirDuJoueur(), c.getForce(choixAction, saison)); 
 				// // int nbAjouteSurChamp = c.getForce(saison);
 				int nbAjouteSurChamp = 0;
 				this.setNbGraineDuJoueur(getNbGraineDuJoueur(), - nbAjouteSurChamp); 
-				System.out.println("Vous avez pris " + c.getForce(choixAction, saison) + " graines dans le pot commun !");
+				System.out.println("Résultat : " + c.getForce(choixAction, saison) + " de vos graines sont devenues des Menhirs !");
 			}else{
 				if(choixAction == 3){ // FARFADET
-					//choisirJoueur();  // return un joueur 
+					// return un joueur 
 					//nbGraineRecupAuJ = joueurChoisi.getNbGraineDuJoueur(); // prendre nb graines indiqué sur la carte
-					
+					Joueur joueurChoisi = this.choisirJoueur(p.getListeJoueur());
 					//joueurChoisi.getNbGraineDuJoueur(this.getNbGraineDuJoueur(), m.getSaisonNb());
 					// voler graines à un autre joueur 
 					// nb graines du joueur ++ et de l'autre --
+					this.setNbGraineDuJoueur(saison, c.getForce(choixAction, saison));
+					joueurChoisi.setNbGraineDuJoueur(saison, - c.getForce(choixAction, saison));
+					// voler des graines 
+					// MAJ les attributs
 					System.out.println("Vous avez pris " + c.getForce(choixAction, saison) + " graines dans le pot commun !");
 				}else{
 					System.out.println("Veuillez entrer une valeur juste\n\n");
-					System.out.println("Vous avez pris " + c.getForce(choixAction, saison) + " graines dans le pot commun !");
 				}
 			}
 		}
+	}
+
+	private void choisirJoueur() {
+		
+		
 	}
 
 

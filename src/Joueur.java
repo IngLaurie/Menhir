@@ -90,4 +90,17 @@ public abstract class Joueur {
 		this.age = age;
 	}
 	
+	public Joueur choisirJoueur(ArrayList<Joueur> listDeJoueur){
+		int i = 0;
+		
+		for(Joueur j : listDeJoueur){
+			System.out.println(j.nom + " taper " + i);
+			i++;
+		}
+		Scanner scanJ = new Scanner(System.in);
+		int choixJoueur = scanJ.nextInt();
+		
+		return listDeJoueur.get(choixJoueur);
+	}
+	
 }

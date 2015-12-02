@@ -133,7 +133,7 @@ public class Manche {
 		
 	}
 	
-<<<<<<< HEAD
+	
 	/*public void changerSaison(){
 		String nouvSaison;
 		if(this.saisonEnCours == "Printemps"){
@@ -151,7 +151,7 @@ public class Manche {
 		}	
 		this.saisonEnCours = nouvSaison;
 	}*/
-=======
+
 	public void changerSaison(){
 		int nouvSaison = this.saisonEnCours;
 		System.out.println("La saison " + this.listeSaison[this.saisonEnCours] + "est terminée.\n");
@@ -165,7 +165,6 @@ public class Manche {
 		this.saisonEnCours = nouvSaison;
 	}
 	//Sert de setSaisonEnCours
->>>>>>> origin/master
 	
 	/*public int recupSaisonNb(){
 		
