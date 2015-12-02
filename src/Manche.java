@@ -12,7 +12,7 @@ public class Manche {
 	private static final int NBMAXCARTEPRAPIDE = 4;
 	private int nbManche;
 	private int saisonEnCours;
-	private int saisonNb = 0;
+	private String listeSaison[] = {"printemps", "été", "automne", "hiver"};
 
 	//private String listeSaison[] = new String[4]; // hiver printemps été automne
 	private ArrayList<Carte> listeCartesPA = new ArrayList<Carte>();
@@ -25,11 +25,11 @@ public class Manche {
 	// vérifier s'il y a pas trop de choses / à déplacer
 	public Manche(Partie p){
 		
-		String listeSaison[] = new String[4];
+		/*String listeSaison[] = new String[4];
 		listeSaison[0] = "Printemps";
 		listeSaison[1] = "Ete";
 		listeSaison[2] = "Automne";
-		listeSaison[3] = "Hiver";
+		listeSaison[3] = "Hiver";*/
 		
 		saisonEnCours = 0;
 		
@@ -143,22 +143,18 @@ public class Manche {
 	}
 	
 	public void changerSaison(){
-		String nouvSaison;
-		if(this.saisonEnCours == "Printemps"){
-			nouvSaison = "Ete";
-		}else{
-			if(this.saisonEnCours == "Ete"){
-				nouvSaison = "Automne";
-			}else{
-				if(this.saisonEnCours == "Automne"){
-					nouvSaison = "Hiver";
-				}else{
-					nouvSaison = "Printemps";
-				}
-			}
-		}	
+		int nouvSaison = this.saisonEnCours;
+		System.out.println("La saison " + this.listeSaison[this.saisonEnCours] + "est terminée.\n");
+		nouvSaison++;
+		if (nouvSaison == 4) {
+			nouvSaison = 0;
+			System.out.println("La manche est terminée.");
+		} else {
+			System.out.println("La nouvelle saison est" +this.listeSaison[this.saisonEnCours]);
+		}
 		this.saisonEnCours = nouvSaison;
 	}
+	//Sert de setSaisonEnCours
 	
 	/*public int recupSaisonNb(){
 		
@@ -183,10 +179,6 @@ public class Manche {
 	/*public int getSaisonNb() {
 		return saisonNb;
 	}*/
-
-	public void setSaisonNb(int saisonNb) {
-		this.saisonNb = saisonNb;
-	}
 
 	public void initialisationListeCarte(){
 		
@@ -266,5 +258,6 @@ public class Manche {
 		 * comptage de points (nécessaire?)
 		 */
 	}
+	
 
 }

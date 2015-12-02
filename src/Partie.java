@@ -52,7 +52,22 @@ public class Partie {
 		
 		// ds lancer partie ????
 		// déplacer au bon endroit 
-		if(partieAvancee){
+		
+
+
+	}
+	
+	public int getNbJPhysique(){
+		return this.nbJPhysique;
+	}
+	
+	public int getNbJVirtuel(){
+		return this.nbJVirtuel;
+	}
+
+	public void lancerPartie() {
+		
+		if(this.partieAvancee){
 			/*this.nbManche = this.nbJPhysique + this.nbJVirtuel;
 			for(int i=0; i<=this.nbManche; i++){
 				this.listeManche.add(new Manche(this));
@@ -72,19 +87,6 @@ public class Partie {
 				j.jouerCarte(this.listeManche.get(0), this);
 			}
 		}
-	}
-	
-	public int getNbJPhysique(){
-		return this.nbJPhysique;
-	}
-	
-	public int getNbJVirtuel(){
-		return this.nbJVirtuel;
-	}
-
-	public void lancerPartie() {
-		
-		
 	}
 
 	public boolean getPartieAvancee() {
