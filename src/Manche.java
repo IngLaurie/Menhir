@@ -11,14 +11,26 @@ public class Manche {
 
 	private static final int NBMAXCARTEPRAPIDE = 4;
 	private int nbManche;
-	// private int saisonEnCours;
-	private String listeSaison[] = new String[4]; // hiver printemps été automne
+	private int saisonEnCours;
+	
+
+	//private String listeSaison[] = new String[4]; // hiver printemps été automne
 	private ArrayList<Carte> listeCartesJ = new ArrayList<Carte>();
 
 		
 	// /!\ faire 2 listes de cartes ? + faire appel aux listes en fonction du type de partie ??
 	// faire un SET ? 
 	public Manche(Partie p){
+		
+		String listeSaison[] = new String[4];
+		listeSaison[1] = "Printemps";
+		listeSaison[2] = "Ete";
+		listeSaison[3] = "Automne";
+		listeSaison[4] = "Hiver";
+		
+		String saisonEnCours;
+		saisonEnCours = "Printemps";
+		
 		if(p.getPartieAvancee()){
 			// autant de manches que de joueurs
 			this.nbManche = p.getNbJPhysique() + p.getNbJVirtuel();
@@ -208,21 +220,37 @@ public class Manche {
 	}
 
 	public Joueur attribuerJoueurDeDebut(Partie p){
-		Joueur jQuiCommence; // = null;
+		Joueur jQuiCommence = null;
 		int cptLJ = 0;
-		for(Joueur jdeb: p.getListeJoueur()){
-			int temp = jdeb.getAge();
+		//for(Joueur jdeb: p.getListeJoueur()){
+		if(p.getListeJoueur().get(0).getAge() < p.getListeJoueur().get(1).getAge()){	
+			jQuiCommence = p.getListeJoueur().get(0);
+		}else{
+			jQuiCommence = p.getListeJoueur().get(1);
+		}
+		for(int i=2; i<p.getListeJoueur().size(); i++){
 			
-			if(jdeb.getAge() < temp){
-				cptLJ = cptLJ++;
+			// voir si le joueur est le dernier element
+			if(p.getListeJoueur().get(i).getAge() < jQuiCommence.getAge()){	
+				jQuiCommence = p.getListeJoueur().get(i);
 			}
+			
 		}
 		return jQuiCommence;
 	}
 	
+	/*
 	public void jouerManche(Joueur joueurQuiJoue){
 		// attention, faire jouer tous les joueurs 
 		joueurQuiJoue.jouerCarte();   //  /!\ PB
+	}*/
+	
+	public int getSaisonEnCours() {
+		return this.saisonEnCours;
+	}
+
+	public void setSaisonEnCours(int saisonEnCours) {
+		this.saisonEnCours = saisonEnCours;
 	}
 	
 	public void nouvelleManche(){
@@ -232,5 +260,6 @@ public class Manche {
 	public void changerSaison(){
 		
 	}
+	
 
 }

@@ -47,11 +47,11 @@ public class Partie {
 		System.out.println("Nombre non valide, veuillez saisir 0 ou 1");
 	}
 		if(partieAvancee){
-			this.nbManche = this.nbJPhysique + this.nbJVirtuel;
+			/*this.nbManche = this.nbJPhysique + this.nbJVirtuel;
 			for(int i=0; i<=this.nbManche; i++){
 				this.listeManche.add(new Manche(this));
 				this.listeManche.get(i).distribuerCarteJoueur(this);  // i ok ?
-			}
+			}*/
 			
 			for (Joueur j : this.listeJoueur)
 				j.afficherMainJoueur();
@@ -59,9 +59,11 @@ public class Partie {
 			this.listeManche.add(new Manche(this));
 			
 			this.listeManche.get(0).distribuerCarteJoueur(this);
-			for (Joueur j : this.listeJoueur)
+			for (Joueur j : this.listeJoueur){
 				j.afficherMainJoueur();
-				//j.toString();
+				j.jouerCarte(this.listeManche.get(0));
+			}
+				//j.afficherMainJoueur();
 		}
 	}
 	

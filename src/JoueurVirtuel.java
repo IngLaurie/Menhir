@@ -14,7 +14,7 @@ public class JoueurVirtuel extends Joueur {
 	}
 
 	@Override
-	public void jouerCarte() {
+	public void jouerCarte(Manche m) {
 		
 	}
 

@@ -6,7 +6,7 @@ public abstract class Joueur {
 	private int age;
 
 	private int nombreDePointTotal;
-	private ArrayList<Carte> mainDuJoueur = new ArrayList<Carte>();
+	protected ArrayList<Carte> mainDuJoueur = new ArrayList<Carte>();
 	private int nbMenhirDuJoueur;
 	protected int nbGraineDuJoueur; 
 	private boolean actif;
@@ -43,8 +43,10 @@ public abstract class Joueur {
 			System.out.println(c.afficherCarte() + " taper " + i);
 			// travailler la méthode afficherCarte() de carte pour permettre l'affichage de chaque cartes des joueurs
 
-			System.out.println(c.afficherCarte() + "\n taper " + i);
+			//System.out.println(c.afficherCarte() + "\n taper " + i);
 			i++;
+			
+			System.out.println(c.toString());
 		}
 	}
 	
@@ -71,7 +73,7 @@ public abstract class Joueur {
 	}
 
 	//public abstract void jouerCarte(){
-	public abstract void jouerCarte();
+	public abstract void jouerCarte(Manche m);
 	
 	/*public void faireAction(){		
 		

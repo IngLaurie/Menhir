@@ -10,36 +10,36 @@ public class JoueurPhysique extends Joueur {
 	}
 
 	@Override
-	public void jouerCarte() { /// vérifier la liste de carte en possession du joueur
-		Carte c = null;
-		this.afficherMainJoueur();
+	public void jouerCarte(Manche m) { /// vérifier la liste de carte en possession du joueur
+		//Carte c = null;
+		//this.afficherMainJoueur();
 		System.out.println("Choisir une carte à jouer : \n\n");
 		// parcourir la liste et indiquer laquelle est choisie en fonction d'un indice
 		Scanner scanCarte = new Scanner(System.in); // pour scanner l'indice de la carte choisie
 		int choixCarte = scanCarte.nextInt();
 		
-		switch(choixCarte){  // OU UNE BOUCLE WHILE ?
+		switch(choixCarte){  
 			case 1: System.out.println("Vous avez choisi la carte 1\n");
-					this.faireAction(c);  // indiquer les actions et valeurs de la bonne carte
+					this.faireAction(this.mainDuJoueur.get(choixCarte), m);  // indiquer les actions et valeurs de la bonne carte
 				break;
 			case 2: System.out.println("Vous avez choisi la carte 2\n");
-					this.faireAction(c);
+					this.faireAction(this.mainDuJoueur.get(choixCarte), m);
 				break;
 			case 3: System.out.println("Vous avez choisi la carte 3\n");
-					this.faireAction(c);
+					this.faireAction(this.mainDuJoueur.get(choixCarte), m);
 				break;
 			case 4: System.out.println("Vous avez choisi la carte 4\n");
-					this.faireAction(c);
+					this.faireAction(this.mainDuJoueur.get(choixCarte), m);
 				break;
 			case 5: System.out.println("Vous avez choisi la carte 5\n");
-					this.faireAction(c);
+					this.faireAction(this.mainDuJoueur.get(choixCarte), m);
 				break;
 			default: System.out.println("Veuillez choisir une carte existante\n\n");
 				break;
 		}	
 	}
 	
-	public void faireAction(Carte c){
+	public void faireAction(Carte c, Manche m){
 		System.out.println("Choisir action à effectuer : \n\n");
 		System.out.println("1- Géant\n");
 		System.out.println("2- Engrais\n");
@@ -51,7 +51,9 @@ public class JoueurPhysique extends Joueur {
 		if(choixAction == 1){ // GEANT
 			// parcourir la carte et voir le nb graine 
 			// /!\ en fonction de la saison = indice de la carte 
+			m.getSaisonEnCours();
 			this.setNbGraineDuJoueur(this.getNbGraineDuJoueur(), 1); // incrémenter en fonction du nb indiqué
+			
 			
 		}else{
 			if(choixAction == 2){ // ENGRAIS 
