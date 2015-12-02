@@ -52,25 +52,9 @@ public class Partie {
 		
 		// ds lancer partie ????
 		// déplacer au bon endroit 
-		if(partieAvancee){
-			/*this.nbManche = this.nbJPhysique + this.nbJVirtuel;
-			for(int i=0; i<=this.nbManche; i++){
-				this.listeManche.add(new Manche(this));
-				this.listeManche.get(i).distribuerCarteJoueur(this);  // i ok ?
-			}*/
-			
-			for (Joueur j : this.listeJoueur)
-				j.afficherMainJoueur();
-		}else{
-			// Partie rapide 
-			this.listeManche.add(new Manche(this));
-			
-			this.listeManche.get(0).distribuerCarteJoueur(this);
-			for (Joueur j : this.listeJoueur){
-				j.afficherMainJoueur();
-				j.jouerCarte(this.listeManche.get(0), this);
-			}
-		}
+		
+
+
 	}
 	
 	public int getNbJPhysique(){
@@ -83,7 +67,26 @@ public class Partie {
 
 	public void lancerPartie() {
 		
-		
+		if(this.partieAvancee){
+			/*this.nbManche = this.nbJPhysique + this.nbJVirtuel;
+			for(int i=0; i<=this.nbManche; i++){
+				this.listeManche.add(new Manche(this));
+				this.listeManche.get(i).distribuerCarteJoueur(this);  // i ok ?
+			}*/
+			
+			for (Joueur j : this.listeJoueur)
+				j.afficherMainJoueur();
+		}else{
+			// Partie rapide 
+			// Lancer la fonction nouvelle manche!
+			this.listeManche.add(new Manche(this));
+			
+			this.listeManche.get(0).distribuerCarteJoueur(this);
+			for (Joueur j : this.listeJoueur){
+				j.afficherMainJoueur();
+				j.jouerCarte(this.listeManche.get(0), this);
+			}
+		}
 	}
 
 	public boolean getPartieAvancee() {
