@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 // PENSER AU SINGLETON
@@ -37,7 +38,11 @@ public class Partie {
 		
 		
 		// /!\ 1 seul joueur physique !
-		System.out.println("Combien y a t'il de joueur(s) physique(s) ?");
+		this.nbJPhysique = 2;
+		this.listeJoueur.add(new JoueurPhysique());
+		this.listeJoueur.add(new JoueurPhysique());
+		
+		/*System.out.println("Combien y a t'il de joueur(s) physique(s) ?");
 		Scanner scanNbJ = new Scanner(System.in);
 		this.nbJPhysique = scanNbJ.nextInt();
 		
@@ -48,13 +53,23 @@ public class Partie {
 
 		}else{
 		System.out.println("Nombre non valide, veuillez saisir 0 ou 1");
+	    }*/
+		
+		System.out.println("Combien y a t'il de joueur(s) virtuel(s) ?");
+		Scanner scanNbJ = new Scanner(System.in);
+		this.nbJVirtuel = scanNbJ.nextInt();
+		scanNbJ.close();
+		
+		if(nbJVirtuel >= 1 && nbJVirtuel <= 5){
+			for(int i=1; i<= nbJVirtuel; i++){
+				this.listeJoueur.add(new JoueurVirtuel());
+			}
+
+		}else{
+		System.out.println("Nombre non valide, veuillez saisir 0 ou 1");
 	    }
+		//scanTypeP.close();
 		
-		// ds lancer partie ????
-		// déplacer au bon endroit 
-		
-
-
 	}
 	
 	public int getNbJPhysique(){
@@ -68,11 +83,22 @@ public class Partie {
 	public void lancerPartie() {
 		
 		if(this.partieAvancee){
-			/*this.nbManche = this.nbJPhysique + this.nbJVirtuel;
+			//Récupérer le nombre de manche
+			//Créer toutes les manches et les mettre dans une liste
+			//Faire un iterator pour faire défiler toutes les manches
+			//A la fin de chaque manche, récupérer le nombre de menhir total de chaque joueur
+			//A la fin de toutes les manches, désigner le joueur qui a le plus de menhir comme gagnant
+			
+			this.nbManche = this.nbJPhysique + this.nbJVirtuel;
 			for(int i=0; i<=this.nbManche; i++){
 				this.listeManche.add(new Manche(this));
-				this.listeManche.get(i).distribuerCarteJoueur(this);  // i ok ?
-			}*/
+			}
+			for (Iterator<Manche> it = listeManche.iterator(); it.hasNext();) {
+				
+				
+			}
+			
+			//this.listeManche.get(i).distribuerCarteJoueur(this);  // i ok ?
 			
 			for (Joueur j : this.listeJoueur)
 				j.afficherMainJoueur();

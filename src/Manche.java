@@ -122,7 +122,21 @@ public class Manche {
 		return this.saisonEnCours;
 	}
 	
-	public void nouvelleManche(){
+	public void jouerManche(Partie p){
+		boolean partieAvancee = p.getPartieAvancee();
+		if (partieAvancee) {
+			//Distribuer les cartes
+			//Faire jouer chaque joueur
+			//Changer la saison
+			//Répéter pour toutes les saisons
+			//Lorsqu'on a fait toutes les saisons, retourner le nombre de graines de chaque joueur
+		} else {
+			//Distribuer les cartes
+			//Faire jouer chaque joueur
+			//Changer la saison
+			//Répéter pour toutes les saisons
+			//Lorsqu'on a fait toutes les saisons, ajouter le nombre de menhir de chaque joueur à son nombre de menhir total
+		}
 		
 	}
 	

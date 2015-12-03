@@ -30,10 +30,6 @@ public class Carte {
 		return this.cheminImage;
 	}
 
-	public String afficherCarte(){
-		//System.out.println(this.nom);
-		return this.nom ;
-	}
 	
 	// test
 	public int getForce(int action, int saison) {
