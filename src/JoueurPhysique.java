@@ -37,6 +37,7 @@ public class JoueurPhysique extends Joueur {
 					this.faireAction(this.mainDuJoueur.get(choixCarte -1), m, p);
 				break;
 			default: System.out.println("Veuillez choisir une carte existante\n\n");
+			// /!\ 
 				break;
 		}	
 	}
@@ -56,6 +57,9 @@ public class JoueurPhysique extends Joueur {
 		
 		System.out.println("Vous avez choisi l'action : " + choixAction);
 		
+		// ATTENTION ALGO //
+		// ATTENTION ALGO //
+		// ATTENTION ALGO //
 		// ATTENTION ALGO //
 		// ATTENTION ALGO //
 		// ATTENTION ALGO //
@@ -92,6 +96,7 @@ public class JoueurPhysique extends Joueur {
 					System.out.println("Vous avez maintenant " + this.getNbGraineDuJoueur() + " graines et " + this.getNbMenhirDuJoueur() + " Menhirs.\n\n");
 				}else{
 					System.out.println("Veuillez entrer une valeur juste\n\n");
+					// /!\ faire reboucler sur le menu (choix de l'action)
 				}
 			}
 		}

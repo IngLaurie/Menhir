@@ -82,6 +82,7 @@ public abstract class Joueur {
 
 	//public abstract void jouerCarte(){
 	public abstract void jouerCarte(Manche m, Partie p);
+	public abstract void faireAction(Carte c, Manche m, Partie p);
 	
 	/*public void faireAction(){		
 		
