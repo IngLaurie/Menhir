@@ -92,7 +92,9 @@ public class Partie {
 				this.listeManche.add(new Manche(this));
 			}
 			for (Iterator<Manche> it = listeManche.iterator(); it.hasNext();) {
-				
+				Manche mancheActive = it.next();
+				mancheActive.jouerManche(p);
+				System.out.println("La manche est terminée;\n");
 				
 			}
 			
