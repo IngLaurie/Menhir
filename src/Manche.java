@@ -31,7 +31,7 @@ public class Manche {
 		listeSaison[2] = "Automne";
 		listeSaison[3] = "Hiver";*/
 		
-		saisonEnCours = 3;
+		saisonEnCours = 0;
 		
 		if(p.getPartieAvancee()){
 			// autant de manches que de joueurs
@@ -129,7 +129,20 @@ public class Manche {
 		return this.saisonEnCours;
 	}
 	
-	public void nouvelleManche(){
+	public void jouerManche(boolean partieAvancee){
+		if (partieAvancee) {
+			//Distribuer les cartes
+			//Faire jouer chaque joueur
+			//Changer la saison
+			//Répéter pour toutes les saisons
+			//Lorsqu'on a fait toutes les saisons, retourner le nombre de graines de chaque joueur
+		} else {
+			//Distribuer les cartes
+			//Faire jouer chaque joueur
+			//Changer la saison
+			//Répéter pour toutes les saisons
+			//Lorsqu'on a fait toutes les saisons, ajouter le nombre de menhir de chaque joueur à son nombre de menhir total
+		}
 		
 	}
 	

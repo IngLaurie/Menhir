@@ -30,11 +30,7 @@ public class Carte {
 		return this.cheminImage;
 	}
 
-	public String afficherCarte(){
-		//System.out.println(this.nom);
-		return this.nom ;
-	}
-	
+
 	// test
 	public int getForce(int action, int saison) {
 	//public int getForce(int action, String saison) {
@@ -45,7 +41,6 @@ public class Carte {
 		return this.tableauAlli[saison];
 	}
 	
-
 	
 	// public static Carte[] initialiserCarte(){}
 	

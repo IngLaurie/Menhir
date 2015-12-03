@@ -8,7 +8,8 @@ public abstract class Joueur {
 	private int nombreDePointTotal;
 	protected ArrayList<Carte> mainDuJoueur = new ArrayList<Carte>();
 	private int nbMenhirDuJoueur;
-	protected int nbGraineDuJoueur; 
+	private int nbMenhirTotalDuJoueur;
+	protected int nbGraineDuJoueur;
 	private boolean actif;
 	private int choixAction;
 
@@ -60,6 +61,14 @@ public abstract class Joueur {
 	
 	public void setNbMenhirDuJoueur(int nbMenhirDuJoueur, int nbAAjouterMenhir){
 		this.nbMenhirDuJoueur = nbMenhirDuJoueur + nbAAjouterMenhir;
+	}
+	
+	public void setNbMenhirTotalDuJoueur(int nbMenhirDuJoueur) {
+		this.nbMenhirTotalDuJoueur = this.nbMenhirTotalDuJoueur + nbMenhirDuJoueur;
+	}
+	
+	public int getNbMenhirTotalDuJoueur() {
+		return this.nbMenhirTotalDuJoueur;
 	}
 	
 		
