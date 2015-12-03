@@ -18,9 +18,6 @@ public class Partie {
 	private int nbManche = 0;
 	
 	public Partie(){
-		
-		final int NBMAXJOUEUR = 6;
-		final int NBMINJOUEUR = 1;
 	
 		System.out.println("Partie RAPIDE (0) ou avec des REGLES AVANCEES (1) ?");
 		Scanner scanTypeP = new Scanner(System.in);
@@ -39,7 +36,7 @@ public class Partie {
 		
 		
 		// /!\ 1 seul joueur physique !
-		this.nbJPhysique = 2;
+		this.nbJPhysique = 2; //Penser à en remettre un seul
 		this.listeJoueur.add(new JoueurPhysique());
 		this.listeJoueur.add(new JoueurPhysique());
 		
@@ -112,6 +109,8 @@ public class Partie {
 			
 			manche.jouerManche(this);
 			
+			System.out.println("\nLa partie est terminée.\n");
+			
 			this.afficherGagnants();
 			
 			}
@@ -133,15 +132,14 @@ public class Partie {
 			}
 		}
 		if (joueursGagnants.size() == 1) {
-			System.out.println("Le gagnant est ");
+			System.out.println("Le gagnant est: ");
 		} else {
-			System.out.println("Les gagnants sont ");
+			System.out.println("Les gagnants sont: ");
 		}
 		for (Iterator<Joueur> it = joueursGagnants.iterator(); it.hasNext();) {
 			Joueur gagnant = it.next();
-				System.out.println(gagnant.getNom() + " ");
+				System.out.print(gagnant.getNom() + " ");
 		}
-		System.out.println(" !");
 	}
 	
 	

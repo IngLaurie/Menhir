@@ -141,7 +141,7 @@ public class Manche {
 
 			}
 
-			
+			System.out.println("\nLa manche est terminée.\n");
 			
 			//Changer la saison
 			//Répéter pour toutes les saisons
@@ -156,13 +156,12 @@ public class Manche {
 
 	public void changerSaison(){
 		int nouvSaison = this.saisonEnCours;
-		System.out.println("La saison " + this.listeSaison[this.saisonEnCours] + "est terminée.\n");
+		System.out.println("La saison " + this.listeSaison[this.saisonEnCours] + " est terminée.\n");
 		nouvSaison++;
 		if (nouvSaison == 4) {
 			nouvSaison = 0;
-			System.out.println("La manche est terminée.");
 		} else {
-			System.out.println("La nouvelle saison est" +this.listeSaison[this.saisonEnCours]);
+			System.out.println("La nouvelle saison est " +this.listeSaison[this.saisonEnCours]);
 		}
 		this.saisonEnCours = nouvSaison;
 	}

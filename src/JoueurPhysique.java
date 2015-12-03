@@ -19,6 +19,8 @@ public class JoueurPhysique extends Joueur {
 		Scanner scanCarte = new Scanner(System.in); // pour scanner l'indice de la carte choisie
 		int choixCarte = scanCarte.nextInt();
 		
+		//GERER EN EXCEPTION SI CHOIXCARTE EST SUPERIEUR A SIZEOF MAINJOUEUR
+		
 		switch(choixCarte){  
 			case 1: System.out.println("Vous avez choisi la carte 1\n");
 					this.faireAction(this.mainDuJoueur.get(choixCarte -1), m, p);  // indiquer les actions et valeurs de la bonne carte
@@ -100,6 +102,7 @@ public class JoueurPhysique extends Joueur {
 				}
 			}
 		}
+		this.getMainDuJoueur().remove(c);
 	}
 
 
