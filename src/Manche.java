@@ -193,17 +193,14 @@ public class Manche {
 		int tabIng21[][] = {{3, 3, 3, 0},{1, 3, 3, 2},{2, 3, 1, 3}};
 		int tabIng22[][] = {{1, 2, 2, 1},{1, 2, 3, 0},{0, 2, 2, 2}};
 		int tabIng23[][] = {{4, 0, 1, 1},{1, 1, 3, 1},{0, 0, 3, 3}};
-		int tabIng24[][] = {{2, 0, 1, 3},{0, 3, 0, 3},{1, 2, 2, 1}};
-		//int tabIng25[][] = {{2, 0, 1, 3},{0, 3, 0, 3},{1, 2, 2, 1}};      // vérifier s'il faut l'ajouter 
+		int tabIng24[][] = {{2, 0, 1, 3},{0, 3, 0, 3},{1, 2, 2, 1}};     // vérifier s'il faut l'ajouter 
 		
-		
-		// /!\ VERIFIER LES VALEURS
-		int tabChienDeGarde1[] = {2, 0, 1, 3};
-		int tabChienDeGarde2[] = {1, 2, 2, 1};
-		int tabChienDeGarde3[] = {2, 0, 1, 3};
-		int tabTaupeGeante1[] = {2, 0, 1, 3};
-		int tabTaupeGeante2[] = {2, 0, 1, 3};
-		int tabTaupeGeante3[] = {2, 0, 1, 3};
+		int tabTaupeGeante1[] = {1, 1, 1, 1};
+		int tabTaupeGeante2[] = {0, 2, 2, 0};
+		int tabTaupeGeante3[] = {0, 1, 2, 1};
+		int tabChienDeGarde1[] = {2, 0, 2, 0};
+		int tabChienDeGarde2[] = {1, 2, 0, 1};
+		int tabChienDeGarde3[] = {0, 1, 3, 0};
 		
 		this.listeCPRapide.add(new Ingredient("ing1", tabIng1));
 		this.listeCPRapide.add(new Ingredient("ing2", tabIng2));
@@ -229,7 +226,6 @@ public class Manche {
 		this.listeCPRapide.add(new Ingredient("ing22", tabIng22));
 		this.listeCPRapide.add(new Ingredient("ing23", tabIng23));
 		this.listeCPRapide.add(new Ingredient("ing24", tabIng24));
-		//this.listeCPRapide.add(new Ingredient("ing25", tabIng25));
 		
 		this.listeCPAvancee.add(new ChienDeGarde("CdG1", tabChienDeGarde1));
 		this.listeCPAvancee.add(new ChienDeGarde("CdG2", tabChienDeGarde2));
