@@ -35,17 +35,13 @@ public class JoueurPhysique extends Joueur {
 		//scanAction.close();
 		
 		System.out.println("Vous avez choisi l'action : " + choixAction);
+		System.out.println("Vous avez " + this.getNbGraineDuJoueur() + " graines et " + this.getNbMenhirDuJoueur() + " Menhirs.");
 		
-		// ATTENTION ALGO //
-		// ATTENTION ALGO //
-		// ATTENTION ALGO //
-		// ATTENTION ALGO //
-		// ATTENTION ALGO //
-		// ATTENTION ALGO //
 		if(choixAction == 1){ // GEANT
+			//System.out.println("Vous avez " + this.getNbGraineDuJoueur() + " graines et " + this.getNbMenhirDuJoueur() + " Menhirs.");
 			this.setNbGraineDuJoueur(this.getNbGraineDuJoueur(), c.getForce(choixAction -1, saison)); 
-			
 			System.out.println("Vous avez pris " + c.getForce(choixAction -1, saison) + " graines dans le pot commun !\n\n");
+			System.out.println("Vous avez " + this.getNbGraineDuJoueur() + " graines et " + this.getNbMenhirDuJoueur() + " Menhirs.");
 		}else{
 			if(choixAction == 2){ // ENGRAIS 
 				if(this.getNbGraineDuJoueur() >= c.getForce(choixAction -1, saison)){
@@ -74,7 +70,7 @@ public class JoueurPhysique extends Joueur {
 					Joueur joueurChoisi = this.choisirJoueur(p.getListeJoueur());
 					this.setNbGraineDuJoueur(this.getNbGraineDuJoueur(), c.getForce(choixAction -1, saison));
 					int nbAVoler = c.getForce(choixAction -1, saison);
-					joueurChoisi.setNbGraineDuJoueur(nbGraineDuJoueur, - nbAVoler);
+					joueurChoisi.setNbGraineDuJoueur(nbGraineDuJoueur, nbAVoler);
 					
 					System.out.println("Vous avez volé " + c.getForce(choixAction -1, saison) + " graines au joueur " + joueurChoisi.getNom() + " !");
 					System.out.println("Vous avez maintenant " + this.getNbGraineDuJoueur() + " graines et " + this.getNbMenhirDuJoueur() + " Menhirs.\n\n");
