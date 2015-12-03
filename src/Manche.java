@@ -3,7 +3,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import javax.swing.text.html.HTMLDocument.Iterator;
+import java.util.Iterator;
 // gérer le nombre de points de chaque joueurs - partie complexe surtout
 // /!\ si demande d'ajouter une carte au jeu..
 
@@ -136,6 +136,10 @@ public class Manche {
 			//Distribuer les cartes
 			this.distribuerCarteJoueur(p);
 			//Faire jouer chaque joueur
+			for (Iterator<Joueur> it = p.getListeJoueur().iterator(); it.hasNext(); ) {
+				Joueur joueurActif = it.next();
+				joueurActif.jouerCarte(this, p);
+			}
 			//Changer la saison
 			//Répéter pour toutes les saisons
 			//Lorsqu'on a fait toutes les saisons, ajouter le nombre de menhir de chaque joueur à son nombre de menhir total
