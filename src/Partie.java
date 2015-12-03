@@ -93,7 +93,7 @@ public class Partie {
 			}
 			for (Iterator<Manche> it = listeManche.iterator(); it.hasNext();) {
 				Manche mancheActive = it.next();
-				mancheActive.jouerManche(p);
+				mancheActive.jouerManche(this);
 				System.out.println("La manche est terminée;\n");
 				
 			}
