@@ -58,7 +58,6 @@ public class Partie {
 		System.out.println("Combien y a t'il de joueur(s) virtuel(s) ?");
 		Scanner scanNbJ = new Scanner(System.in);
 		this.nbJVirtuel = scanNbJ.nextInt();
-		scanNbJ.close();
 		
 		if(nbJVirtuel >= 0 && nbJVirtuel <= 5){
 			for(int i=1; i<= nbJVirtuel; i++){
@@ -67,7 +66,6 @@ public class Partie {
 		}else{
 		System.out.println("Nombre non valide, veuillez saisir 0 ou 1");
 	    }
-		//scanTypeP.close();
 		this.listeJoueur.get(0).setNbGraineDuJoueur(2);
 		
 	}
@@ -110,7 +108,9 @@ public class Partie {
 			//Désigner le gagnant comme celui qui a le plus de menhirs
 			//Récupérer le nombre de graines en cas d'égalité
 			
-			new Manche(this);
+			Manche manche = new Manche(this);
+			
+			manche.jouerManche(this);
 
 			}
 	}

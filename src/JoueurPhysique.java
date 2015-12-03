@@ -12,12 +12,12 @@ public class JoueurPhysique extends Joueur {
 	@Override
 	public void jouerCarte(Manche m, Partie p) { /// vérifier la liste de carte en possession du joueur
 		//Carte c = null;
-		//this.afficherMainJoueur();
+		System.out.println("\nAu tour de " +this.getNom() + " de jouer!\n");
+		this.afficherMainJoueur();
 		System.out.println("Choisir une carte à jouer : \n\n");
 		// parcourir la liste et indiquer laquelle est choisie en fonction d'un indice
 		Scanner scanCarte = new Scanner(System.in); // pour scanner l'indice de la carte choisie
 		int choixCarte = scanCarte.nextInt();
-		//scanCarte.close();
 		
 		switch(choixCarte){  
 			case 1: System.out.println("Vous avez choisi la carte 1\n");
