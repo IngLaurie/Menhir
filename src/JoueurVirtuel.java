@@ -14,6 +14,10 @@ public class JoueurVirtuel extends Joueur {
 	public JoueurVirtuel() {
 		super();
 	}
+	
+	public void jouerCarte(Manche m, Partie p) {
+		
+	}
 
 	@Override
 	public Carte choisirCarte(Manche m, Partie p) {
@@ -55,7 +59,7 @@ public class JoueurVirtuel extends Joueur {
 //	}
 
 	@Override
-	public void faireAction(Carte c, Manche m, Partie p) {
+	public void choisirAction(Carte c, Manche m, Partie p) {
 		System.out.println("Choisir action à effectuer : \n");
 		System.out.println("1- Géant");
 		System.out.println("2- Engrais");
