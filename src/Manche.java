@@ -16,7 +16,6 @@ public class Manche {
 
 	//private String listeSaison[] = new String[4]; // hiver printemps été automne
 	private ArrayList<Carte> listeCartesPA = new ArrayList<Carte>();
-    
 	private ArrayList<Carte> listeCPRapide = new ArrayList<Carte>();
 	private ArrayList<Carte> listeCPAvancee = new ArrayList<Carte>();
 		
@@ -25,13 +24,7 @@ public class Manche {
 	// vérifier s'il y a pas trop de choses / à déplacer
 	public Manche(Partie p){
 		
-		/*String listeSaison[] = new String[4];
-		listeSaison[0] = "Printemps";
-		listeSaison[1] = "Ete";
-		listeSaison[2] = "Automne";
-		listeSaison[3] = "Hiver";*/
-		
-		saisonEnCours = 3;
+		saisonEnCours = 0;
 		
 		if(p.getPartieAvancee()){
 			// autant de manches que de joueurs

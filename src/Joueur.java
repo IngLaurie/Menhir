@@ -36,7 +36,7 @@ public abstract class Joueur {
 		for(Carte c: this.mainDuJoueur){
 			// pour permettre au USER de faire afficher les valeurs de la carte
 
-			System.out.println(c.afficherCarte() + " taper " + i);
+			//System.out.println(c.afficherCarte() + " taper " + i);
 			// travailler la méthode afficherCarte() de carte pour permettre l'affichage de chaque cartes des joueurs
 
 			//System.out.println(c.afficherCarte() + "\n taper " + i);
@@ -101,6 +101,10 @@ public abstract class Joueur {
 		int choixJoueur = scanJ.nextInt();
 		
 		return listDeJoueur.get(choixJoueur);
+	}
+	
+	public String getNom() {
+		return nom;
 	}
 	
 }
