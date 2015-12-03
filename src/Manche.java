@@ -14,7 +14,6 @@ public class Manche {
 	private int saisonEnCours;
 	private String listeSaison[] = {"printemps", "été", "automne", "hiver"};
 
-	//private String listeSaison[] = new String[4]; // hiver printemps été automne
 	private ArrayList<Carte> listeCartesPA = new ArrayList<Carte>();
 	private ArrayList<Carte> listeCPRapide = new ArrayList<Carte>();
 	private ArrayList<Carte> listeCPAvancee = new ArrayList<Carte>();
@@ -55,7 +54,8 @@ public class Manche {
 			// ici on utilise les cartes de listeCPRapide + listeCPAvancee 			
 			// constructeur de manche mettre en param la liste de cartes  //
 			// mettre en static final .. //
-		}else{ // partie rapide
+		}else{ 
+			// partie rapide
 			// une partie rapide = 4 tours de jeu 
 			// chaque joueur place devant lui un champ et pose à côté 2 graines
 				
@@ -79,9 +79,6 @@ public class Manche {
 					this.listeCPRapide.removeAll(joueur.getMainDuJoueur());
 					cpt = 1;
 				}
-				
-				
-
 			   /*	
 			    Joueur JoueurTmp;
 				JoueurTmp = this.attribuerJoueurDeDebut(p);
@@ -89,11 +86,6 @@ public class Manche {
 				p.getListeJoueur().set(0, JoueurTmp);
 				*/
 				// utilisation d'un swap à la place 
-				
-
-				
-			
-
 		}
 	}
 
@@ -138,6 +130,7 @@ public class Manche {
 			//Faire jouer chaque joueur
 			for (Iterator<Joueur> it = p.getListeJoueur().iterator(); it.hasNext(); ) {
 				Joueur joueurActif = it.next();
+				System.out.println("SAISON EN COURS : " + this.listeSaison[this.getSaisonEnCours()]);
 				joueurActif.jouerCarte(this, p);
 			}
 			//Changer la saison
@@ -162,31 +155,6 @@ public class Manche {
 		}
 		this.saisonEnCours = nouvSaison;
 	}
-	//Sert de setSaisonEnCours
-	
-	/*public int recupSaisonNb(){
-		
-		if(this.saisonEnCours == "Printemps"){
-			saisonNb = 1;
-		}else{
-			if(this.saisonEnCours == "Ete"){
-				saisonNb = 2;
-			}else{
-				if(this.saisonEnCours == "Automne"){
-					saisonNb = 3;
-				}else{
-					saisonNb = 4;
-				}
-			}
-		}
-		
-		return saisonNb;
-	}*/
-
-
-	/*public int getSaisonNb() {
-		return saisonNb;
-	}*/
 
 	public void initialisationListeCarte(){
 		
