@@ -129,7 +129,8 @@ public class Manche {
 		return this.saisonEnCours;
 	}
 	
-	public void jouerManche(boolean partieAvancee){
+	public void jouerManche(Partie p){
+		boolean partieAvancee = p.getPartieAvancee();
 		if (partieAvancee) {
 			//Distribuer les cartes
 			//Faire jouer chaque joueur

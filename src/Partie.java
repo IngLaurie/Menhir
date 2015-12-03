@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 // PENSER AU SINGLETON
@@ -23,7 +24,6 @@ public class Partie {
 		System.out.println("Partie RAPIDE (0) ou avec des REGLES AVANCEES (1) ?");
 		Scanner scanTypeP = new Scanner(System.in);
 		int typePartie = scanTypeP.nextInt();
-		scanTypeP.close();
 		
 		if(typePartie == 0){
 			this.partieAvancee = false;
@@ -38,7 +38,8 @@ public class Partie {
 		
 		
 		// /!\ 1 seul joueur physique !
-		this.nbJPhysique = 1;
+		this.nbJPhysique = 2;
+		this.listeJoueur.add(new JoueurPhysique());
 		this.listeJoueur.add(new JoueurPhysique());
 		
 		/*System.out.println("Combien y a t'il de joueur(s) physique(s) ?");
@@ -67,6 +68,7 @@ public class Partie {
 		}else{
 		System.out.println("Nombre non valide, veuillez saisir 0 ou 1");
 	    }
+		//scanTypeP.close();
 		
 	}
 	
@@ -81,11 +83,22 @@ public class Partie {
 	public void lancerPartie() {
 		
 		if(this.partieAvancee){
-			/*this.nbManche = this.nbJPhysique + this.nbJVirtuel;
+			//Récupérer le nombre de manche
+			//Créer toutes les manches et les mettre dans une liste
+			//Faire un iterator pour faire défiler toutes les manches
+			//A la fin de chaque manche, récupérer le nombre de menhir total de chaque joueur
+			//A la fin de toutes les manches, désigner le joueur qui a le plus de menhir comme gagnant
+			
+			this.nbManche = this.nbJPhysique + this.nbJVirtuel;
 			for(int i=0; i<=this.nbManche; i++){
 				this.listeManche.add(new Manche(this));
-				this.listeManche.get(i).distribuerCarteJoueur(this);  // i ok ?
-			}*/
+			}
+			for (Iterator<Manche> it = listeManche.iterator(); it.hasNext();) {
+				
+				
+			}
+			
+			//this.listeManche.get(i).distribuerCarteJoueur(this);  // i ok ?
 			
 			for (Joueur j : this.listeJoueur)
 				j.afficherMainJoueur();
