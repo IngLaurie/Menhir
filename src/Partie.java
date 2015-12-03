@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
+import java.util.HashSet;
 
 // PENSER AU SINGLETON
 // THREAD ?
@@ -110,10 +111,40 @@ public class Partie {
 			Manche manche = new Manche(this);
 			
 			manche.jouerManche(this);
-
+			
+			this.afficherGagnants();
+			
 			}
 	}
 
+	public void afficherGagnants() {
+		HashSet<Joueur> joueursGagnants = new HashSet<Joueur>();
+		int menhirMax = 0;
+		for (Iterator<Joueur> it = this.getListeJoueur().iterator(); it.hasNext();) {
+			Joueur joueurActif = it.next();
+			if (joueurActif.getNbMenhirDuJoueur() > menhirMax) {
+				menhirMax = joueurActif.getNbMenhirDuJoueur();
+			}
+		}
+		for (Iterator<Joueur> it = this.getListeJoueur().iterator(); it.hasNext();) {
+			Joueur joueurActif = it.next();
+			if (joueurActif.getNbMenhirDuJoueur() == menhirMax) {
+				joueursGagnants.add(joueurActif);
+			}
+		}
+		if (joueursGagnants.size() == 1) {
+			System.out.println("Le gagnant est ");
+		} else {
+			System.out.println("Les gagnants sont ");
+		}
+		for (Iterator<Joueur> it = joueursGagnants.iterator(); it.hasNext();) {
+			Joueur gagnant = it.next();
+				System.out.println(gagnant.getNom() + " ");
+		}
+		System.out.println(" !");
+	}
+	
+	
 	public boolean getPartieAvancee() {
 		return partieAvancee;
 	}

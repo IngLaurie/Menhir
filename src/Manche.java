@@ -140,19 +140,13 @@ public class Manche {
 				this.changerSaison();
 
 			}
-			for (Iterator<Joueur> it = p.getListeJoueur().iterator(); it.hasNext();) {
-				Joueur joueurActif = it.next();
-				int tableauScore[] = new int[p.getListeJoueur().size()];
-				tableauScore[p.getListeJoueur().indexOf(joueurActif)] = joueurActif.getNbMenhirDuJoueur();
-			}
+
 			
 			
 			//Changer la saison
 			//Répéter pour toutes les saisons
 			// A la fin de toutes les saison:
-			//Récupérer le nombre de ménhir de chaque joueur
-			//En cas d'égalité, récupérer le nombre de graines
-			//Mettre le(s) gagnants dans un tableau de joueur gagnant
+			//Fin de la manche
 		}
 		
 	}
