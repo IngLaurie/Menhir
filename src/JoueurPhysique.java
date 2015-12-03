@@ -57,6 +57,8 @@ public class JoueurPhysique extends Joueur {
 		System.out.println("Vous avez choisi l'action : " + choixAction);
 		
 		// ATTENTION ALGO //
+		// ATTENTION ALGO //
+		// ATTENTION ALGO //
 		if(choixAction == 1){ // GEANT
 			this.setNbGraineDuJoueur(this.getNbGraineDuJoueur(), c.getForce(choixAction -1, saison)); 
 			System.out.println("Vous avez pris " + c.getForce(choixAction -1, saison) + " graines dans le pot commun !\n\n");

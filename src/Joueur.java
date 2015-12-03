@@ -55,6 +55,10 @@ public abstract class Joueur {
 		this.nbGraineDuJoueur = nbGraineDuJoueur + nbAAjouterGraine;
 	}
 	
+	public void setNbGraineDuJoueur(int nbGraineADonner){
+		this.nbGraineDuJoueur = nbGraineADonner;
+	}
+	
 	public int getNbMenhirDuJoueur(){
 		return nbMenhirDuJoueur;
 	}

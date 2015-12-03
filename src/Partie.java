@@ -60,15 +60,15 @@ public class Partie {
 		this.nbJVirtuel = scanNbJ.nextInt();
 		scanNbJ.close();
 		
-		if(nbJVirtuel >= 1 && nbJVirtuel <= 5){
+		if(nbJVirtuel >= 0 && nbJVirtuel <= 5){
 			for(int i=1; i<= nbJVirtuel; i++){
 				this.listeJoueur.add(new JoueurVirtuel());
 			}
-
 		}else{
 		System.out.println("Nombre non valide, veuillez saisir 0 ou 1");
 	    }
 		//scanTypeP.close();
+		this.listeJoueur.get(0).setNbGraineDuJoueur(2);
 		
 	}
 	
@@ -89,6 +89,8 @@ public class Partie {
 			//A la fin de chaque manche, récupérer le nombre de menhir total de chaque joueur
 			//A la fin de toutes les manches, désigner le joueur qui a le plus de menhir comme gagnant
 			
+			
+			// permettre le choix entre une carte allié ou deux graines 
 			this.nbManche = this.nbJPhysique + this.nbJVirtuel;
 			for(int i=0; i<=this.nbManche; i++){
 				this.listeManche.add(new Manche(this));
@@ -107,10 +109,10 @@ public class Partie {
 			//A la fin de la manche, récupérer le nombre de graines de chaque joueur
 			//Désigner le gagnant comme celui qui a le plus de menhirs
 			//Récupérer le nombre de graines en cas d'égalité
+			
 			new Manche(this);
 
 			}
-		}
 	}
 
 	public boolean getPartieAvancee() {
