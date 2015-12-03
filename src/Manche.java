@@ -42,6 +42,7 @@ public class Manche {
 			// cartes de la partie rapide seulement
 			// on mélange les cartes 
 			
+			
 		}
 	}
 	

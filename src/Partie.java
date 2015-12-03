@@ -40,6 +40,12 @@ public class Partie {
 		this.listeJoueur.add(new JoueurPhysique());
 		this.listeJoueur.add(new JoueurPhysique());
 		
+		for (Iterator<Joueur> it2 = this.listeJoueur.iterator(); it2.hasNext();) {
+			Joueur lJoueur = it2.next();
+			lJoueur.setNbGraineDuJoueur(2);			
+		}
+		
+		
 		/*System.out.println("Combien y a t'il de joueur(s) physique(s) ?");
 		Scanner scanNbJ = new Scanner(System.in);
 		this.nbJPhysique = scanNbJ.nextInt();
@@ -64,7 +70,7 @@ public class Partie {
 		}else{
 		System.out.println("Nombre non valide, veuillez saisir 0 ou 1");
 	    }
-		this.listeJoueur.get(0).setNbGraineDuJoueur(2);
+		
 		
 	}
 	

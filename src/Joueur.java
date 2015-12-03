@@ -5,11 +5,11 @@ public abstract class Joueur {
 	private String nom;
 	private int age;
 
-	private int nombreDePointTotal;
+	private int nombreDePointTotal = 0;
 	protected ArrayList<Carte> mainDuJoueur = new ArrayList<Carte>();
 	private int nbMenhirDuJoueur;
-	private int nbMenhirTotalDuJoueur;
-	protected int nbGraineDuJoueur;
+	private int nbMenhirTotalDuJoueur = 0;
+	protected int nbGraineDuJoueur = 0;
 	private boolean actif;
 	private int choixAction;
 
@@ -134,16 +134,13 @@ public abstract class Joueur {
 		
 		System.out.println("Vous avez choisi l'action : " + choixAction);
 		
-		// ATTENTION ALGO //
-		// ATTENTION ALGO //
-		// ATTENTION ALGO //
-		// ATTENTION ALGO //
-		// ATTENTION ALGO //
-		// ATTENTION ALGO //
+		System.out.println("Vous avez " + this.getNbGraineDuJoueur() + " graines et " + this.getNbMenhirDuJoueur() + " Menhirs\n");
+		
 		if(choixAction == 1){ // GEANT
-			this.setNbGraineDuJoueur(this.getNbGraineDuJoueur(), c.getForce(choixAction -1, saison)); 
 			
-			System.out.println("Vous avez pris " + c.getForce(choixAction -1, saison) + " graines dans le pot commun !\n\n");
+			this.setNbGraineDuJoueur(this.getNbGraineDuJoueur(), c.getForce(choixAction -1, saison)); 
+			System.out.println("Vous avez pris " + c.getForce(choixAction -1, saison) + " graines dans le pot commun !");
+			System.out.println("Vous avez " + this.getNbGraineDuJoueur() + " graines et " + this.getNbMenhirDuJoueur() + " Menhirs\n");
 		}else{
 			if(choixAction == 2){ // ENGRAIS 
 				if(this.getNbGraineDuJoueur() >= c.getForce(choixAction -1, saison)){
@@ -152,7 +149,7 @@ public abstract class Joueur {
 					this.setNbGraineDuJoueur(getNbGraineDuJoueur(), - nbAjouteSurChamp); 
 					
 					System.out.println("Résultat : " + c.getForce(choixAction -1, saison) + " de vos graines sont devenues des Menhirs !");
-					System.out.println("Vous avez maintenant " + this.getNbGraineDuJoueur() + " graines et " + this.getNbMenhirDuJoueur() + " Menhirs.\n\n");
+					System.out.println("Vous avez maintenant " + this.getNbGraineDuJoueur() + " graines et " + this.getNbMenhirDuJoueur() + " Menhirs\n");
 				}else{
 					if(this.getNbGraineDuJoueur() < c.getForce(choixAction -1, saison)){
 						this.setNbMenhirDuJoueur(this.getNbGraineDuJoueur(), this.getNbGraineDuJoueur()); 
@@ -160,9 +157,9 @@ public abstract class Joueur {
 						this.setNbGraineDuJoueur(getNbGraineDuJoueur(), - nbAjouteSurChamp); 
 						
 						System.out.println("Résultat : " + c.getForce(choixAction -1, saison) + " de vos graines sont devenues des Menhirs !");
-						System.out.println("Vous avez maintenant " + this.getNbGraineDuJoueur() + " graines et " + this.getNbMenhirDuJoueur() + " Menhirs.\n\n");
+						System.out.println("Vous avez maintenant " + this.getNbGraineDuJoueur() + " graines et " + this.getNbMenhirDuJoueur() + " Menhirs\n");
 					}else{
-						System.out.println("Sorry.. vous n'avez plus de graines..");
+						System.out.println("Sorry.. vous n'avez plus de graines..\n");
 					}
 				}
 			}else{
@@ -170,16 +167,20 @@ public abstract class Joueur {
 					System.out.println("Veuillez choisir un joueur : ");
 					
 					Joueur joueurChoisi = this.choisirJoueur(p.getListeJoueur());
+					System.out.println("Nb Graines du joueur choisi : " + joueurChoisi.getNbGraineDuJoueur() + "+ Nb Menhirs : " + joueurChoisi.getNbMenhirDuJoueur());
 					this.setNbGraineDuJoueur(this.getNbGraineDuJoueur(), c.getForce(choixAction -1, saison));
 					int nbAVoler = c.getForce(choixAction -1, saison);
-					joueurChoisi.setNbGraineDuJoueur(nbGraineDuJoueur, - nbAVoler);
+					joueurChoisi.setNbGraineDuJoueur(joueurChoisi.getNbGraineDuJoueur(), - nbAVoler);
+					System.out.println("Vous volez " + nbAVoler + " graines au joueur " + joueurChoisi.getNom());
+					System.out.println("Nb Graines du joueur choisi : " + joueurChoisi.getNbGraineDuJoueur() + "+ Nb Menhirs : " + joueurChoisi.getNbMenhirDuJoueur());
 					
 					System.out.println("Vous avez volé " + c.getForce(choixAction -1, saison) + " graines au joueur " + joueurChoisi.getNom() + " !");
-					System.out.println("Vous avez maintenant " + this.getNbGraineDuJoueur() + " graines et " + this.getNbMenhirDuJoueur() + " Menhirs.\n\n");
+					System.out.println("Vous avez maintenant " + this.getNbGraineDuJoueur() + " graines et " + this.getNbMenhirDuJoueur() + " Menhirs\n");
 				}else{
 					System.out.println("Veuillez entrer une valeur juste\n\n");
 					// /!\ faire reboucler sur le menu (choix de l'action)
 				}
+				// gérer les OutOfIndice
 			}
 		}
 		this.getMainDuJoueur().remove(c);
