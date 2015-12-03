@@ -16,13 +16,15 @@ public class JoueurVirtuel extends Joueur {
 	}
 
 	@Override
-	public void jouerCarte(Manche m, Partie p) {
+	public Carte choisirCarte(Manche m, Partie p) {
 		System.out.println("\nAu tour de " + this.getNom() + " de jouer!\n");
 		this.afficherMainJoueur();
 		System.out.println("Le joueur virtuel " + this.getNom() + " joue une carte !");
 		
 		Scanner scanCarte = new Scanner(System.in); // pour scanner l'indice de la carte choisie
 		int choixCarte = scanCarte.nextInt();
+		
+		return super.choisirCarte(m,p);
 		
 		/*
 		switch(choixCarte){  

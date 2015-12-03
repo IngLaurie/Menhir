@@ -135,7 +135,7 @@ public class Manche {
 				for (Iterator<Joueur> it = p.getListeJoueur().iterator(); it.hasNext(); ) {
 					Joueur joueurActif = it.next();
 					System.out.println("SAISON EN COURS : " + this.listeSaison[this.getSaisonEnCours()]);
-					joueurActif.jouerCarte(this, p);
+					joueurActif.choisirCarte(this, p);
 				}
 				this.changerSaison();
 

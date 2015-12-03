@@ -81,7 +81,38 @@ public abstract class Joueur {
 	}
 
 	//public abstract void jouerCarte(){
-	public abstract void jouerCarte(Manche m, Partie p);
+	public Carte choisirCarte(Manche m, Partie p){
+	//// déplacer JOUEUR ////
+		
+		System.out.println("Choisir une carte à jouer : \n\n");
+		// parcourir la liste et indiquer laquelle est choisie en fonction d'un indice
+		Scanner scanCarte = new Scanner(System.in); // pour scanner l'indice de la carte choisie
+		int choixCarte = scanCarte.nextInt();
+		
+		//System.out.println("Vous avez choisi la carte " + choixCarte);
+		
+			switch(choixCarte){  
+				case 1:
+						this.faireAction(this.mainDuJoueur.get(choixCarte -1), m, p);  // indiquer les actions et valeurs de la bonne carte
+					break;
+				case 2:
+						this.faireAction(this.mainDuJoueur.get(choixCarte -1), m, p);
+					break;
+				case 3:
+						this.faireAction(this.mainDuJoueur.get(choixCarte -1), m, p);
+					break;
+				case 4:
+						this.faireAction(this.mainDuJoueur.get(choixCarte -1), m, p);
+					break;
+				case 5: 
+						this.faireAction(this.mainDuJoueur.get(choixCarte -1), m, p);
+					break;
+				default: System.out.println("Veuillez choisir une carte existante\n\n");
+				// /!\ reboucler
+					break;
+			}	
+			return this.mainDuJoueur.get(choixCarte);
+	}
 	public abstract void faireAction(Carte c, Manche m, Partie p);
 	
 	/*public void faireAction(){		
