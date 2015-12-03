@@ -138,12 +138,18 @@ public class Manche {
 			this.distribuerCarteJoueur(p);
 			//Faire jouer chaque joueur
 			
-			for (int i=0; i<5; i++) {
+			for (int i=0; i<4; i++) {
 				for (Iterator<Joueur> it = p.getListeJoueur().iterator(); it.hasNext(); ) {
 					Joueur joueurActif = it.next();
+					System.out.println("SAISON EN COURS : " + this.listeSaison[this.getSaisonEnCours()]);
 					joueurActif.jouerCarte(this, p);
 				}
 				this.changerSaison();
+			}
+			for (Iterator<Joueur> it = p.getListeJoueur().iterator(); it.hasNext();) {
+				Joueur joueurActif = it.next();
+				int tableauScore[] = new int[p.getListeJoueur().size()];
+				tableauScore[p.getListeJoueur().indexOf(joueurActif)] = joueurActif.getNbMenhirDuJoueur();
 			}
 			
 			

@@ -98,7 +98,6 @@ public class Partie {
 				
 			}
 			
-			//this.listeManche.get(i).distribuerCarteJoueur(this);  // i ok ?
 			
 			for (Joueur j : this.listeJoueur)
 				j.afficherMainJoueur();
