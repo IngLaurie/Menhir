@@ -21,20 +21,20 @@ public class JoueurPhysique extends Joueur {
 		
 		switch(choixCarte){  
 			case 1: System.out.println("Vous avez choisi la carte 1\n");
-					this.faireAction(this.mainDuJoueur.get(choixCarte), m, p);  // indiquer les actions et valeurs de la bonne carte
+					this.faireAction(this.mainDuJoueur.get(choixCarte -1), m, p);  // indiquer les actions et valeurs de la bonne carte
 				break;
 			case 2: System.out.println("Vous avez choisi la carte 2\n");
-					this.faireAction(this.mainDuJoueur.get(choixCarte), m, p);
+					this.faireAction(this.mainDuJoueur.get(choixCarte -1), m, p);
 				break;
 			case 3: System.out.println("Vous avez choisi la carte 3\n");
-					this.faireAction(this.mainDuJoueur.get(choixCarte), m, p);
+					this.faireAction(this.mainDuJoueur.get(choixCarte -1), m, p);
 				break;
 			case 4: System.out.println("Vous avez choisi la carte 4\n");
 			// VOIR LE BUG AU NIVEAU DU CHOIX DE LA CARTE NUM 4
-					this.faireAction(this.mainDuJoueur.get(choixCarte), m, p);
+					this.faireAction(this.mainDuJoueur.get(choixCarte -1), m, p);
 				break;
 			case 5: System.out.println("Vous avez choisi la carte 5\n");
-					this.faireAction(this.mainDuJoueur.get(choixCarte), m, p);
+					this.faireAction(this.mainDuJoueur.get(choixCarte -1), m, p);
 				break;
 			default: System.out.println("Veuillez choisir une carte existante\n\n");
 				break;
@@ -81,7 +81,6 @@ public class JoueurPhysique extends Joueur {
 						System.out.println("Sorry.. vous n'avez plus de graines..");
 					}
 				}
-				
 			}else{
 				if(choixAction == 3){ // FARFADET
 					System.out.println("Veuillez choisir un joueur : ");
