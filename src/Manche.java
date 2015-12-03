@@ -126,16 +126,24 @@ public class Manche {
 			//Lorsqu'on a fait toutes les saisons, retourner le nombre de graines de chaque joueur
 		} else {
 			//Distribuer les cartes
+			this.attribuerJoueurDeDebut(p);
 			this.distribuerCarteJoueur(p);
 			//Faire jouer chaque joueur
+
 			for (Iterator<Joueur> it = p.getListeJoueur().iterator(); it.hasNext(); ) {
 				Joueur joueurActif = it.next();
 				System.out.println("SAISON EN COURS : " + this.listeSaison[this.getSaisonEnCours()]);
 				joueurActif.jouerCarte(this, p);
+
 			}
+			
+			
 			//Changer la saison
 			//Répéter pour toutes les saisons
-			//Lorsqu'on a fait toutes les saisons, ajouter le nombre de menhir de chaque joueur à son nombre de menhir total
+			// A la fin de toutes les saison:
+			//Récupérer le nombre de ménhir de chaque joueur
+			//En cas d'égalité, récupérer le nombre de graines
+			//Mettre le(s) gagnants dans un tableau de joueur gagnant
 		}
 		
 	}
