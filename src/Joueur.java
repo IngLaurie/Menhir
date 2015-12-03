@@ -37,7 +37,7 @@ public abstract class Joueur {
 		for(Carte c: this.mainDuJoueur){
 			// pour permettre au USER de faire afficher les valeurs de la carte
 
-			System.out.println(c.getNom() + " taper " + i);
+			System.out.println("Carte " + i + " :");
 			// travailler la méthode afficherCarte() de carte pour permettre l'affichage de chaque cartes des joueurs
 
 			//System.out.println(c.afficherCarte() + "\n taper " + i);
@@ -81,9 +81,7 @@ public abstract class Joueur {
 	}
 	
 	public void jouerCarte(Manche m, Partie p) {
-		System.out.println("test2\n");
 		Carte c = this.choisirCarte(m, p);
-		System.out.println("test3\n");
 		this.choisirAction(c, m, p);
 	}
 
@@ -91,7 +89,7 @@ public abstract class Joueur {
 	public Carte choisirCarte(Manche m, Partie p){
 	//// déplacer JOUEUR ////
 		
-		System.out.println("Choisir une carte à jouer : \n\n");
+		System.out.println("\nChoisir une carte à jouer : ");
 		// parcourir la liste et indiquer laquelle est choisie en fonction d'un indice
 		Scanner scanCarte = new Scanner(System.in); // pour scanner l'indice de la carte choisie
 		int choixCarte = scanCarte.nextInt();
@@ -122,7 +120,7 @@ public abstract class Joueur {
 	}
 	public void choisirAction(Carte c, Manche m, Partie p) {
 		System.out.println(c.toString());
-		System.out.println("Choisir action à effectuer : \n");
+		System.out.println("Choisir l'action à effectuer : \n");
 		System.out.println("1- Géant");
 		System.out.println("2- Engrais");
 		System.out.println("3- Farfadet");

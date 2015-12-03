@@ -13,8 +13,6 @@ public class JoueurPhysique extends Joueur {
 	public Carte choisirCarte(Manche m, Partie p) { 
 		System.out.println("\nAu tour de " +this.getNom() + " de jouer!\n");
 		this.afficherMainJoueur();
-
-		System.out.println("test1\n");
 		//System.out.println("Vous avez choisi la carte " + carteChoisie);
 		return super.choisirCarte(m, p);
 		}
@@ -22,6 +20,7 @@ public class JoueurPhysique extends Joueur {
 	public void choisirAction(Carte c, Manche m, Partie p){
 		System.out.println("Vous avez " + this.getNbGraineDuJoueur() + " graines et " +this.getNbMenhirDuJoueur() + " ménhirs");
 		super.choisirAction(c, m, p);
+		System.out.println("Vous avez maintenant " +this.getNbGraineDuJoueur() + " graines et " + this.getNbMenhirDuJoueur() + " ménhirs");
 	}
 	
 	@Override

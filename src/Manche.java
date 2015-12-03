@@ -129,15 +129,16 @@ public class Manche {
 			this.attribuerJoueurDeDebut(p);
 			this.distribuerCarteJoueur(p);
 			//Faire jouer chaque joueur
-
+			System.out.println("\n-----------------\nDébut de la manche!\n");
 			
 			for (int i=0; i<4; i++) {
 				for (Iterator<Joueur> it = p.getListeJoueur().iterator(); it.hasNext(); ) {
 					Joueur joueurActif = it.next();
-					System.out.println("SAISON EN COURS : " + this.listeSaison[this.getSaisonEnCours()]);
+					System.out.println("\nSAISON EN COURS : " + this.listeSaison[this.getSaisonEnCours()] + "\n");
 					joueurActif.jouerCarte(this, p);
 				}
 				this.changerSaison();
+				
 
 			}
 
