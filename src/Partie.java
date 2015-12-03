@@ -23,6 +23,7 @@ public class Partie {
 		System.out.println("Partie RAPIDE (0) ou avec des REGLES AVANCEES (1) ?");
 		Scanner scanTypeP = new Scanner(System.in);
 		int typePartie = scanTypeP.nextInt();
+		scanTypeP.close();
 		
 		if(typePartie == 0){
 			this.partieAvancee = false;
@@ -37,7 +38,10 @@ public class Partie {
 		
 		
 		// /!\ 1 seul joueur physique !
-		System.out.println("Combien y a t'il de joueur(s) physique(s) ?");
+		this.nbJPhysique = 1;
+		this.listeJoueur.add(new JoueurPhysique());
+		
+		/*System.out.println("Combien y a t'il de joueur(s) physique(s) ?");
 		Scanner scanNbJ = new Scanner(System.in);
 		this.nbJPhysique = scanNbJ.nextInt();
 		
@@ -48,13 +52,22 @@ public class Partie {
 
 		}else{
 		System.out.println("Nombre non valide, veuillez saisir 0 ou 1");
+	    }*/
+		
+		System.out.println("Combien y a t'il de joueur(s) virtuel(s) ?");
+		Scanner scanNbJ = new Scanner(System.in);
+		this.nbJVirtuel = scanNbJ.nextInt();
+		scanNbJ.close();
+		
+		if(nbJVirtuel >= 1 && nbJVirtuel <= 5){
+			for(int i=1; i<= nbJVirtuel; i++){
+				this.listeJoueur.add(new JoueurVirtuel());
+			}
+
+		}else{
+		System.out.println("Nombre non valide, veuillez saisir 0 ou 1");
 	    }
 		
-		// ds lancer partie ????
-		// déplacer au bon endroit 
-		
-
-
 	}
 	
 	public int getNbJPhysique(){
