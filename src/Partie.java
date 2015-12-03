@@ -102,15 +102,13 @@ public class Partie {
 			
 			for (Joueur j : this.listeJoueur)
 				j.afficherMainJoueur();
-		}else{
-			// Partie rapide 
-			// Lancer la fonction nouvelle manche!
-			this.listeManche.add(new Manche(this));
-			
-			this.listeManche.get(0).distribuerCarteJoueur(this);
-			for (Joueur j : this.listeJoueur){
-				j.afficherMainJoueur();
-				j.jouerCarte(this.listeManche.get(0), this);
+		}else{ //Partie rapide
+			//Créer une manche
+			//A la fin de la manche, récupérer le nombre de graines de chaque joueur
+			//Désigner le gagnant comme celui qui a le plus de menhirs
+			//Récupérer le nombre de graines en cas d'égalité
+			new Manche(this);
+
 			}
 		}
 	}

@@ -38,6 +38,7 @@ public class Manche {
 			// 
 		}else{  // partie rapide
 			this.nbManche = 1;
+			this.listeCartesPA.addAll(listeCPRapide);
 			// création de la manche
 			// cartes de la partie rapide seulement
 			// on mélange les cartes 
@@ -88,17 +89,15 @@ public class Manche {
 				p.getListeJoueur().set(0, JoueurTmp);
 				*/
 				// utilisation d'un swap à la place 
-				int a = p.getListeJoueur().indexOf(p.getListeJoueur().get(0));
-				int b = p.getListeJoueur().indexOf(this.attribuerJoueurDeDebut(p));
 				
-				Collections.swap(p.getListeJoueur(), a, b);
+
 				
 			
 
 		}
 	}
 
-	public Joueur attribuerJoueurDeDebut(Partie p){
+	public void attribuerJoueurDeDebut(Partie p){
 		Joueur jQuiCommence = null;
 		int cptLJ = 0;
 		
@@ -115,7 +114,10 @@ public class Manche {
 			}
 			
 		}
-		return jQuiCommence;
+		int a = p.getListeJoueur().indexOf(p.getListeJoueur().get(0));
+		int b = p.getListeJoueur().indexOf(jQuiCommence);
+		
+		Collections.swap(p.getListeJoueur(), a, b);
 	}
 	
 	public int getSaisonEnCours() {
@@ -132,6 +134,7 @@ public class Manche {
 			//Lorsqu'on a fait toutes les saisons, retourner le nombre de graines de chaque joueur
 		} else {
 			//Distribuer les cartes
+			this.distribuerCarteJoueur(p);
 			//Faire jouer chaque joueur
 			//Changer la saison
 			//Répéter pour toutes les saisons
@@ -141,23 +144,7 @@ public class Manche {
 	}
 	
 	
-	/*public void changerSaison(){
-		String nouvSaison;
-		if(this.saisonEnCours == "Printemps"){
-			nouvSaison = "Ete";
-		}else{
-			if(this.saisonEnCours == "Ete"){
-				nouvSaison = "Automne";
-			}else{
-				if(this.saisonEnCours == "Automne"){
-					nouvSaison = "Hiver";
-				}else{
-					nouvSaison = "Printemps";
-				}
-			}
-		}	
-		this.saisonEnCours = nouvSaison;
-	}*/
+
 
 	public void changerSaison(){
 		int nouvSaison = this.saisonEnCours;
