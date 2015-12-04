@@ -100,16 +100,20 @@ public class Partie {
 			for (Iterator<Manche> it = listeManche.iterator(); it.hasNext();) {
 				Manche mancheActive = it.next();
 				mancheActive.jouerManche(this);
-				System.out.println("La manche est terminée;\n");
-				
+				System.out.println("La manche est terminée.\n");
+				for (Iterator<Joueur> it2 = listeJoueur.iterator(); it2.hasNext();) {
+					Joueur joueurActif = it2.next();
+					joueurActif.setNbMenhirTotalDuJoueur(joueurActif.getNbMenhirDuJoueur());
+					joueurActif.setNbMenhirDuJoueur(0);
+				}
+				this.afficherClassement();
 			}
+				
 			
 			
-			for (Joueur j : this.listeJoueur)
-				j.afficherMainJoueur();
 		}else{ //Partie rapide
 			//Créer une manche
-			//A la fin de la manche, récupérer le nombre de graines de chaque joueur
+			//A la fin de la manche, récupérer le nombre de menhirs de chaque joueur
 			//Désigner le gagnant comme celui qui a le plus de menhirs
 			//Récupérer le nombre de graines en cas d'égalité
 			Manche manche = new Manche(this);
@@ -122,15 +126,17 @@ public class Partie {
 	public void afficherGagnants() {
 		HashSet<Joueur> joueursGagnants = new HashSet<Joueur>();
 		int menhirMax = 0;
+		int grainesMax = 0;
 		for (Iterator<Joueur> it = this.getListeJoueur().iterator(); it.hasNext();) {
 			Joueur joueurActif = it.next();
 			if (joueurActif.getNbMenhirDuJoueur() > menhirMax) {
 				menhirMax = joueurActif.getNbMenhirDuJoueur();
+				grainesMax = joueurActif.getNbGraineDuJoueur();
 			}
 		}
 		for (Iterator<Joueur> it = this.getListeJoueur().iterator(); it.hasNext();) {
 			Joueur joueurActif = it.next();
-			if (joueurActif.getNbMenhirDuJoueur() == menhirMax) {
+			if (joueurActif.getNbMenhirDuJoueur() == menhirMax && joueurActif.getNbGraineDuJoueur() == grainesMax) {
 				joueursGagnants.add(joueurActif);
 			}
 		}
@@ -141,10 +147,20 @@ public class Partie {
 		}
 		for (Iterator<Joueur> it = joueursGagnants.iterator(); it.hasNext();) {
 			Joueur gagnant = it.next();
-				System.out.print(gagnant.getNom() + "et ");
+			System.out.print(gagnant.getNom() + " \n");
 		}
 	}
 	
+	public void afficherClassement() {
+		ArrayList<Joueur> classement = new ArrayList<Joueur>();
+		for (Iterator<Joueur> it = listeJoueur.iterator(); it.hasNext();) {
+			Joueur joueurActif = it.next();
+			classement.add(joueurActif);
+		}
+		for (Iterator<Joueur> it2 = classement.iterator(); it.hasNext();) {
+			
+		}
+	}
 	
 	public boolean getPartieAvancee() {
 		return partieAvancee;

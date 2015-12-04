@@ -15,8 +15,8 @@ public class Manche {
 	private String listeSaison[] = {"printemps", "été", "automne", "hiver"};
 
 	private ArrayList<Carte> listeCartesPA = new ArrayList<Carte>();
-	private ArrayList<Carte> listeCPRapide = new ArrayList<Carte>();
-	private ArrayList<Carte> listeCPAvancee = new ArrayList<Carte>();
+	private ArrayList<Carte> listeCIngredients = new ArrayList<Carte>();
+	private ArrayList<Carte> listeCAllies = new ArrayList<Carte>();
 		
 	
 	// faire un SET ?
@@ -28,8 +28,8 @@ public class Manche {
 		if(p.getPartieAvancee()){
 			// autant de manches que de joueurs
 			this.nbManche = p.getNbJPhysique() + p.getNbJVirtuel();
-			this.listeCartesPA.addAll(listeCPAvancee);
-			this.listeCartesPA.addAll(listeCPRapide);
+			this.listeCartesPA.addAll(listeCAllies);
+			this.listeCartesPA.addAll(listeCIngredients);
 			// cartes de la partie rapide + cartes alliés
 			// on a ici l'ensemble des cartes nécessaires pour la partie avancee 
 			// on mélange les cartes 
@@ -37,7 +37,7 @@ public class Manche {
 			// 
 		}else{  // partie rapide
 			this.nbManche = 1;
-			this.listeCartesPA.addAll(listeCPRapide);
+			this.listeCartesPA.addAll(listeCIngredients);
 			// création de la manche
 			// cartes de la partie rapide seulement
 			// on mélange les cartes 
@@ -52,7 +52,7 @@ public class Manche {
 
 	public void distribuerCarteJoueur(Partie p){
 		if(p.getPartieAvancee()){
-			// ici on utilise les cartes de listeCPRapide + listeCPAvancee 			
+			// ici on utilise les cartes de listeCIngredients + listeCAllies 			
 			// constructeur de manche mettre en param la liste de cartes  //
 			// mettre en static final .. //
 		}else{ 
@@ -60,14 +60,14 @@ public class Manche {
 			// une partie rapide = 4 tours de jeu 
 			// chaque joueur place devant lui un champ et pose à côté 2 graines
 				
-			// ici on utilise les cartes de listeCPRapide
+			// ici on utilise les cartes de listeCIngredients
 			
 			this.initialisationListeCarte();
-			Collections.shuffle(listeCPRapide);
+			Collections.shuffle(listeCIngredients);
 			
 			int cpt = 1;
 				for(Joueur joueur: p.getListeJoueur()){
-					for(Carte carte: this.listeCPRapide){
+					for(Carte carte: this.listeCIngredients){
 						joueur.getMainDuJoueur().add(carte);
 						// on distribue que 4 cartes par joueur 
 						if(cpt == 4){
@@ -77,7 +77,7 @@ public class Manche {
 						}
 					}
 					
-					this.listeCPRapide.removeAll(joueur.getMainDuJoueur());
+					this.listeCIngredients.removeAll(joueur.getMainDuJoueur());
 					cpt = 1;
 				}
 			   /*	
@@ -92,7 +92,6 @@ public class Manche {
 
 	public void attribuerJoueurDeDebut(Partie p){
 		Joueur jQuiCommence = null;
-		int cptLJ = 0;
 		
 		if(p.getListeJoueur().get(0).getAge() < p.getListeJoueur().get(1).getAge()){	
 			jQuiCommence = p.getListeJoueur().get(0);
@@ -120,6 +119,7 @@ public class Manche {
 	public void jouerManche(Partie p){
 		boolean partieAvancee = p.getPartieAvancee();
 		if (partieAvancee) {
+			//Faire choisir entre les graines ou la carte allié
 			//Distribuer les cartes
 			//Faire jouer chaque joueur
 			//Changer la saison
@@ -202,37 +202,37 @@ public class Manche {
 		int tabChienDeGarde2[] = {1, 2, 0, 1};
 		int tabChienDeGarde3[] = {0, 1, 3, 0};
 		
-		this.listeCPRapide.add(new Ingredient("ing1", tabIng1));
-		this.listeCPRapide.add(new Ingredient("ing2", tabIng2));
-		this.listeCPRapide.add(new Ingredient("ing3", tabIng3));
-		this.listeCPRapide.add(new Ingredient("ing4", tabIng4));
-		this.listeCPRapide.add(new Ingredient("ing5", tabIng5));
-		this.listeCPRapide.add(new Ingredient("ing6", tabIng6));
-		this.listeCPRapide.add(new Ingredient("ing7", tabIng7));
-		this.listeCPRapide.add(new Ingredient("ing8", tabIng8));
-		this.listeCPRapide.add(new Ingredient("ing9", tabIng9));
-		this.listeCPRapide.add(new Ingredient("ing10", tabIng10));
-		this.listeCPRapide.add(new Ingredient("ing11", tabIng11));
-		this.listeCPRapide.add(new Ingredient("ing12", tabIng12));
-		this.listeCPRapide.add(new Ingredient("ing13", tabIng13));
-		this.listeCPRapide.add(new Ingredient("ing14", tabIng14));
-		this.listeCPRapide.add(new Ingredient("ing15", tabIng15));
-		this.listeCPRapide.add(new Ingredient("ing16", tabIng16));
-		this.listeCPRapide.add(new Ingredient("ing17", tabIng17));
-		this.listeCPRapide.add(new Ingredient("ing18", tabIng18));
-		this.listeCPRapide.add(new Ingredient("ing19", tabIng19));
-		this.listeCPRapide.add(new Ingredient("ing20", tabIng20));
-		this.listeCPRapide.add(new Ingredient("ing21", tabIng21));
-		this.listeCPRapide.add(new Ingredient("ing22", tabIng22));
-		this.listeCPRapide.add(new Ingredient("ing23", tabIng23));
-		this.listeCPRapide.add(new Ingredient("ing24", tabIng24));
+		this.listeCIngredients.add(new Ingredient("ing1", tabIng1));
+		this.listeCIngredients.add(new Ingredient("ing2", tabIng2));
+		this.listeCIngredients.add(new Ingredient("ing3", tabIng3));
+		this.listeCIngredients.add(new Ingredient("ing4", tabIng4));
+		this.listeCIngredients.add(new Ingredient("ing5", tabIng5));
+		this.listeCIngredients.add(new Ingredient("ing6", tabIng6));
+		this.listeCIngredients.add(new Ingredient("ing7", tabIng7));
+		this.listeCIngredients.add(new Ingredient("ing8", tabIng8));
+		this.listeCIngredients.add(new Ingredient("ing9", tabIng9));
+		this.listeCIngredients.add(new Ingredient("ing10", tabIng10));
+		this.listeCIngredients.add(new Ingredient("ing11", tabIng11));
+		this.listeCIngredients.add(new Ingredient("ing12", tabIng12));
+		this.listeCIngredients.add(new Ingredient("ing13", tabIng13));
+		this.listeCIngredients.add(new Ingredient("ing14", tabIng14));
+		this.listeCIngredients.add(new Ingredient("ing15", tabIng15));
+		this.listeCIngredients.add(new Ingredient("ing16", tabIng16));
+		this.listeCIngredients.add(new Ingredient("ing17", tabIng17));
+		this.listeCIngredients.add(new Ingredient("ing18", tabIng18));
+		this.listeCIngredients.add(new Ingredient("ing19", tabIng19));
+		this.listeCIngredients.add(new Ingredient("ing20", tabIng20));
+		this.listeCIngredients.add(new Ingredient("ing21", tabIng21));
+		this.listeCIngredients.add(new Ingredient("ing22", tabIng22));
+		this.listeCIngredients.add(new Ingredient("ing23", tabIng23));
+		this.listeCIngredients.add(new Ingredient("ing24", tabIng24));
 		
-		this.listeCPAvancee.add(new ChienDeGarde("CdG1", tabChienDeGarde1));
-		this.listeCPAvancee.add(new ChienDeGarde("CdG2", tabChienDeGarde2));
-		this.listeCPAvancee.add(new ChienDeGarde("CdG3", tabChienDeGarde3));
-		this.listeCPAvancee.add(new TaupeGeante("TaupeG1", tabTaupeGeante1));
-		this.listeCPAvancee.add(new TaupeGeante("TaupeG2", tabTaupeGeante2));
-		this.listeCPAvancee.add(new TaupeGeante("TaupeG3", tabTaupeGeante3));
+		this.listeCAllies.add(new ChienDeGarde("CdG1", tabChienDeGarde1));
+		this.listeCAllies.add(new ChienDeGarde("CdG2", tabChienDeGarde2));
+		this.listeCAllies.add(new ChienDeGarde("CdG3", tabChienDeGarde3));
+		this.listeCAllies.add(new TaupeGeante("TaupeG1", tabTaupeGeante1));
+		this.listeCAllies.add(new TaupeGeante("TaupeG2", tabTaupeGeante2));
+		this.listeCAllies.add(new TaupeGeante("TaupeG3", tabTaupeGeante3));
 		
 		/* CARTES RESTANTES :
 		 * 
