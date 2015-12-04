@@ -1,5 +1,5 @@
 import java.util.*;
-
+// NOTRE CONTEXT POUR LA STRATEGIE 
 public abstract class Joueur {
 //   /!\ GRAINES 
 	private String nom;
@@ -218,6 +218,7 @@ public abstract class Joueur {
 		int i = 0;
 		
 			for(Joueur j : listDeJoueur){
+				// /!\ nb 
 				if(j.getNom() != this.getNom()){
 					System.out.println(j.nom + " taper " + i);
 					i++;

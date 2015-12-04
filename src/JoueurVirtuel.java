@@ -1,8 +1,11 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+// random pour la strategie du joueur
+// affichage de la strategie 
+// dans juercarte il faut le getstrategiedujoueur
 
-public class JoueurVirtuel extends Joueur {
+public class JoueurVirtuel extends Joueur implements Strategy {
 	
 	private int strategie;
 	
@@ -11,8 +14,14 @@ public class JoueurVirtuel extends Joueur {
 	// espion
 	//
 
+	// public JoueurVirtuel(Strategy s) { // ??
+	// pour attribuer une strategie  
 	public JoueurVirtuel() {
 		super();
+		Strategy stratDuJVirtuel;
+		//this.stratDuJVirtuel = ; 
+		// random la strategie du joueur 
+		
 	}
 	
 	public void jouerCarte(Manche m, Partie p) {
@@ -76,9 +85,7 @@ public class JoueurVirtuel extends Joueur {
 		
 		System.out.println("Vous avez choisi l'action : " + choixAction);
 		
-		// ATTENTION ALGO //
-		// ATTENTION ALGO //
-		// ATTENTION ALGO //
+		
 		if(choixAction == 1){ // GEANT
 			/*this.setNbGraineDuJoueur(this.getNbGraineDuJoueur(), c.getForce(choixAction -1, saison)); 
 			System.out.println("Vous avez pris " + c.getForce(choixAction -1, saison) + " graines dans le pot commun !\n\n");*/
@@ -115,6 +122,28 @@ public class JoueurVirtuel extends Joueur {
 				}
 			}
 		}
+		
+	}
+	// 
+	public void joueurDefensif() {
+		
+		// ...
+		// choisirAction()
+		// ... ++ le vol pour récupérer des graines
+		// ensuite un peu de jardinage 
+		
+		// choixAction plutot 3 else 2
+		
+	}
+
+	public void joueurOffensif() {
+		// ++ les géants
+		// ensuite un peu de jardinage 
+		
+		// si pas de graines, vol la carte qui donne le plus de graines nb vol ++
+		// si graines, il plante -> nb avant + son nb graines offensif
+		
+		// ++ les géants 
 		
 	}
 
