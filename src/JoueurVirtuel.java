@@ -129,17 +129,18 @@ public class JoueurVirtuel extends Joueur implements Strategy {
 		}
 		
 	}
-	// 
+	
 	public void joueurDefensif() {
-		
+		//if(this.nbGraineDuJoueur >= c.getForce(this.choisirAction(c, m, p)), saison){
+	
 		// ...
 		// choisirAction()
 		// ... ++ le vol pour récupérer des graines
 		// ensuite un peu de jardinage 
 		
 		// choixAction plutot 3 else 2
-		
-	}
+	}	
+	
 
 	public void joueurOffensif() {
 		// ++ les géants

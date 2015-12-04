@@ -5,4 +5,7 @@ public interface Strategy {
 	
 	public void joueurDefensif();
 	public void joueurOffensif();
+	
+	// jouerCarte() - choisirCarte()
+	// choisirAction()
 }
