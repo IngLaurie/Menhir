@@ -1,11 +1,10 @@
 
 public interface Strategy {
-	// mettre ici l'algo de notre stratégie 
-	// seulement la signature des methodes 
 	
-	public void joueurDefensif();
-	public void joueurOffensif();
-	
-	// jouerCarte() - choisirCarte()
-	// choisirAction()
+	/*public void jouerDefensif();
+	public void jouerOffensif();*/
+	public void jouerCarte(Manche m, Partie p);
+		public Carte choisirCarte(Manche m, Partie p);
+		public void choisirAction(Carte c, Manche m, Partie p);
+		
 }

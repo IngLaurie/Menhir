@@ -1,14 +1,30 @@
-// PAS SURE...
+// EN COURS DE TEST ----
+// C'EST ICI QUE L'ON VA CODER LES ALGOS DANS CHAQUE METHODE
 public class OffensiveStrategy implements Strategy {
+	
+	/*
+	 * liste d'attributs nécessaire ? 
+	 */
+	
+	// Constructeur
+	public OffensiveStrategy() {
+		super();
+	}
 
-	public void joueurDefensif() {
-		// TODO Auto-generated method stub
+	public void jouerCarte(Manche m, Partie p) {
+		// code de jouerCarte pour le joueurVirtuel
 		
 	}
 
-	public void joueurOffensif() {
-		// TODO Auto-generated method stub
+	public Carte choisirCarte(Manche m, Partie p) {
+		// code de choisirCarte pour le joueurVirtuel
+		return null;
+	}
+
+	public void choisirAction(Carte c, Manche m, Partie p) {
+		// code de choisirAction pour le joueurVirtuel
 		
 	}
+
 
 }
