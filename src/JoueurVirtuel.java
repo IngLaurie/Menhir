@@ -7,20 +7,25 @@ import java.util.Scanner;
 
 public class JoueurVirtuel extends Joueur implements Strategy {
 	
-	private int strategie;
+	//private int strategie;
+	private ArrayList<Strategy> listeStrategies = new ArrayList<Strategy>();
+	Strategy stratDuJVirtuel;
 	
-	// IA :: gérer les stratégies de différents joueurs 
-	// voleur
-	// espion
-	//
-
+	// CONSTRUCTEUR
 	// public JoueurVirtuel(Strategy s) { // ??
 	// pour attribuer une strategie  
 	public JoueurVirtuel() {
 		super();
-		Strategy stratDuJVirtuel;
+		
+		/*	getrandom dans la liste 
+			+ en fonction du random retourné, 1 = une strat 2 = une autre start */
 		//this.stratDuJVirtuel = ; 
 		// random la strategie du joueur 
+		// on parcours la liste des strategy et on l'attribue au joueur 
+		// 		en ayant choisi la strategie de manière random dans la liste
+		/*for(){
+			
+		}*/
 		
 	}
 	
