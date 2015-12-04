@@ -11,7 +11,8 @@ public class DefensiveStrategy implements Strategy {
 		super();
 	}
 
-	public void jouerCarte(Manche m, Partie p) {
+	public int jouerCarte(Manche m, Partie p) {
+		return 0;
 		// code de jouerCarte pour le joueurVirtuel
 		
 	}

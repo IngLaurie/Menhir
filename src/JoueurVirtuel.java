@@ -12,7 +12,7 @@ public class JoueurVirtuel extends Joueur implements Strategy {
 		//// VOIR OU LE PLACER
 		// on utilise un contexte pour voir le changement de comportement lorsque la stratégie change
 		Context context = new Context(new OffensiveStrategy());
-		//System.out.println();
+		//System.out.println(" " + context.executeStrategy());   // executeStrategy est placé dans la classe Context
 	}
 	
 	public void jouerCarte(Manche m, Partie p) {

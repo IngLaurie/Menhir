@@ -6,8 +6,10 @@ public class Context {
 		this.strategy = strategy;
 	}
 	
-	public void executeStrategy(){
+	public void executeStrategy(Manche m, Partie p){
 		// on execute la strategy
+		// exemple de return :
+		//return strategy.jouerCarte(m,p);
 	}
 	
 	
