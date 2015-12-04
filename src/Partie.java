@@ -38,13 +38,7 @@ public class Partie {
 		// /!\ 1 seul joueur physique !
 		this.nbJPhysique = 2; //Penser à en remettre un seul
 		this.listeJoueur.add(new JoueurPhysique());
-		this.listeJoueur.add(new JoueurPhysique());
-		
-		for (Iterator<Joueur> it2 = this.listeJoueur.iterator(); it2.hasNext();) {
-			Joueur lJoueur = it2.next();
-			lJoueur.setNbGraineDuJoueur(2);			
-		}
-		
+		this.listeJoueur.add(new JoueurPhysique());		
 		
 		/*System.out.println("Combien y a t'il de joueur(s) physique(s) ?");
 		Scanner scanNbJ = new Scanner(System.in);
@@ -67,6 +61,12 @@ public class Partie {
 			for(int i=1; i<= nbJVirtuel; i++){
 				this.listeJoueur.add(new JoueurVirtuel());
 			}
+			
+		for (Iterator<Joueur> it2 = this.listeJoueur.iterator(); it2.hasNext();) {
+			Joueur lJoueur = it2.next();
+			lJoueur.setNbGraineDuJoueur(2);			
+		}
+			
 		}else{
 		System.out.println("Nombre non valide, veuillez saisir 0 ou 1");
 	    }
@@ -112,15 +112,10 @@ public class Partie {
 			//A la fin de la manche, récupérer le nombre de graines de chaque joueur
 			//Désigner le gagnant comme celui qui a le plus de menhirs
 			//Récupérer le nombre de graines en cas d'égalité
-			
 			Manche manche = new Manche(this);
-			
 			manche.jouerManche(this);
-			
 			System.out.println("\nLa partie est terminée.\n");
-			
 			this.afficherGagnants();
-			
 			}
 	}
 
@@ -146,7 +141,7 @@ public class Partie {
 		}
 		for (Iterator<Joueur> it = joueursGagnants.iterator(); it.hasNext();) {
 			Joueur gagnant = it.next();
-				System.out.print(gagnant.getNom() + " ");
+				System.out.print(gagnant.getNom() + "et ");
 		}
 	}
 	
