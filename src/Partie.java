@@ -157,7 +157,7 @@ public class Partie {
 			Joueur joueurActif = it.next();
 			classement.add(joueurActif);
 		}
-		for (Iterator<Joueur> it2 = classement.iterator(); it.hasNext();) {
+		for (Iterator<Joueur> it2 = classement.iterator(); it2.hasNext();) {
 			
 		}
 	}
