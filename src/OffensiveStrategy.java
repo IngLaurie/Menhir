@@ -11,8 +11,8 @@ public class OffensiveStrategy implements Strategy {
 		super();
 	}
 
-	public int jouerCarte(Manche m, Partie p) {
-		return 0;
+	public void jouerCarte(Manche m, Partie p) {
+		//return 0;
 		// code de jouerCarte pour le joueurVirtuel
 		
 	}
