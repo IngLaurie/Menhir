@@ -55,6 +55,13 @@ public class Manche {
 			// ici on utilise les cartes de listeCIngredients + listeCAllies 			
 			// constructeur de manche mettre en param la liste de cartes  //
 			// mettre en static final .. //
+			this.initialisationListeCarte();
+			Collections.shuffle(listeCartesPA);
+			
+			for(Iterator<Joueur> it = p.getListeJoueur().iterator(); it.hasNext();) {
+				Joueur joueurActif = it.next();
+				//Demander le choix cartes ou graines
+			}
 		}else{ 
 			// partie rapide
 			// une partie rapide = 4 tours de jeu 
@@ -63,11 +70,11 @@ public class Manche {
 			// ici on utilise les cartes de listeCIngredients
 			
 			this.initialisationListeCarte();
-			Collections.shuffle(listeCIngredients);
+			Collections.shuffle(listeCartesPA);
 			
 			int cpt = 1;
 				for(Joueur joueur: p.getListeJoueur()){
-					for(Carte carte: this.listeCIngredients){
+					for(Carte carte: this.listeCartesPA){
 						joueur.getMainDuJoueur().add(carte);
 						// on distribue que 4 cartes par joueur 
 						if(cpt == 4){
@@ -77,7 +84,7 @@ public class Manche {
 						}
 					}
 					
-					this.listeCIngredients.removeAll(joueur.getMainDuJoueur());
+					this.listeCartesPA.removeAll(joueur.getMainDuJoueur());
 					cpt = 1;
 				}
 			   /*	

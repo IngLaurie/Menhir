@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.Scanner;
 import java.util.HashSet;
@@ -108,7 +109,9 @@ public class Partie {
 				}
 				this.afficherClassement();
 			}
-				
+			
+			System.out.println("\nFin de la partie!\nClassement final:\n");
+			this.afficherClassement();
 			
 			
 		}else{ //Partie rapide
@@ -153,12 +156,24 @@ public class Partie {
 	
 	public void afficherClassement() {
 		ArrayList<Joueur> classement = new ArrayList<Joueur>();
+		int position = 0;
+		int egalite = 0;
 		for (Iterator<Joueur> it = listeJoueur.iterator(); it.hasNext();) {
 			Joueur joueurActif = it.next();
 			classement.add(joueurActif);
+			Collections.sort(classement);
 		}
-		for (Iterator<Joueur> it2 = classement.iterator(); it.hasNext();) {
-			
+		int nbMenhirsTotal = -1;
+		for (Iterator<Joueur> it = classement.iterator(); it.hasNext();){
+			Joueur joueurActif = it.next();
+			if (nbMenhirsTotal != joueurActif.getNbMenhirTotalDuJoueur()) {
+				position = position + 1 + egalite;
+				egalite = 0;
+				nbMenhirsTotal = joueurActif.getNbMenhirTotalDuJoueur();
+			}else{
+				egalite++;
+			}
+			System.out.println(position + ". " +joueurActif.getNom()+ " avec: " +joueurActif.getNbMenhirTotalDuJoueur());
 		}
 	}
 	
