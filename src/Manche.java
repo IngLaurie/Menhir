@@ -3,6 +3,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.Iterator;
 // gérer le nombre de points de chaque joueurs - partie complexe surtout
 // /!\ si demande d'ajouter une carte au jeu..
@@ -14,7 +15,7 @@ public class Manche {
 	private int saisonEnCours;
 	private String listeSaison[] = {"printemps", "été", "automne", "hiver"};
 
-	private ArrayList<Carte> listeCartesPA = new ArrayList<Carte>();
+	//private ArrayList<Carte> listeCartesPA = new ArrayList<Carte>();
 	private ArrayList<Carte> listeCIngredients = new ArrayList<Carte>();
 	private ArrayList<Carte> listeCAllies = new ArrayList<Carte>();
 		
@@ -28,16 +29,18 @@ public class Manche {
 		if(p.getPartieAvancee()){
 			// autant de manches que de joueurs
 			this.nbManche = p.getNbJPhysique() + p.getNbJVirtuel();
-			this.listeCartesPA.addAll(listeCAllies);
-			this.listeCartesPA.addAll(listeCIngredients);
+			//this.listeCartesPA.addAll(listeCAllies);
+			//this.listeCartesPA.addAll(listeCIngredients);
 			// cartes de la partie rapide + cartes alliés
 			// on a ici l'ensemble des cartes nécessaires pour la partie avancee 
 			// on mélange les cartes 
-			// Collections.shuffle(listeCartesPA);	
+			 //Collections.shuffle(listeCIngredients);
+			 //Collections.shuffle(listeCAllies);
 			// 
 		}else{  // partie rapide
 			this.nbManche = 1;
-			this.listeCartesPA.addAll(listeCIngredients);
+			//Collections.shuffle(listeCIngredients);
+			//this.listeCartesPA.addAll(listeCIngredients);
 			// création de la manche
 			// cartes de la partie rapide seulement
 			// on mélange les cartes 
@@ -56,11 +59,10 @@ public class Manche {
 			// constructeur de manche mettre en param la liste de cartes  //
 			// mettre en static final .. //
 			this.initialisationListeCarte();
-			Collections.shuffle(listeCartesPA);
 			
 			for(Iterator<Joueur> it = p.getListeJoueur().iterator(); it.hasNext();) {
 				Joueur joueurActif = it.next();
-				//Demander le choix cartes ou graines
+				demanderGrainesOuCarteAllie(p,joueurActif);
 			}
 		}else{ 
 			// partie rapide
@@ -70,11 +72,11 @@ public class Manche {
 			// ici on utilise les cartes de listeCIngredients
 			
 			this.initialisationListeCarte();
-			Collections.shuffle(listeCartesPA);
+			Collections.shuffle(listeCIngredients);
 			
 			int cpt = 1;
 				for(Joueur joueur: p.getListeJoueur()){
-					for(Carte carte: this.listeCartesPA){
+					for(Carte carte: this.listeCIngredients){
 						joueur.getMainDuJoueur().add(carte);
 						// on distribue que 4 cartes par joueur 
 						if(cpt == 4){
@@ -84,7 +86,7 @@ public class Manche {
 						}
 					}
 					
-					this.listeCartesPA.removeAll(joueur.getMainDuJoueur());
+					this.listeCIngredients.removeAll(joueur.getMainDuJoueur());
 					cpt = 1;
 				}
 			   /*	
@@ -94,6 +96,24 @@ public class Manche {
 				p.getListeJoueur().set(0, JoueurTmp);
 				*/
 				// utilisation d'un swap à la place 
+		}
+	}
+	
+	public void demanderGrainesOuCarteAllie(Partie p, Joueur j)
+	{
+		System.out.println("Souhaitez-vous obtenir une carte allié (0) ou gagner deux graines (1)?\n");
+		Scanner reponse = new Scanner(System.in);
+		int choix = reponse.nextInt();
+		if (choix == 0) {
+			Carte c = listeCAllies.get(0);
+			j.getMainDuJoueur().add(c);
+			listeCAllies.remove(0);
+		}else{
+			if (choix == 1) {
+				j.setNbGraineDuJoueur(2);
+			}else{
+				System.out.println("Choix incorrect.\n");
+			}
 		}
 	}
 
