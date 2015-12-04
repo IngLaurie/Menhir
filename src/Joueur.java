@@ -165,9 +165,10 @@ public abstract class Joueur {
 			}else{
 				if(choixAction == 3){ // FARFADET
 					System.out.println("Veuillez choisir un joueur : ");
-					
 					Joueur joueurChoisi = this.choisirJoueur(p.getListeJoueur());
-					System.out.println("Nb Graines du joueur choisi : " + joueurChoisi.getNbGraineDuJoueur() + "+ Nb Menhirs : " + joueurChoisi.getNbMenhirDuJoueur());
+					
+					//while(joueurChoisi != this){
+						System.out.println("Nb Graines du joueur choisi : " + joueurChoisi.getNbGraineDuJoueur() + "+ Nb Menhirs : " + joueurChoisi.getNbMenhirDuJoueur());
 					this.setNbGraineDuJoueur(this.getNbGraineDuJoueur(), c.getForce(choixAction -1, saison));
 					int nbAVoler = c.getForce(choixAction -1, saison);
 					joueurChoisi.setNbGraineDuJoueur(joueurChoisi.getNbGraineDuJoueur(), - nbAVoler);
@@ -175,7 +176,11 @@ public abstract class Joueur {
 					System.out.println("Nb Graines du joueur choisi : " + joueurChoisi.getNbGraineDuJoueur() + "+ Nb Menhirs : " + joueurChoisi.getNbMenhirDuJoueur());
 					
 					System.out.println("Vous avez volé " + c.getForce(choixAction -1, saison) + " graines au joueur " + joueurChoisi.getNom() + " !");
-					System.out.println("Vous avez maintenant " + this.getNbGraineDuJoueur() + " graines et " + this.getNbMenhirDuJoueur() + " Menhirs\n");
+					//}
+					// NOP ! 
+					// ne pas faire de cette façon.. 
+					//System.out.println("Veuillez choisir un joueur différent du votre");
+					
 				}else{
 					System.out.println("Veuillez entrer une valeur juste\n\n");
 					// /!\ faire reboucler sur le menu (choix de l'action)
@@ -209,10 +214,16 @@ public abstract class Joueur {
 	public Joueur choisirJoueur(ArrayList<Joueur> listDeJoueur){
 		int i = 0;
 		
-		for(Joueur j : listDeJoueur){
-			System.out.println(j.nom + " taper " + i);
-			i++;
-		}
+			for(Joueur j : listDeJoueur){
+				if(j.getNom() == this.getNom()){
+					
+				}
+				System.out.println(j.nom + " taper " + i);
+				i++;
+			}
+	
+		
+		
 		Scanner scanJ = new Scanner(System.in);
 		int choixJoueur = scanJ.nextInt();
 		
