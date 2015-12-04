@@ -1,6 +1,6 @@
 import java.util.*;
 // NOTRE CONTEXT POUR LA STRATEGIE 
-public abstract class Joueur {
+public abstract class Joueur implements Comparable<Joueur> {
 //   /!\ GRAINES 
 	private String nom;
 	private int age;
@@ -239,6 +239,24 @@ public abstract class Joueur {
 	
 	public String getNom() {
 		return nom;
+	}
+	
+	public int compareTo(Joueur autreJoueur) {
+		int nbj1 = this.getNbMenhirTotalDuJoueur();
+		int nbj2 = autreJoueur.getNbMenhirTotalDuJoueur();
+		int resultat;
+		
+		if (nbj1 > nbj2) {
+			resultat = 1;
+		}else{
+			if (nbj1 == nbj2) {
+				resultat =  0;
+			}else{
+				resultat = -1;
+			}
+		}
+		return resultat;
+		
 	}
 	
 }
