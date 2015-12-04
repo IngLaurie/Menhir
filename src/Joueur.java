@@ -167,16 +167,19 @@ public abstract class Joueur {
 					System.out.println("Veuillez choisir un joueur : ");
 					Joueur joueurChoisi = this.choisirJoueur(p.getListeJoueur());
 					
-					//while(joueurChoisi != this){
-						System.out.println("Nb Graines du joueur choisi : " + joueurChoisi.getNbGraineDuJoueur() + "+ Nb Menhirs : " + joueurChoisi.getNbMenhirDuJoueur());
+					//if(joueurChoisi.getNom() != this.getNom()){
+					System.out.println("Nb Graines du joueur choisi : " + joueurChoisi.getNbGraineDuJoueur() + " + Nb Menhirs : " + joueurChoisi.getNbMenhirDuJoueur());
 					this.setNbGraineDuJoueur(this.getNbGraineDuJoueur(), c.getForce(choixAction -1, saison));
 					int nbAVoler = c.getForce(choixAction -1, saison);
 					joueurChoisi.setNbGraineDuJoueur(joueurChoisi.getNbGraineDuJoueur(), - nbAVoler);
 					System.out.println("Vous volez " + nbAVoler + " graines au joueur " + joueurChoisi.getNom());
-					System.out.println("Nb Graines du joueur choisi : " + joueurChoisi.getNbGraineDuJoueur() + "+ Nb Menhirs : " + joueurChoisi.getNbMenhirDuJoueur());
+					System.out.println("Nb Graines du joueur choisi : " + joueurChoisi.getNbGraineDuJoueur() + " + Nb Menhirs : " + joueurChoisi.getNbMenhirDuJoueur());
 					
 					System.out.println("Vous avez volé " + c.getForce(choixAction -1, saison) + " graines au joueur " + joueurChoisi.getNom() + " !");
-					//}
+					/*}else{
+						//Joueur joueurChoisi = this.choisirJoueur(p.getListeJoueur());
+						System.out.println("ERROR");
+					}*/
 					// NOP ! 
 					// ne pas faire de cette façon.. 
 					//System.out.println("Veuillez choisir un joueur différent du votre");
@@ -215,11 +218,10 @@ public abstract class Joueur {
 		int i = 0;
 		
 			for(Joueur j : listDeJoueur){
-				if(j.getNom() == this.getNom()){
-					
+				if(j.getNom() != this.getNom()){
+					System.out.println(j.nom + " taper " + i);
+					i++;
 				}
-				System.out.println(j.nom + " taper " + i);
-				i++;
 			}
 	
 		
