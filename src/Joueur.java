@@ -174,7 +174,7 @@ public abstract class Joueur {
 					joueurChoisi.setNbGraineDuJoueur(joueurChoisi.getNbGraineDuJoueur(), - nbAVoler);
 					System.out.println("Vous volez " + nbAVoler + " graines au joueur " + joueurChoisi.getNom());
 					System.out.println("Nb Graines du joueur choisi : " + joueurChoisi.getNbGraineDuJoueur() + " + Nb Menhirs : " + joueurChoisi.getNbMenhirDuJoueur());
-					
+					// ATTENTION AUX INDICE.. si on tape 2 alors que le choix est 0 ou 1, ça marche quand même.. 
 					System.out.println("Vous avez volé " + c.getForce(choixAction -1, saison) + " graines au joueur " + joueurChoisi.getNom() + " !");
 					/*}else{
 						//Joueur joueurChoisi = this.choisirJoueur(p.getListeJoueur());
