@@ -5,13 +5,14 @@ public class ChienDeGarde extends Carte{
 		super(nom, tabValCarte);
 	}
 
-	public void empecherFarfadet(int saisonEnCours, Joueur joueur){
-		joueur.setNbChiens(getForce(saisonEnCours));
-		System.out.println("Vos chiens de garde permettent d'empêcher le vol de " +joueur.getNbChiens()+ " graines");
-	}
-	
 	public int getForce (int saison) {
 		return super.getForce(saison);
+	}
+	
+	public void choisirAction(Joueur j, Manche m, Partie p) {
+		super.choisirAction(j, m, p);
+		j.setNbChiens(this.getForce(m.getSaisonEnCours()));
+		System.out.println("Vos chiens de garde permettent d'empêcher le vol de " +j.getNbChiens()+ " graines");
 	}
 	
 	public String toString() {

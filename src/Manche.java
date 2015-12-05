@@ -16,7 +16,6 @@ public class Manche {
 	private int saisonEnCours;
 	private String listeSaison[] = {"printemps", "été", "automne", "hiver"};
 
-	//private ArrayList<Carte> listeCartesPA = new ArrayList<Carte>();
 	private LinkedList<Carte> listeCIngredients = new LinkedList<Carte>();
 	private LinkedList<Carte> listeCAllies = new LinkedList<Carte>();
 		
@@ -127,15 +126,22 @@ public class Manche {
 
 	public void attribuerJoueurDeDebut(Partie p){
 		Joueur jQuiCommence = null;
-		
 		if(p.getPartieAvancee()) {
 			int ageMini = 100;
 			for (Iterator<Joueur> it = p.getListeJoueur().iterator(); it.hasNext();) {
 				Joueur joueurActif = it.next();
-				if (ageMini > joueurActif.getAge() && !joueurActif.getADejaCommence()) {
-					jQuiCommence = joueurActif;
+				if ((ageMini > joueurActif.getAge()) && !(joueurActif.getADejaCommence())) {
+					jQuiCommence = it.next();
+					ageMini = joueurActif.getAge();
+					joueurActif.setADejaCommence(true);
 				}
 			}
+			System.out.println("test1\n");
+			int a = p.getListeJoueur().indexOf(p.getListeJoueur().get(0));
+			int b = p.getListeJoueur().indexOf(jQuiCommence);
+			System.out.println(+b+" "+a);
+			Collections.swap(p.getListeJoueur(), b, a);
+			
 		}else{
 		if(p.getListeJoueur().get(0).getAge() < p.getListeJoueur().get(1).getAge()){	
 			jQuiCommence = p.getListeJoueur().get(0);
@@ -171,6 +177,7 @@ public class Manche {
 				for(Iterator<Joueur> it = p.getListeJoueur().iterator(); it.hasNext();) {
 					Joueur joueurActif = it.next();
 					System.out.println("\nSAISON EN COURS : " + this.listeSaison[this.getSaisonEnCours()] + "\n");
+					System.out.println("C'est à " +joueurActif.getNom() + " de jouer.\n");
 					joueurActif.jouerCarte(this, p);
 				}
 				this.changerSaison();
@@ -196,6 +203,7 @@ public class Manche {
 				for (Iterator<Joueur> it = p.getListeJoueur().iterator(); it.hasNext(); ) {
 					Joueur joueurActif = it.next();
 					System.out.println("\nSAISON EN COURS : " + this.listeSaison[this.getSaisonEnCours()] + "\n");
+					System.out.println("C'est à " +joueurActif.getNom() + " de jouer.\n");
 					joueurActif.jouerCarte(this, p);
 				}
 				this.changerSaison();

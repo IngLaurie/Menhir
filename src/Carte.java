@@ -30,19 +30,17 @@ public class Carte {
 		return this.cheminImage;
 	}
 
-	
-	// test
 	public int getForce(int action, int saison) {
-	//public int getForce(int action, String saison) {
 		return this.tableauIng[action][saison];
 	}
 	
 	public int getForce(int saison) {
 		return this.tableauAlli[saison];
 	}
-	
 
-	
-	// public static Carte[] initialiserCarte(){}
+	public void choisirAction(Joueur j, Manche m, Partie p) {
+		System.out.println("Vous avez choisi la carte:\n");
+		System.out.println(this.toString());
+	}
 	
 }

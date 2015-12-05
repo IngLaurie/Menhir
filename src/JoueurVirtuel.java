@@ -46,7 +46,7 @@ public class JoueurVirtuel extends Joueur implements Strategy {
 		}
 	}
 
-	@Override
+	/*@Override
 	public Carte choisirCarte(Manche m, Partie p) {
 		System.out.println("\nAu tour de " + this.getNom() + " de jouer!\n");
 		this.afficherMainJoueur();
@@ -58,7 +58,7 @@ public class JoueurVirtuel extends Joueur implements Strategy {
 		return super.choisirCarte(m,p);
 		
 		
-	}
+	}*/
 	
 	
 	public int attributionStrategieAJoueur(){
@@ -78,9 +78,9 @@ public class JoueurVirtuel extends Joueur implements Strategy {
 	}
 
 
-	@Override
+	/*@Override
 	public void choisirAction(Carte c, Manche m, Partie p) {
-			int choixAction = 0;	 // a supp, juste pour tester
+		int choixAction = 0;	 // a supp, juste pour tester
 		int saison = m.getSaisonEnCours();		
 		//System.out.println("Le joueur virtuel a choisie l'action : " + choixAction);
 
@@ -102,11 +102,11 @@ public class JoueurVirtuel extends Joueur implements Strategy {
 				}
 			}
 		}
-	}
+	}*/
 
 
-	public void jouerCarte() {
+	/*public void jouerCarte() {
 		// TODO Auto-generated method stub
 		
-	}
+	}*/
 }

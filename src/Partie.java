@@ -86,14 +86,7 @@ public class Partie {
 	public void lancerPartie() {
 		
 		if(this.partieAvancee){
-			//Récupérer le nombre de manche
-			//Créer toutes les manches et les mettre dans une liste
-			//Faire un iterator pour faire défiler toutes les manches
-			//A la fin de chaque manche, récupérer le nombre de menhir total de chaque joueur
-			//A la fin de toutes les manches, désigner le joueur qui a le plus de menhir comme gagnant
 			
-			
-			// permettre le choix entre une carte allié ou deux graines 
 			this.nbManche = this.nbJPhysique + this.nbJVirtuel;
 			for(int i=0; i<this.nbManche; i++){
 				this.listeManche.add(new Manche());
