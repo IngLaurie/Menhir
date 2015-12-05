@@ -180,9 +180,6 @@ public class Manche {
 		
 	}
 	
-	
-
-
 	public void changerSaison(){
 		int nouvSaison = this.saisonEnCours;
 		System.out.println("La saison " + this.listeSaison[this.saisonEnCours] + " est terminée.\n");

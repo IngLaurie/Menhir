@@ -90,7 +90,7 @@ public abstract class Joueur implements Comparable<Joueur> {
 			// parcourir la liste et indiquer laquelle est choisie en fonction d'un indice
 			Scanner scanCarte = new Scanner(System.in); // pour scanner l'indice de la carte choisie
 			int choixCarte = scanCarte.nextInt();
-			return this.mainDuJoueur.get(choixCarte - 1);
+			return this.mainDuJoueur.get(choixCarte - 1);  // retourne une carte
 		//}else{ // joueur virtuel joue
 		//	if()
 			//Context context = new Context(new OffensiveStrategy());
@@ -98,6 +98,7 @@ public abstract class Joueur implements Comparable<Joueur> {
 		}
 		return null;
 	}
+	
 	public void choisirAction(Carte c, Manche m, Partie p) {
 		System.out.println(c.toString());
 		System.out.println("Choisir l'action à effectuer : \n");

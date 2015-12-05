@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class JoueurVirtuel extends Joueur implements Strategy {
 	
+	private static final String Defensive = null;
+	private static final String Offensive = null;
 	private ArrayList<Strategy> listeStrategies = new ArrayList<Strategy>();
 	String strategieDuJVirtuel;
 	private int indice;
@@ -34,9 +36,6 @@ public class JoueurVirtuel extends Joueur implements Strategy {
 		// le joueur virtuel choisi sa carte
 		//super.jouerCarte(m, p);
 		//this.choisirCarte(m, p);
-		//return 0;
-		String Offensive = null;
-		String Defensive = null;
 		
 		if(this.indiceDeStratDuJoueurVirtuel == 0){
 			Context context0 = new Context(new OffensiveStrategy(Offensive));
