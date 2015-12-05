@@ -9,7 +9,8 @@ public class Context {
 	public void executeStrategy(Manche m, Partie p){
 		// on execute la strategy
 		// exemple de return :
-		//return strategy.jouerCarte(m,p);
+		System.out.println("Execution de executeStrategy dans context");
+		strategy.jouerCarte(m,p);
 	}
 	
 	

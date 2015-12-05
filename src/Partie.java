@@ -35,7 +35,6 @@ public class Partie {
 			}
 		}
 		
-		
 		// /!\ 1 seul joueur physique !
 		this.nbJPhysique = 2; //Penser à en remettre un seul
 		this.listeJoueur.add(new JoueurPhysique());
@@ -57,10 +56,10 @@ public class Partie {
 		System.out.println("Combien y a t'il de joueur(s) virtuel(s) ?");
 		Scanner scanNbJ = new Scanner(System.in);
 		this.nbJVirtuel = scanNbJ.nextInt();
-		
+	
 		if(nbJVirtuel >= 0 && nbJVirtuel <= 5){
 			for(int i=1; i<= nbJVirtuel; i++){
-				this.listeJoueur.add(new JoueurVirtuel());
+				this.listeJoueur.add(new JoueurVirtuel(i));
 			}
 			
 		for (Iterator<Joueur> it2 = this.listeJoueur.iterator(); it2.hasNext();) {

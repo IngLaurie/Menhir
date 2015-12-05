@@ -5,8 +5,22 @@ public class JoueurPhysique extends Joueur {
 
 	Joueur joueurChoisi = null;
 	
+	
+
 	public JoueurPhysique() {
 		super();
+		
+		System.out.println("Nom du joueur :");
+		Scanner scanNom = new Scanner(System.in); //Créer une exception si on ne rentre pas des caractères
+		String nomJPhysique = scanNom.nextLine();
+		
+		System.out.println("Age du joueur :");
+		Scanner scanAge = new Scanner(System.in); //Créer une exception si on ne rentre pas un nombre
+		int ageJoueurPhysique = scanAge.nextInt();
+		
+		this.age = ageJoueurPhysique;
+		this.nom = nomJPhysique;
+		isJoueurPhysique = true;
 	}
 
 	@Override
@@ -28,6 +42,8 @@ public class JoueurPhysique extends Joueur {
 		super.jouerCarte(m, p);
 	}
 
-
+//	public boolean isJoueurPhysique() {
+//		return isJoueurPhysique;
+//	}
 
 }

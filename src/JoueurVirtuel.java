@@ -1,22 +1,50 @@
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class JoueurVirtuel extends Joueur implements Strategy {
 	
 	private ArrayList<Strategy> listeStrategies = new ArrayList<Strategy>();
-	Strategy stratDuJVirtuel;
+	String strategieDuJVirtuel;
+	private int indice;
+	private int indiceDeStratDuJoueurVirtuel;
  
-	public JoueurVirtuel() {
-		super();
+	public JoueurVirtuel(int i) {
+		this.indice = i;
+		this.nom = "JoueurV"+i;  
+		this.age = (int) (Math.random() * 88 ); 
+		System.out.println("Age de JoueurV" + this.indice + " = " + this.age);
+		int leNbRecup = this.attributionStrategieAJoueur();
+		//System.out.println("Dans le constructeur de JV, le nb récupéré est " + leNbRecup);
+		this.indiceDeStratDuJoueurVirtuel = leNbRecup;
+		isJoueurPhysique = false;
 		
-		//// VOIR OU LE PLACER
-		// on utilise un contexte pour voir le changement de comportement lorsque la stratégie change
-		Context context = new Context(new OffensiveStrategy());
-		//System.out.println(" " + context.executeStrategy());   // executeStrategy est placé dans la classe Context
+		/*if(leNbRecup == 0){
+			//Context context = new Context(new OffensiveStrategy());
+			//System.out.println(" " + context.executeStrategy());
+			//System.out.println("");
+		}else{
+			this.strategieDuJVirtuel = "Defensif";
+		}*/
+		
 	}
-	
+
+
 	public void jouerCarte(Manche m, Partie p) {
+		// le joueur virtuel choisi sa carte
+		//super.jouerCarte(m, p);
+		//this.choisirCarte(m, p);
+		//return 0;
+		String Offensive = null;
+		String Defensive = null;
 		
+		if(this.indiceDeStratDuJoueurVirtuel == 0){
+			Context context0 = new Context(new OffensiveStrategy(Offensive));
+			context0.executeStrategy(m,p);
+		}else{
+			Context context1 = new Context(new DefensiveStrategy(Defensive));
+			context1.executeStrategy(m,p);
+		}
 	}
 
 	@Override
@@ -33,6 +61,23 @@ public class JoueurVirtuel extends Joueur implements Strategy {
 		
 	}
 	
+	
+	public int attributionStrategieAJoueur(){
+		Strategy strat;
+		Random rn = new Random();
+		int leNbAleatoire = rn.nextInt(2);
+		
+		System.out.println("Le nb aleatoire est " + leNbAleatoire);
+			
+		return leNbAleatoire;
+	}
+	
+	
+
+	public String getNom() {
+		return nom;
+	}
+
 
 	@Override
 	public void choisirAction(Carte c, Manche m, Partie p) {
@@ -58,5 +103,11 @@ public class JoueurVirtuel extends Joueur implements Strategy {
 				}
 			}
 		}
+	}
+
+
+	public void jouerCarte() {
+		// TODO Auto-generated method stub
+		
 	}
 }
