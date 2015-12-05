@@ -1,20 +1,23 @@
 // EN COURS DE TEST ----
 // C'EST ICI QUE L'ON VA CODER LES ALGOS DANS CHAQUE METHODE
 public class DefensiveStrategy implements Strategy {
-
+	private String nomStrat;
 	/*
 	 * liste d'attributs nécessaire ? 
 	 */
 	
 	// Constructeur
-	public DefensiveStrategy() {
+	public DefensiveStrategy(String strat) {
 		super();
+		this.nomStrat = strat;
 	}
 
 	public void jouerCarte(Manche m, Partie p) {
-		//return 0;
-		// code de jouerCarte pour le joueurVirtuel
+		System.out.println("Stratégie jouée "/*par  " +*/  + " est : " + this.nomStrat);
 		
+		// CODE DE JOUER CARTE
+		Carte c = this.choisirCarte(m, p);   // coder choisir carte
+		this.choisirAction(c, m, p);         // coder choisir action
 	}
 
 	public Carte choisirCarte(Manche m, Partie p) {
@@ -27,5 +30,8 @@ public class DefensiveStrategy implements Strategy {
 		
 	}
 
+	public String getNomStrat() {
+		return nomStrat;
+	}
 
 }

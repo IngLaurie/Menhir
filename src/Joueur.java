@@ -1,13 +1,15 @@
 import java.util.*;
+
+import org.omg.CORBA.portable.IndirectionException;
 // NOTRE CONTEXT POUR LA STRATEGIE 
 public abstract class Joueur implements Comparable<Joueur> {
 //   /!\ GRAINES 
-	private String nom;
-	private int age;
+	protected String nom;
+	protected int age;
 
 	private int nombreDePointTotal = 0;
 	protected ArrayList<Carte> mainDuJoueur = new ArrayList<Carte>();
-	private int nbMenhirDuJoueur = 0;
+	protected int nbMenhirDuJoueur = 0;
 	private int nbMenhirTotalDuJoueur = 0;
 	protected int nbGraineDuJoueur = 0;
 	//private boolean actif;
@@ -19,19 +21,9 @@ public abstract class Joueur implements Comparable<Joueur> {
 
 	// /!\ gérer pour 2 à 6 joueurs
 	public Joueur(){
-		System.out.println("Nom du joueur :");
-		Scanner scanNom = new Scanner(System.in); //Créer une exception si on ne rentre pas des caractères
-		String nomJPhysique = scanNom.nextLine();
-		
-		System.out.println("Age du joueur :");
-		Scanner scanAge = new Scanner(System.in); //Créer une exception si on ne rentre pas un nombre
-		int ageJoueurPhysique = scanAge.nextInt();
-		
-		this.age = ageJoueurPhysique;
-		this.nom = nomJPhysique;
-		//main = new ArrayList<Carte>();
 		this.nbGraineDuJoueur = 0;
 		this.nbMenhirDuJoueur = 0;
+		this.isJoueurPhysique = false;
 	}
 	
 	public void afficherMainJoueur(){
@@ -103,34 +95,18 @@ public abstract class Joueur implements Comparable<Joueur> {
 	public Carte choisirCarte(Manche m, Partie p){
 	//// déplacer JOUEUR ////
 		
-		System.out.println("\nChoisir une carte à jouer : ");
-		// parcourir la liste et indiquer laquelle est choisie en fonction d'un indice
-		Scanner scanCarte = new Scanner(System.in); // pour scanner l'indice de la carte choisie
-		int choixCarte = scanCarte.nextInt();
-		
-		//System.out.println("Vous avez choisi la carte " + choixCarte);
-		
-			/*switch(choixCarte){  
-				case 1:
-						this.faireAction(this.mainDuJoueur.get(choixCarte -1), m, p);  // indiquer les actions et valeurs de la bonne carte
-					break;
-				case 2:
-						this.faireAction(this.mainDuJoueur.get(choixCarte -1), m, p);
-					break;
-				case 3:
-						this.faireAction(this.mainDuJoueur.get(choixCarte -1), m, p);
-					break;
-				case 4:
-						this.faireAction(this.mainDuJoueur.get(choixCarte -1), m, p);
-					break;
-				case 5: 
-						this.faireAction(this.mainDuJoueur.get(choixCarte -1), m, p);
-					break;
-				default: System.out.println("Veuillez choisir une carte existante\n\n");
-				// /!\ reboucler
-					break;
-			}*/	
+		if(this.isJoueurPhysique){ // joueur physique joue
+			System.out.println("\nChoisir une carte à jouer : ");
+			// parcourir la liste et indiquer laquelle est choisie en fonction d'un indice
+			Scanner scanCarte = new Scanner(System.in); // pour scanner l'indice de la carte choisie
+			int choixCarte = scanCarte.nextInt();
 			return this.mainDuJoueur.get(choixCarte - 1);
+		//}else{ // joueur virtuel joue
+		//	if()
+			//Context context = new Context(new OffensiveStrategy());
+			//System.out.println(" " + context.executeStrategy());
+		}
+		return null;
 	}
 	public void choisirAction(Carte c, Manche m, Partie p) {
 		System.out.println(c.toString());
