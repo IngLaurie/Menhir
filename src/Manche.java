@@ -175,10 +175,17 @@ public class Manche {
 				}
 				this.changerSaison();
 			}
-			//Changer la saison
-			//Répéter pour toutes les saisons
-			//Lorsqu'on a fait toutes les saisons, retourner le nombre de graines de chaque joueur
-		} else {
+			for(Iterator<Joueur> it = p.getListeJoueur().iterator(); it.hasNext();) {
+				Joueur joueurActif = it.next();
+				joueurActif.getMainDuJoueur().clear();
+				
+			}
+			/*A la fin d'une manche de partie complexe, 
+			il se peut qu'il reste une carte dans la main d'un joueur
+			on supprime donc toutes les cartes des mains de tous les joueurs
+			pour éviter d'avoir des problèmes pendant les manches suivantes*/
+			
+			} else {
 			//Distribuer les cartes
 			this.attribuerJoueurDeDebut(p);
 			this.distribuerCarteJoueur(p);
@@ -193,7 +200,7 @@ public class Manche {
 				}
 				this.changerSaison();
 			}
-			
+
 			//Changer la saison
 			//Répéter pour chaque saisons
 			// A la fin de toutes les saison:
