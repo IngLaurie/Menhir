@@ -5,8 +5,9 @@ public class ChienDeGarde extends Carte{
 		super(nom, tabValCarte);
 	}
 
-	public void empecherFarfadet(int saisonEnCours, int nbGraineDuJoueur, Joueur joueur){
-		
+	public void empecherFarfadet(int saisonEnCours, Joueur joueur){
+		joueur.setNbChiens(getForce(saisonEnCours));
+		System.out.println("Vos chiens de garde permettent d'empêcher le vol de " +joueur.getNbChiens()+ " graines");
 	}
 	
 	public int getForce (int saison) {

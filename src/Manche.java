@@ -164,12 +164,16 @@ public class Manche {
 	public void jouerManche(Partie p){
 		boolean partieAvancee = p.getPartieAvancee();
 		if (partieAvancee) {
-			//Faire choisir entre les graines ou la carte allié
-			//Distribuer les cartes
-			//Faire jouer chaque joueur
-			for(Iterator<Joueur> it = p.getListeJoueur().iterator(); it.hasNext();) {
-				Joueur joueurActif = it.next();
-				joueurActif.jouerCarte(this, p);
+			this.attribuerJoueurDeDebut(p);
+			this.distribuerCarteJoueur(p);
+			System.out.println("\n-----------------\nDébut de la manche " +p.getMancheNumero()+ "!\n");
+			for (int i=0; i<4; i++) {
+				for(Iterator<Joueur> it = p.getListeJoueur().iterator(); it.hasNext();) {
+					Joueur joueurActif = it.next();
+					System.out.println("\nSAISON EN COURS : " + this.listeSaison[this.getSaisonEnCours()] + "\n");
+					joueurActif.jouerCarte(this, p);
+				}
+				this.changerSaison();
 			}
 			//Changer la saison
 			//Répéter pour toutes les saisons
@@ -188,14 +192,10 @@ public class Manche {
 					joueurActif.jouerCarte(this, p);
 				}
 				this.changerSaison();
-				
-
 			}
-
-			System.out.println("\nLa manche est terminée.\n");
 			
 			//Changer la saison
-			//Répéter pour toutes les saisons
+			//Répéter pour chaque saisons
 			// A la fin de toutes les saison:
 			//Fin de la manche
 		}

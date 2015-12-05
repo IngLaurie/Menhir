@@ -190,5 +190,9 @@ public class Partie {
 	public ArrayList<Joueur> getListeJoueur(){
 		return listeJoueur;
 	}
+	
+	public int getMancheNumero() {
+		return this.mancheNumero;
+	}
 
 }

@@ -87,6 +87,14 @@ public abstract class Joueur implements Comparable<Joueur> {
 		this.aDejaCommence = a;
 	}
 	
+	public int getNbChiens () {
+		return this.nbChiens;
+	}
+	
+	public void setNbChiens (int chiens) {
+		this.nbChiens = chiens;
+	}
+	
 	public void jouerCarte(Manche m, Partie p) {
 		Carte c = this.choisirCarte(m, p);
 		this.choisirAction(c, m, p);
