@@ -94,8 +94,9 @@ public class Partie {
 			for (Iterator<Manche> it = listeManche.iterator(); it.hasNext();) {
 				Manche mancheActive = it.next();
 				this.mancheNumero++;
-				mancheActive.jouerManche(this);
+				//mancheActive.jouerManche(this);
 				System.out.println("La manche est terminée.\n");
+				int j = 0;
 				for (Iterator<Joueur> it2 = listeJoueur.iterator(); it2.hasNext();) {
 					Joueur joueurActif = it2.next();
 					joueurActif.setNbMenhirTotalDuJoueur(joueurActif.getNbMenhirDuJoueur());
@@ -108,11 +109,7 @@ public class Partie {
 			this.afficherClassement();
 			
 			
-		}else{ //Partie rapide
-			//Créer une manche
-			//A la fin de la manche, récupérer le nombre de menhirs de chaque joueur
-			//Désigner le gagnant comme celui qui a le plus de menhirs
-			//Récupérer le nombre de graines en cas d'égalité
+		}else{ 
 			Manche manche = new Manche();
 			manche.jouerManche(this);
 			System.out.println("\nLa partie est terminée.\n");
@@ -144,7 +141,7 @@ public class Partie {
 		}
 		for (Iterator<Joueur> it = joueursGagnants.iterator(); it.hasNext();) {
 			Joueur gagnant = it.next();
-			System.out.print(gagnant.getNom() + " \n");
+			System.out.print(gagnant.getNom() + " avec " +gagnant.getNbMenhirDuJoueur()+ " ménhir(s) et " +gagnant.getNbGraineDuJoueur()+ " graine(s).\n");
 		}
 	}
 	
@@ -157,9 +154,7 @@ public class Partie {
 			classement.add(joueurActif);
 			Collections.sort(classement);
 		}
-		for (Iterator<Joueur> it2 = classement.iterator(); it2.hasNext();) {
-			
-
+		
 		int nbMenhirsTotal = -1;
 		for (Iterator<Joueur> it = classement.iterator(); it.hasNext();){
 			Joueur joueurActif = it.next();
@@ -171,7 +166,6 @@ public class Partie {
 				egalite++;
 			}
 			System.out.println(position + ". " +joueurActif.getNom()+ " avec: " +joueurActif.getNbMenhirTotalDuJoueur());
-		}
 		}
 		
 	}

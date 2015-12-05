@@ -131,16 +131,14 @@ public class Manche {
 			for (Iterator<Joueur> it = p.getListeJoueur().iterator(); it.hasNext();) {
 				Joueur joueurActif = it.next();
 				if ((ageMini > joueurActif.getAge()) && !(joueurActif.getADejaCommence())) {
-					jQuiCommence = it.next();
+					jQuiCommence = joueurActif;
 					ageMini = joueurActif.getAge();
 					joueurActif.setADejaCommence(true);
 				}
 			}
-			System.out.println("test1\n");
 			int a = p.getListeJoueur().indexOf(p.getListeJoueur().get(0));
 			int b = p.getListeJoueur().indexOf(jQuiCommence);
-			System.out.println(+b+" "+a);
-			Collections.swap(p.getListeJoueur(), b, a);
+			Collections.swap(p.getListeJoueur(), a, b);
 			
 		}else{
 		if(p.getListeJoueur().get(0).getAge() < p.getListeJoueur().get(1).getAge()){	
@@ -234,7 +232,7 @@ public class Manche {
 		if (nouvSaison == 4) {
 			nouvSaison = 0;
 		} else {
-			System.out.println("La nouvelle saison est " +this.listeSaison[this.saisonEnCours]);
+			System.out.println("La nouvelle saison est " +this.listeSaison[this.saisonEnCours+1]);
 		}
 		this.saisonEnCours = nouvSaison;
 	}

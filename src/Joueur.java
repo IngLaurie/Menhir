@@ -49,8 +49,8 @@ public abstract class Joueur implements Comparable<Joueur> {
 		this.nbGraineDuJoueur = nbGraineDuJoueur + nbAAjouterGraine;
 	}
 	
-	public void setNbGraineDuJoueur(int nbGraineADonner){
-		this.nbGraineDuJoueur = nbGraineADonner;
+	public void setNbGraineDuJoueur(int nbGraine){
+		this.nbGraineDuJoueur = nbGraine;
 	}
 	
 	public int getNbMenhirDuJoueur(){
@@ -61,8 +61,8 @@ public abstract class Joueur implements Comparable<Joueur> {
 		this.nbMenhirDuJoueur = nbMenhirDuJoueur + nbAAjouterMenhir;
 	}
 	
-	public void setNbMenhirDuJoueur(int nbMenhirDuJoueur) {
-		this.nbMenhirDuJoueur = nbMenhirDuJoueur;
+	public void setNbMenhirDuJoueur(int nbMenhir) {
+		this.nbMenhirDuJoueur = nbMenhir;
 	}
 	
 	public void setNbMenhirTotalDuJoueur(int nbMenhirDuJoueur) {
@@ -96,6 +96,7 @@ public abstract class Joueur implements Comparable<Joueur> {
 	
 	public void jouerCarte(Manche m, Partie p) {
 		if (this.isJoueurPhysique) {
+			System.out.println(+this.getNbGraineDuJoueur()+ " graines " +this.getNbMenhirDuJoueur()+ " ménhirs.\n");
 			this.choisirCarte(m, p);
 			}else{ // joueur virtuel joue
 			//	if()
@@ -150,9 +151,10 @@ public abstract class Joueur implements Comparable<Joueur> {
 			for(Joueur j : listDeJoueur){
 				// /!\ nb 
 				if(j.getNom() != this.getNom()){
-					System.out.println(+i+ " pour choisir" +j.nom+ ", " +j.getNbGraineDuJoueur()+ " graines et " +j.getNbMenhirDuJoueur()+ " ménhirs." );
-					i++;
+					System.out.println(+i+ " pour choisir " +j.nom+ ", " +j.getNbGraineDuJoueur()+ " graines et " +j.getNbMenhirDuJoueur()+ " ménhirs." );
+										
 				}
+				i++;
 			}
 	
 		

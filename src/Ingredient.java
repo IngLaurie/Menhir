@@ -52,52 +52,76 @@ public class Ingredient extends Carte {
 	public void choisirGeant(Joueur j, Manche m, Partie p) {
 		j.setNbGraineDuJoueur(j.getNbGraineDuJoueur(), this.getForce(0,m.getSaisonEnCours())); 
 		System.out.println("Vous avez pris " + this.getForce(0, m.getSaisonEnCours()) + " graines dans le pot commun !");
-		System.out.println("Vous avez maintenant " + j.nbGraineDuJoueur + " graines et " + j.getNbMenhirDuJoueur() + " ménhirs\n");
+		System.out.println("Vous avez maintenant " + j.getNbGraineDuJoueur() + " graines et " + j.getNbMenhirDuJoueur() + " ménhirs\n");
 	}
 	
 	public void choisirEngrais(Joueur j, Manche m, Partie p) {
-		if(j.getNbGraineDuJoueur() >= this.getForce(choixAction -1, saison)){
-			j.setNbMenhirDuJoueur(j.getNbMenhirDuJoueur(), this.getForce(choixAction -1, saison)); 
-			int nbAjouteSurChamp =  this.getForce(choixAction -1, saison);
-			j.setNbGraineDuJoueur(j.getNbGraineDuJoueur(), - nbAjouteSurChamp); 
+		if(j.getNbGraineDuJoueur() == 0){
+			System.out.println("Vous n'avez pas de graines à planter!\n");
+			System.out.println("Vous avez toujours " +j.getNbGraineDuJoueur()+ " graines et " +j.getNbMenhirDuJoueur()+ " ménhirs.");
+		}else{
+			if(j.getNbGraineDuJoueur() >= this.getForce(1, m.getSaisonEnCours())){
+			j.setNbMenhirDuJoueur(j.getNbMenhirDuJoueur()+this.getForce(1, m.getSaisonEnCours()));
+			j.setNbGraineDuJoueur(j.getNbGraineDuJoueur()-this.getForce(1, m.getSaisonEnCours())); 
 			
-			System.out.println("Résultat : " + this.getForce(choixAction -1, saison) + " de vos graines sont devenues des ménhirs !");
+			System.out.println("Résultat : " + this.getForce(1, m.getSaisonEnCours()) + " de vos graines sont devenues des ménhirs !");
 			System.out.println("Vous avez maintenant " + j.getNbGraineDuJoueur() + " graines et " + j.getNbMenhirDuJoueur() + " ménhirs\n");
 		}else{
-			if(j.getNbGraineDuJoueur() < this.getForce(choixAction -1, saison)){
-				j.setNbMenhirDuJoueur(j.getNbGraineDuJoueur(), j.getNbGraineDuJoueur()); 
-				int nbAjouteSurChamp =  j.getNbGraineDuJoueur();
-				j.setNbGraineDuJoueur(j.getNbGraineDuJoueur(), - nbAjouteSurChamp); 
+			if(j.getNbGraineDuJoueur() < this.getForce(1, m.getSaisonEnCours())){
+				j.setNbMenhirDuJoueur(j.getNbMenhirDuJoueur()+j.getNbGraineDuJoueur()); 
+				j.setNbGraineDuJoueur(0); 
 				
-				System.out.println("Résultat : " + this.getForce(choixAction -1, saison) + " de vos graines sont devenues des ménhirs !");
+				System.out.println("Vous aviez moins de graines que la force de votre carte... Elles sont toutes devenues des ménhirs.");
 				System.out.println("Vous avez maintenant " + j.getNbGraineDuJoueur() + " graines et " + j.getNbMenhirDuJoueur() + " ménhirs\n");
-			}else{
-				System.out.println("Sorry.. vous n'avez plus de graines..\n");
 			}
 		}
 	}
+	}
+	
 	
 	public void choisirFarfadet(Joueur j, Manche m, Partie p) {
-		System.out.println("Veuillez choisir un joueur : ");
+		System.out.println("Veuillez choisir un joueur :\n");
 		Joueur joueurChoisi = j.choisirJoueur(p.getListeJoueur());
 		
-		//if(joueurChoisi.getNom() != this.getNom()){
-		System.out.println("Nb Graines du joueur choisi : " + joueurChoisi.getNbGraineDuJoueur() + " + Nb Menhirs : " + joueurChoisi.getNbMenhirDuJoueur());
-		j.setNbGraineDuJoueur(j.getNbGraineDuJoueur(), this.getForce(choixAction -1, saison));
-		int nbAVoler = this.getForce(choixAction -1, saison);
-		joueurChoisi.setNbGraineDuJoueur(joueurChoisi.getNbGraineDuJoueur(), - nbAVoler);
-		System.out.println("Vous volez " + nbAVoler + " graines au joueur " + joueurChoisi.getNom());
-		System.out.println("Nb Graines du joueur choisi : " + joueurChoisi.getNbGraineDuJoueur() + " + Nb Menhirs : " + joueurChoisi.getNbMenhirDuJoueur());
-		// ATTENTION AUX INDICE.. si on tape 2 alors que le choix est 0 ou 1, ça marche quand même.. 
-		System.out.println("Vous avez volé " + this.getForce(choixAction -1, saison) + " graines au joueur " + joueurChoisi.getNom() + " !");
-		/*}else{
-			//Joueur joueurChoisi = this.choisirJoueur(p.getListeJoueur());
-			System.out.println("ERROR");
-		}*/
-		// NOP ! 
-		// ne pas faire de cette façon.. 
-		//System.out.println("Veuillez choisir un joueur différent du votre");
-		
+		if(p.getPartieAvancee()) {
+			System.out.println(joueurChoisi.getNom() + " possède " +joueurChoisi.getNbChiens() + " chiens de garde.\n");
+			if(joueurChoisi.getNbGraineDuJoueur() == 0) {
+				System.out.println("Il n'y avait aucune graine à voler...\n");
+			}else{
+				if(joueurChoisi.getNbGraineDuJoueur()<joueurChoisi.getNbChiens()) {
+					System.out.println("Les graines de " +joueurChoisi.getNom() + " sont trop bien gardées, vous n'avez pas pu en voler.");
+				}else{
+					if(joueurChoisi.getNbGraineDuJoueur >= joueurChoisi.getNbChiens()) {
+						int volPossible = joueurChoisi.getNbGraineDuJoueur()-joueurChoisi.getNbChiens();
+						if(volPossible < this.getForce(2, m.getSaisonEnCours())) {
+							j.setNbGraineDuJoueur(j.getNbGraineDuJoueur()+volPossible);
+							System.out.println("Vous avez volé " +volPossible+ " graines, vous en avez maintenant " +j.getNbGraineDuJoueur());
+						}else{
+							if(volPossible >= this.getForce(2, m.getSaisonEnCours())) {
+								j.setNbGraineDuJoueur(j.getNbGraineDuJoueur()+this.getForce(2, m.getSaisonEnCours()));
+								System.out.println("Vous avez volé " +this.getForce(2, m.getSaisonEnCours())+ " graines, vous en avez maintenant " +j.getNbGraineDuJoueur());
+							}
+						}
+					}
+				}
+			}
+		}else{
+			if(joueurChoisi.getNbGraineDuJoueur() == 0) {
+				System.out.println("Il n'y aucune graine à voler...\n");
+			}else{
+				if(joueurChoisi.getNbGraineDuJoueur() < this.getForce(2, m.getSaisonEnCours())) {
+					j.setNbGraineDuJoueur(j.getNbGraineDuJoueur()+joueurChoisi.getNbGraineDuJoueur());
+					joueurChoisi.setNbGraineDuJoueur(0);
+					System.out.println("Il y avait moins de graines à voler que la force de votre carte.\nVous possédez maintenant " +j.getNbGraineDuJoueur() + " graines!");
+				}else{
+					if(joueurChoisi.getNbGraineDuJoueur() >= this.getForce(2, m.getSaisonEnCours())) {
+						j.setNbGraineDuJoueur(j.getNbGraineDuJoueur()+this.getForce(2, m.getSaisonEnCours()));
+						joueurChoisi.setNbGraineDuJoueur(joueurChoisi.getNbGraineDuJoueur()-this.getForce(2, m.getSaisonEnCours()));
+						System.out.println("Vous avez volé " +this.getForce(2, m.getSaisonEnCours())+ " graines, vous en avez maintenant " +j.getNbGraineDuJoueur());
+					}
+				}
+			}
+		}
 	}
  
 	//private Arrays valeurCarteIngredient;
