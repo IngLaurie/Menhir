@@ -16,6 +16,7 @@ public abstract class Joueur implements Comparable<Joueur> {
 	//private int choixAction;
 	private int nbChiens = 0;
 	private boolean aDejaCommence = false;
+	protected boolean isJoueurPhysique;
 
 	
 
