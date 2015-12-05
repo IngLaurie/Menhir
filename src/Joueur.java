@@ -98,6 +98,9 @@ public abstract class Joueur implements Comparable<Joueur> {
 		if (this.isJoueurPhysique) {
 			System.out.println(+this.getNbGraineDuJoueur()+ " graines " +this.getNbMenhirDuJoueur()+ " ménhirs.\n");
 			this.choisirCarte(m, p);
+			
+// ICI FAIRE LE STRATEGY ?!?
+			
 			}else{ // joueur virtuel joue
 			//	if()
 				//Context context = new Context(new OffensiveStrategy());

@@ -32,17 +32,17 @@ public class JoueurVirtuel extends Joueur implements Strategy {
 	}
 
 
-	public void jouerCarte(Manche m, Partie p) {
+	public void jouerCarte(Manche m, Partie p, Joueur j) {
 		// le joueur virtuel choisi sa carte
 		//super.jouerCarte(m, p);
 		//this.choisirCarte(m, p);
 		
 		if(this.indiceDeStratDuJoueurVirtuel == 0){
 			Context context0 = new Context(new OffensiveStrategy(Offensive));
-			context0.executeStrategy(m,p);
+			context0.executeStrategy(m,p,j);
 		}else{
 			Context context1 = new Context(new DefensiveStrategy(Defensive));
-			context1.executeStrategy(m,p);
+			context1.executeStrategy(m,p,j);
 		}
 	}
 
