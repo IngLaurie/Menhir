@@ -17,6 +17,7 @@ public class Partie {
 	private int nbJPhysique;
 	private int nbJVirtuel;
 	private int nbManche = 0;
+	private int mancheNumero = 0;
 	
 	public Partie(){
 	
@@ -95,11 +96,12 @@ public class Partie {
 			
 			// permettre le choix entre une carte allié ou deux graines 
 			this.nbManche = this.nbJPhysique + this.nbJVirtuel;
-			for(int i=0; i<=this.nbManche; i++){
-				this.listeManche.add(new Manche(this));
+			for(int i=0; i<this.nbManche; i++){
+				this.listeManche.add(new Manche());
 			}
 			for (Iterator<Manche> it = listeManche.iterator(); it.hasNext();) {
 				Manche mancheActive = it.next();
+				this.mancheNumero++;
 				mancheActive.jouerManche(this);
 				System.out.println("La manche est terminée.\n");
 				for (Iterator<Joueur> it2 = listeJoueur.iterator(); it2.hasNext();) {
@@ -119,7 +121,7 @@ public class Partie {
 			//A la fin de la manche, récupérer le nombre de menhirs de chaque joueur
 			//Désigner le gagnant comme celui qui a le plus de menhirs
 			//Récupérer le nombre de graines en cas d'égalité
-			Manche manche = new Manche(this);
+			Manche manche = new Manche();
 			manche.jouerManche(this);
 			System.out.println("\nLa partie est terminée.\n");
 			this.afficherGagnants();
