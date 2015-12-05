@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-public class JoueurVirtuel extends Joueur implements Strategy {
+public class JoueurVirtuel extends Joueur /*implements Strategy*/ {
 	
 	private static final String Defensive = null;
 	private static final String Offensive = null;
@@ -32,17 +32,17 @@ public class JoueurVirtuel extends Joueur implements Strategy {
 	}
 
 
-	public void jouerCarte(Manche m, Partie p, Joueur j) {
+	public void jouerCarte(Manche m, Partie p, Joueur j, Ingredient i) {
 		// le joueur virtuel choisi sa carte
 		//super.jouerCarte(m, p);
 		//this.choisirCarte(m, p);
 		
 		if(this.indiceDeStratDuJoueurVirtuel == 0){
 			Context context0 = new Context(new OffensiveStrategy(Offensive));
-			context0.executeStrategy(m,p,j);
+			context0.executeStrategy(m,p,j,i);
 		}else{
 			Context context1 = new Context(new DefensiveStrategy(Defensive));
-			context1.executeStrategy(m,p,j);
+			context1.executeStrategy(m,p,j,i);
 		}
 	}
 
@@ -76,6 +76,18 @@ public class JoueurVirtuel extends Joueur implements Strategy {
 	public String getNom() {
 		return nom;
 	}
+
+
+	/*public Carte choisirCarte(Manche m, Partie p, Joueur j) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public void choisirAction(Carte c, Manche m, Partie p, Joueur j) {
+		// TODO Auto-generated method stub
+		
+	}*/
 
 
 	/*@Override

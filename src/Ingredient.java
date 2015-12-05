@@ -16,7 +16,7 @@ public class Ingredient extends Carte {
 	}
 	
 	
-	public void choisirAction(Joueur j, Manche m, Partie p) {
+	public void choisirAction(Joueur j, Manche m, Partie p, Ingredient i) {
 		super.choisirAction(j, m, p);
 		System.out.println("Choisir l'action à effectuer : \n");
 		System.out.println("1- Géant");
@@ -91,7 +91,7 @@ public class Ingredient extends Carte {
 				if(joueurChoisi.getNbGraineDuJoueur()<joueurChoisi.getNbChiens()) {
 					System.out.println("Les graines de " +joueurChoisi.getNom() + " sont trop bien gardées, vous n'avez pas pu en voler.");
 				}else{
-					if(joueurChoisi.getNbGraineDuJoueur >= joueurChoisi.getNbChiens()) {
+					if(joueurChoisi.getNbGraineDuJoueur() >= joueurChoisi.getNbChiens()) {
 						int volPossible = joueurChoisi.getNbGraineDuJoueur()-joueurChoisi.getNbChiens();
 						if(volPossible < this.getForce(2, m.getSaisonEnCours())) {
 							j.setNbGraineDuJoueur(j.getNbGraineDuJoueur()+volPossible);

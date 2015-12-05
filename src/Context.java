@@ -6,11 +6,11 @@ public class Context {
 		this.strategy = strategy;
 	}
 	
-	public void executeStrategy(Manche m, Partie p, Joueur j){
+	public void executeStrategy(Manche m, Partie p, Joueur j, Ingredient i){
 		// on execute la strategy
 		// exemple de return :
 		System.out.println("Execution de executeStrategy dans context");
-		strategy.jouerCarte(m,p,j);
+		strategy.jouerCarte(m,p,j,i);
 	}
 	
 	

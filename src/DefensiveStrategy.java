@@ -10,11 +10,11 @@ public class DefensiveStrategy implements Strategy {
 		this.nomStrat = strat;
 	}
 
-	public void jouerCarte(Manche m, Partie p, Joueur j) {
+	public void jouerCarte(Manche m, Partie p, Joueur j, Ingredient i) {
 		System.out.println("Execution du joueurCarte de " + this.nomStrat + "Strategy après être passé dans executeStrategy");
 
 		Carte c = this.choisirCarte(m, p, j);   // coder choisir carte
-		this.choisirAction(c, m, p, j);         // coder choisir action
+		this.choisirAction(c, m, p, j, i);         // coder choisir action
 		// choisirAction(int) ??
 	}
 
@@ -36,7 +36,7 @@ public class DefensiveStrategy implements Strategy {
 			
 			choixCartePrivilegie = j.getMainDuJoueur().get(0);
 			valSuperieure = choixCartePrivilegie.getForce(geant, saisonEnCours);
-			
+			// du coup passe dans la carte alliée ? ...
 			for(Iterator<Carte> it = j.getMainDuJoueur().iterator(); it.hasNext();){
 				Carte carteActive = it.next();
 				if(carteActive.getForce(geant, saisonEnCours) > valSuperieure){
@@ -49,18 +49,22 @@ public class DefensiveStrategy implements Strategy {
 		return choixCartePrivilegie;
 	}
 
-	public void choisirAction(Carte c, Manche m, Partie p, Joueur j) {
+	public void choisirAction(Carte c, Manche m, Partie p, Joueur j, Ingredient i) {
 		// code de choisirAction pour le joueurVirtuel
 		System.out.println("Le joueur virtuel choisi son action...");
-		System.out.println("La strategie est defensive donc il va choisir l'action GEANT");
+		System.out.println("La strategie est defensive donc il va choisir l'action GEANT ou bien ENGRAIS");
 		// si le nombre de graines du joueur virtuel > 4
 		//	alors on le fait jouer engrais pour faire pousser des menhirs
 		// sinon on joue géant 
 		// sinon farfadet 
-		
-		
+		if(j.getNbGraineDuJoueur() > 4){  // Je pense qu'il faudrait déplacer le test pour plus d'optimisation..
+			i.choisirEngrais(j, m, p);
+			System.out.println("Le joueur virtuel à joué l'action ENGRAIS");
+		}else{
+			i.choisirGeant(j, m, p);
+			System.out.println("Le joueur virtuel à joué l'action GEANT");
+		}
 		// jouer le GEANT via la classe ingredient !!!
 		
 	}
-
 }
