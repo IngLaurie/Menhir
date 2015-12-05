@@ -12,9 +12,12 @@ public abstract class Joueur implements Comparable<Joueur> {
 	protected int nbMenhirDuJoueur = 0;
 	private int nbMenhirTotalDuJoueur = 0;
 	protected int nbGraineDuJoueur = 0;
-	private boolean actif;
-	private int choixAction;
+	//private boolean actif;
+	//private int choixAction;
+	private int nbChiens = 0;
+	private boolean aDejaCommence = false;
 	protected boolean isJoueurPhysique;
+
 	
 
 	// /!\ gérer pour 2 à 6 joueurs
@@ -76,6 +79,14 @@ public abstract class Joueur implements Comparable<Joueur> {
 		return this.mainDuJoueur;
 	}
 	
+	public boolean getADejaCommence() {
+		return this.getADejaCommence();
+	}
+	
+	public void setADejaCommence(boolean a) {
+		this.aDejaCommence = a;
+	}
+	
 	public void jouerCarte(Manche m, Partie p) {
 		Carte c = this.choisirCarte(m, p);
 		this.choisirAction(c, m, p);
@@ -115,13 +126,13 @@ public abstract class Joueur implements Comparable<Joueur> {
 		
 		System.out.println("Vous avez choisi l'action : " + choixAction);
 		
-		System.out.println("Vous avez " + this.getNbGraineDuJoueur() + " graines et " + this.getNbMenhirDuJoueur() + " Menhirs\n");
+		//System.out.println("Vous avez " + this.getNbGraineDuJoueur() + " graines et " + this.getNbMenhirDuJoueur() + " Menhirs\n");
 		
 		if(choixAction == 1){ // GEANT
 			
 			this.setNbGraineDuJoueur(this.getNbGraineDuJoueur(), c.getForce(choixAction -1, saison)); 
 			System.out.println("Vous avez pris " + c.getForce(choixAction -1, saison) + " graines dans le pot commun !");
-			System.out.println("Vous avez " + this.getNbGraineDuJoueur() + " graines et " + this.getNbMenhirDuJoueur() + " Menhirs\n");
+			System.out.println("Vous avez maintenant " + this.getNbGraineDuJoueur() + " graines et " + this.getNbMenhirDuJoueur() + " Menhirs\n");
 		}else{
 			if(choixAction == 2){ // ENGRAIS 
 				if(this.getNbGraineDuJoueur() >= c.getForce(choixAction -1, saison)){
