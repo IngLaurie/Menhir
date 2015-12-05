@@ -36,49 +36,10 @@ public class Ingredient extends Carte {
 		
 		if(choixAction == 1){this.choisirGeant(j, m, p);}
 		else{
-			if(choixAction == 2){ // ENGRAIS 
-				if(j.getNbGraineDuJoueur() >= this.getForce(choixAction -1, saison)){
-					j.setNbMenhirDuJoueur(j.getNbMenhirDuJoueur(), this.getForce(choixAction -1, saison)); 
-					int nbAjouteSurChamp =  this.getForce(choixAction -1, saison);
-					j.setNbGraineDuJoueur(j.getNbGraineDuJoueur(), - nbAjouteSurChamp); 
-					
-					System.out.println("Résultat : " + this.getForce(choixAction -1, saison) + " de vos graines sont devenues des ménhirs !");
-					System.out.println("Vous avez maintenant " + j.getNbGraineDuJoueur() + " graines et " + j.getNbMenhirDuJoueur() + " ménhirs\n");
-				}else{
-					if(j.getNbGraineDuJoueur() < this.getForce(choixAction -1, saison)){
-						j.setNbMenhirDuJoueur(j.getNbGraineDuJoueur(), j.getNbGraineDuJoueur()); 
-						int nbAjouteSurChamp =  j.getNbGraineDuJoueur();
-						j.setNbGraineDuJoueur(j.getNbGraineDuJoueur(), - nbAjouteSurChamp); 
-						
-						System.out.println("Résultat : " + this.getForce(choixAction -1, saison) + " de vos graines sont devenues des ménhirs !");
-						System.out.println("Vous avez maintenant " + j.getNbGraineDuJoueur() + " graines et " + j.getNbMenhirDuJoueur() + " ménhirs\n");
-					}else{
-						System.out.println("Sorry.. vous n'avez plus de graines..\n");
-					}
-				}
-			}else{
-				if(choixAction == 3){ // FARFADET
-					System.out.println("Veuillez choisir un joueur : ");
-					Joueur joueurChoisi = j.choisirJoueur(p.getListeJoueur());
-					
-					//if(joueurChoisi.getNom() != this.getNom()){
-					System.out.println("Nb Graines du joueur choisi : " + joueurChoisi.getNbGraineDuJoueur() + " + Nb Menhirs : " + joueurChoisi.getNbMenhirDuJoueur());
-					j.setNbGraineDuJoueur(j.getNbGraineDuJoueur(), this.getForce(choixAction -1, saison));
-					int nbAVoler = this.getForce(choixAction -1, saison);
-					joueurChoisi.setNbGraineDuJoueur(joueurChoisi.getNbGraineDuJoueur(), - nbAVoler);
-					System.out.println("Vous volez " + nbAVoler + " graines au joueur " + joueurChoisi.getNom());
-					System.out.println("Nb Graines du joueur choisi : " + joueurChoisi.getNbGraineDuJoueur() + " + Nb Menhirs : " + joueurChoisi.getNbMenhirDuJoueur());
-					// ATTENTION AUX INDICE.. si on tape 2 alors que le choix est 0 ou 1, ça marche quand même.. 
-					System.out.println("Vous avez volé " + this.getForce(choixAction -1, saison) + " graines au joueur " + joueurChoisi.getNom() + " !");
-					/*}else{
-						//Joueur joueurChoisi = this.choisirJoueur(p.getListeJoueur());
-						System.out.println("ERROR");
-					}*/
-					// NOP ! 
-					// ne pas faire de cette façon.. 
-					//System.out.println("Veuillez choisir un joueur différent du votre");
-					
-				}else{
+			if(choixAction == 2){this.choisirEngrais(j, m, p);}
+				else{
+				if(choixAction == 3){this.choisirFarfadet(j, m, p);} // FARFADET
+					else{
 					System.out.println("Veuillez entrer une valeur juste\n\n");
 					// /!\ faire reboucler sur le menu (choix de l'action)
 				}
@@ -95,10 +56,47 @@ public class Ingredient extends Carte {
 	}
 	
 	public void choisirEngrais(Joueur j, Manche m, Partie p) {
-		
+		if(j.getNbGraineDuJoueur() >= this.getForce(choixAction -1, saison)){
+			j.setNbMenhirDuJoueur(j.getNbMenhirDuJoueur(), this.getForce(choixAction -1, saison)); 
+			int nbAjouteSurChamp =  this.getForce(choixAction -1, saison);
+			j.setNbGraineDuJoueur(j.getNbGraineDuJoueur(), - nbAjouteSurChamp); 
+			
+			System.out.println("Résultat : " + this.getForce(choixAction -1, saison) + " de vos graines sont devenues des ménhirs !");
+			System.out.println("Vous avez maintenant " + j.getNbGraineDuJoueur() + " graines et " + j.getNbMenhirDuJoueur() + " ménhirs\n");
+		}else{
+			if(j.getNbGraineDuJoueur() < this.getForce(choixAction -1, saison)){
+				j.setNbMenhirDuJoueur(j.getNbGraineDuJoueur(), j.getNbGraineDuJoueur()); 
+				int nbAjouteSurChamp =  j.getNbGraineDuJoueur();
+				j.setNbGraineDuJoueur(j.getNbGraineDuJoueur(), - nbAjouteSurChamp); 
+				
+				System.out.println("Résultat : " + this.getForce(choixAction -1, saison) + " de vos graines sont devenues des ménhirs !");
+				System.out.println("Vous avez maintenant " + j.getNbGraineDuJoueur() + " graines et " + j.getNbMenhirDuJoueur() + " ménhirs\n");
+			}else{
+				System.out.println("Sorry.. vous n'avez plus de graines..\n");
+			}
+		}
 	}
 	
 	public void choisirFarfadet(Joueur j, Manche m, Partie p) {
+		System.out.println("Veuillez choisir un joueur : ");
+		Joueur joueurChoisi = j.choisirJoueur(p.getListeJoueur());
+		
+		//if(joueurChoisi.getNom() != this.getNom()){
+		System.out.println("Nb Graines du joueur choisi : " + joueurChoisi.getNbGraineDuJoueur() + " + Nb Menhirs : " + joueurChoisi.getNbMenhirDuJoueur());
+		j.setNbGraineDuJoueur(j.getNbGraineDuJoueur(), this.getForce(choixAction -1, saison));
+		int nbAVoler = this.getForce(choixAction -1, saison);
+		joueurChoisi.setNbGraineDuJoueur(joueurChoisi.getNbGraineDuJoueur(), - nbAVoler);
+		System.out.println("Vous volez " + nbAVoler + " graines au joueur " + joueurChoisi.getNom());
+		System.out.println("Nb Graines du joueur choisi : " + joueurChoisi.getNbGraineDuJoueur() + " + Nb Menhirs : " + joueurChoisi.getNbMenhirDuJoueur());
+		// ATTENTION AUX INDICE.. si on tape 2 alors que le choix est 0 ou 1, ça marche quand même.. 
+		System.out.println("Vous avez volé " + this.getForce(choixAction -1, saison) + " graines au joueur " + joueurChoisi.getNom() + " !");
+		/*}else{
+			//Joueur joueurChoisi = this.choisirJoueur(p.getListeJoueur());
+			System.out.println("ERROR");
+		}*/
+		// NOP ! 
+		// ne pas faire de cette façon.. 
+		//System.out.println("Veuillez choisir un joueur différent du votre");
 		
 	}
  
