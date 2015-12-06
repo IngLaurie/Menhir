@@ -5,7 +5,7 @@ import org.omg.CORBA.portable.IndirectionException;
 public abstract class Joueur implements Comparable<Joueur> {
 //   /!\ GRAINES 
 	protected String nom;
-	protected int age;
+	protected int age =0;
 
 	protected ArrayList<Carte> mainDuJoueur = new ArrayList<Carte>();
 	protected int nbMenhirDuJoueur = 0;
@@ -143,11 +143,22 @@ public abstract class Joueur implements Comparable<Joueur> {
 		System.out.println("\nChoisir une carte à jouer : ");
 		this.afficherMainJoueur();
 		// parcourir la liste et indiquer laquelle est choisie en fonction d'un indice
-		Scanner scanCarte = new Scanner(System.in); // pour scanner l'indice de la carte choisie
-		int choixCarte = scanCarte.nextInt();
-		this.mainDuJoueur.get(choixCarte - 1).choisirAction(this, m, p);
+		int choixCarte = 0;
+		do {
+			try {
+				Scanner scanCarte = new Scanner(System.in); // pour scanner l'indice de la carte choisie
+				choixCarte = scanCarte.nextInt();
+				this.mainDuJoueur.get(choixCarte - 1).choisirAction(this, m, p);
+				
+			}catch(InputMismatchException e) {
+				System.out.println("Choisissez une carte en tapant 1, 2, 3, 4 ou 5.\n");
+			}catch(IndexOutOfBoundsException e) {
+				System.out.println("Vous n'avez pas autant de cartes!\nRéessayez.\n");
+			}
+			}while(choixCarte < 1 || choixCarte >this.mainDuJoueur.size());
 	}
-	
+		
+		
 	public void choisirCarte(Manche m, Partie p, Joueur j){
 			
 			

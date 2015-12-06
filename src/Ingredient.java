@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Ingredient extends Carte {
@@ -25,11 +26,16 @@ public class Ingredient extends Carte {
 		System.out.println("2- Engrais");
 		System.out.println("3- Farfadet");
 		
+		int choixAction = 0;
+		do {
+			try{
+				Scanner scanAction = new Scanner(System.in);
+				choixAction = scanAction.nextInt();
+			}catch(InputMismatchException e) {
+				System.out.println("Entrez 1, 2 ou 3.\n");
+			}
+		}while(choixAction != 1 && choixAction != 2 && choixAction != 3);
 
-		int saison = m.getSaisonEnCours();
-		
-		Scanner scanAction = new Scanner(System.in);
-		int choixAction = scanAction.nextInt();
 		//scanAction.close();
 		
 		System.out.println("Vous avez choisi l'action : " + choixAction);
