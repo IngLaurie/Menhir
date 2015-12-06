@@ -104,18 +104,18 @@ public abstract class Joueur implements Comparable<Joueur> {
 
 		// parcourir la liste et indiquer laquelle est choisie en fonction d'un indice
 		int choixCarte = 0;
-		do {
-			try {
+		//do {
+			//try {
 				Scanner scanCarte = new Scanner(System.in); // pour scanner l'indice de la carte choisie
 				choixCarte = scanCarte.nextInt();
 				this.mainDuJoueur.get(choixCarte - 1).choisirAction(this, m, p);
 				
-			}catch(InputMismatchException e) {
+			//}catch(InputMismatchException e) {
 				System.out.println("Choisissez une carte en tapant 1, 2, 3, 4 ou 5.\n");
-			}catch(IndexOutOfBoundsException e) {
+			//}catch(IndexOutOfBoundsException e) {
 				System.out.println("Vous n'avez pas autant de cartes!\nRéessayez.\n");
-			}
-			}while(choixCarte < 1 || choixCarte >this.mainDuJoueur.size());
+			//}
+			//}while(choixCarte < 1 || choixCarte >this.mainDuJoueur.size());
 	}
 		
 		

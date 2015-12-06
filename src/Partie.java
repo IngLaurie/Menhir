@@ -48,11 +48,9 @@ public class Partie {
 
 		}while (typePartie != 0 && typePartie != 1);
 		
-		
-		// /!\ 1 seul joueur physique !
-		this.nbJPhysique = 2; //Penser à en remettre un seul
+		this.nbJPhysique = 2;
 		this.listeJoueur.add(new JoueurPhysique());
-		this.listeJoueur.add(new JoueurPhysique());		
+		this.listeJoueur.add(new JoueurPhysique());
 		
 		System.out.println("Combien y a t'il de joueur(s) virtuel(s) ?");
 		do {
@@ -67,8 +65,9 @@ public class Partie {
 				
 			}
 			}catch(InputMismatchException e) {
-				System.out.println("Veuillez entrer un nombre entre 0 et 5.\n");
-				
+				System.out.println("Veuillez entrer un nombre entre 0 et 5.\n");				
+			}catch(IndexOutOfBoundsException e) {
+				System.out.println("Il doit y avoir au moins 1 et au maximum 5 joueurs virtuels.");
 			}
 		}while(this.nbJVirtuel <0 && this.nbJVirtuel >5);
 			
@@ -123,8 +122,8 @@ public class Partie {
 
 	public void afficherGagnants() {
 		HashSet<Joueur> joueursGagnants = new HashSet<Joueur>();
-		int menhirMax = 0;
-		int grainesMax = 0;
+		int menhirMax = -1;
+		int grainesMax = -1;
 		for (Iterator<Joueur> it = this.getListeJoueur().iterator(); it.hasNext();) {
 			Joueur joueurActif = it.next();
 			if (joueurActif.getNbMenhirDuJoueur() > menhirMax) {
