@@ -94,7 +94,7 @@ public class Partie {
 			for (Iterator<Manche> it = listeManche.iterator(); it.hasNext();) {
 				Manche mancheActive = it.next();
 				this.mancheNumero++;
-				//mancheActive.jouerManche(this);
+				mancheActive.jouerManche(this);
 				System.out.println("La manche est terminée.\n");
 				int j = 0;
 				for (Iterator<Joueur> it2 = listeJoueur.iterator(); it2.hasNext();) {
