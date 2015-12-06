@@ -25,7 +25,7 @@ public class JoueurVirtuel extends Joueur {
 	public int attributionStrategieAJoueur(){
 		Random rn = new Random();
 		int leNbAleatoire = rn.nextInt(2);
-		System.out.println("Le nb aleatoire est " + leNbAleatoire);
+		//System.out.println("Le nb aleatoire est " + leNbAleatoire);
 		return leNbAleatoire;
 	}
 	
