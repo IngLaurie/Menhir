@@ -1,19 +1,12 @@
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.InputMismatchException;
-import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-// gérer le nombre de points de chaque joueurs - partie complexe surtout
-// /!\ si demande d'ajouter une carte au jeu..
 
 public class Manche {
 
-	//private static final int NBMAXCARTEPRAPIDE = 4;
 	private int saisonEnCours;
 	private String listeSaison[] = {"printemps", "été", "automne", "hiver"};
 
@@ -21,33 +14,10 @@ public class Manche {
 	private LinkedList<Carte> listeCAllies = new LinkedList<Carte>();
 		
 	
-	// faire un SET ?
-	// vérifier s'il y a pas trop de choses / à déplacer
 	public Manche(){
 		
 		saisonEnCours = 0;
 		
-		//if(p.getPartieAvancee()){
-			// autant de manches que de joueurs
-			//this.nbManche = p.getNbJPhysique() + p.getNbJVirtuel();
-			//this.listeCartesPA.addAll(listeCAllies);
-			//this.listeCartesPA.addAll(listeCIngredients);
-			// cartes de la partie rapide + cartes alliés
-			// on a ici l'ensemble des cartes nécessaires pour la partie avancee 
-			// on mélange les cartes 
-			 //Collections.shuffle(listeCIngredients);
-			 //Collections.shuffle(listeCAllies);
-			// 
-		//}else{  // partie rapide
-			//this.nbManche = 1;
-			//Collections.shuffle(listeCIngredients);
-			//this.listeCartesPA.addAll(listeCIngredients);
-			// création de la manche
-			// cartes de la partie rapide seulement
-			// on mélange les cartes 
-			
-			
-		//}
 	}
 	
 	public void setSaisonEnCours(int saisonEnCours) {
@@ -56,9 +26,7 @@ public class Manche {
 
 	public void distribuerCarteJoueur(Partie p){
 		if(p.getPartieAvancee()){
-			// ici on utilise les cartes de listeCIngredients + listeCAllies 			
-			// constructeur de manche mettre en param la liste de cartes  //
-			// mettre en static final .. //
+			
 			this.initialisationListeCarte();
 			Collections.shuffle(listeCIngredients);
 			Collections.shuffle(listeCAllies);
@@ -76,15 +44,9 @@ public class Manche {
 				}
 			}
 			
-			
-			
+						
 		}else{ 
-			// partie rapide
-			// une partie rapide = 4 tours de jeu 
-			// chaque joueur place devant lui un champ et pose à côté 2 graines
-				
-			// ici on utilise les cartes de listeCIngredients
-			
+						
 			this.initialisationListeCarte();
 			Collections.shuffle(listeCIngredients);
 			
@@ -96,14 +58,6 @@ public class Manche {
 				}
 				this.listeCIngredients.removeAll(joueurActif.getMainDuJoueur());
 			}
-			
-			   /*	
-			    Joueur JoueurTmp;
-				JoueurTmp = this.attribuerJoueurDeDebut(p);
-				p.getListeJoueur().set(p.getListeJoueur().indexOf(JoueurTmp),p.getListeJoueur().get(0));
-				p.getListeJoueur().set(0, JoueurTmp);
-				*/
-				// utilisation d'un swap à la place 
 		}
 	}
 	
@@ -158,7 +112,6 @@ public class Manche {
 		}
 		for(int i=2; i<p.getListeJoueur().size(); i++){
 			
-			// voir si le joueur est le dernier element
 			if(p.getListeJoueur().get(i).getAge() < jQuiCommence.getAge()){	
 				jQuiCommence = p.getListeJoueur().get(i);
 			}
@@ -219,13 +172,7 @@ public class Manche {
 				}
 				this.changerSaison();
 			}
-
-			//Changer la saison
-			//Répéter pour chaque saisons
-			// A la fin de toutes les saison:
-			//Fin de la manche
 		}
-		
 	}
 	
 
@@ -315,14 +262,7 @@ public class Manche {
 		this.listeCAllies.add(new TaupeGeante("TaupeG1", tabTaupeGeante1));
 		this.listeCAllies.add(new TaupeGeante("TaupeG2", tabTaupeGeante2));
 		this.listeCAllies.add(new TaupeGeante("TaupeG3", tabTaupeGeante3));
-		
-		/* CARTES RESTANTES :
-		 * 
-		 * verso Menhir (vraiment besoin du verso? pas d'importance pour la console de toute façon)
-		 * champ (nécessaire?)
-		 * autre verso (verso alliés ?) (pas encore besoin)
-		 * comptage de points (nécessaire?)
-		 */
+	
 	}
 	
 

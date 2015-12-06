@@ -1,10 +1,7 @@
-import java.lang.reflect.Method;
 import java.util.Iterator;
 
-// EN COURS DE TEST ----
 
 public class DefensiveStrategy implements Strategy {
-	private String nomStrat;
 	private boolean utiliserGeant;
 	private final int GEANT = 1;
 	private final int ENGRAIS = 2;
@@ -14,12 +11,6 @@ public class DefensiveStrategy implements Strategy {
 		this.utiliserGeant = false;
 	}
 	
-	/*public void jouerCarte(Joueur j, Manche m, Partie p, Class i) {
-		System.out.println("Execution du joueurCarte de " + this.nomStrat + "Strategy après être passé dans executeStrategy");
-
-		Carte c = this.choisirCarte(m, p, j);
-		this.choisirAction(c, m, p, j, i);
-	}*/
 	
 	public Carte choisirCarte(Manche m, Partie p, Joueur j) {
 		System.out.println("\nAu tour de joueur virtuel " + "de jouer!\n");

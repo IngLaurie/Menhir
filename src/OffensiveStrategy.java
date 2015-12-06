@@ -1,9 +1,7 @@
 import java.util.Iterator;
 
-// EN COURS DE TEST ----
 
 public class OffensiveStrategy implements Strategy {
-	private String nomStrat;
 	private boolean utiliserFarfadet;
 	private final int ENGRAIS = 2;
 	private final int FARFADET = 3;
@@ -13,12 +11,6 @@ public class OffensiveStrategy implements Strategy {
 		this.utiliserFarfadet = false;
 	}
 
-	/*public void jouerCarte(Manche m, Partie p, Joueur j, Ingredient i) {
-		System.out.println("Execution du joueurCarte de " + this.nomStrat + "Strategy après être passé dans executeStrategy");
-
-		Carte c = this.choisirCarte(m, p, j);
-		this.choisirAction(c, m, p, j, i);
-	}*/
 
 	public Carte choisirCarte(Manche m, Partie p, Joueur j) {
 		System.out.println("\nAu tour de joueur virtuel " + "de jouer!\n");

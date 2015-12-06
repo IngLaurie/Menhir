@@ -1,11 +1,8 @@
 import java.util.*;
 
-import org.omg.CORBA.portable.IndirectionException;
-// NOTRE CONTEXT POUR LA STRATEGIE 
 public abstract class Joueur implements Comparable<Joueur> {
-//   /!\ GRAINES 
-	protected String nom;
 
+	protected String nom;
 	protected int age = 0;
 	protected Strategy strategy;
 	protected ArrayList<Carte> mainDuJoueur = new ArrayList<Carte>();
@@ -19,7 +16,6 @@ public abstract class Joueur implements Comparable<Joueur> {
 	
 	protected int indiceDeStratDuJoueurVirtuel;
 
-	// /!\ gérer pour 2 à 6 joueurs
 	public Joueur(){
 		this.nbGraineDuJoueur = 0;
 		this.nbMenhirDuJoueur = 0;
