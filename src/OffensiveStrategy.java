@@ -1,7 +1,7 @@
 import java.util.Iterator;
 
-
 public class OffensiveStrategy implements Strategy {
+
 	private boolean utiliserFarfadet;
 	private final int ENGRAIS = 2;
 	private final int FARFADET = 3;
@@ -10,8 +10,7 @@ public class OffensiveStrategy implements Strategy {
 		super();
 		this.utiliserFarfadet = false;
 	}
-
-
+	
 	public Carte choisirCarte(Manche m, Partie p, Joueur j) {
 		System.out.println("\nAu tour de joueur virtuel " + "de jouer!\n");
 		System.out.println("Le joueur virtuel choisi sa carte...");
@@ -25,7 +24,7 @@ public class OffensiveStrategy implements Strategy {
 
 		for(Iterator<Carte> it = j.getMainDuJoueur().iterator(); it.hasNext();){
 			Carte carteActive = it.next();
-			if(carteActive.isAllie != true){
+			if(carteActive.isAllie = false){
 				if(j.getNbGraineDuJoueur() == 0){
 					if(carteActive.getForce(FARFADET -1, saisonEnCours) > valSuperieure){
 						choixCartePrivilegie = carteActive;
@@ -51,7 +50,7 @@ public class OffensiveStrategy implements Strategy {
 
 	public void choisirAction(Carte c, Manche m, Partie p, Joueur j) {
 		System.out.println("Le joueur virtuel choisi son action...");
-		System.out.println("La strategie est offensive donc il va choisir l'action FARFADET ou bien ENGRAIS");
+		System.out.println("La strategie est offensive donc il va choisir l'action FARFADET ou bien ENGRAIS, voire GEANT");
 		
 		if(utiliserFarfadet){
 			c.choisirFarfadet(j, m, p);

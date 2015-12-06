@@ -1,8 +1,7 @@
-
 public class ChienDeGarde extends Carte{
 	
-	public ChienDeGarde(String nom, int[] tabValCarte) {
-		super(nom, tabValCarte);
+	public ChienDeGarde(String identifiant, int[] tabValCarte, String nom) {
+		super(identifiant, tabValCarte, nom);
 		this.isAllie = true;
 	}
 
@@ -21,10 +20,28 @@ public class ChienDeGarde extends Carte{
 	
 	public String toString() {
 		StringBuffer sb = new StringBuffer();
-		sb.append("                   " + this.getNom() + "\n");
+		sb.append("               " + this.getNom() + "\n");
 		sb.append("         Primpt.  Ete  Automne  Hiver\n");
 		sb.append("Chien       " + this.getForce(0) + "      " + this.getForce(1) + "      " + this.getForce(2) + "       " + this.getForce(3) + "\n");
 		return sb.toString();
+	}
+
+	@Override
+	public void choisirGeant(Joueur j, Manche m, Partie p) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void choisirEngrais(Joueur j, Manche m, Partie p) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void choisirFarfadet(Joueur j, Manche m, Partie p) {
+		// TODO Auto-generated method stub
+		
 	}
 
 

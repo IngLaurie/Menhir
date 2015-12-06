@@ -5,10 +5,13 @@ import java.util.Scanner;
 import java.util.HashSet;
 import java.util.InputMismatchException;
 
-// PENSER AU SINGLETON
-// THREAD ?
-// MVC ?
-// 
+/*
+ * Implémentation :
+ * 		SINGLETON
+ * 		MVC
+ * 		Thread
+ */
+
 public class Partie {
 
 	private boolean partieAvancee;
@@ -25,7 +28,6 @@ public class Partie {
 		System.out.println("Partie RAPIDE (0) ou avec des REGLES AVANCEES (1) ?");
 		int typePartie = -1;
 		do {
-			
 			try{
 				Scanner scanTypeP = new Scanner(System.in);
 				typePartie = scanTypeP.nextInt();
@@ -62,8 +64,7 @@ public class Partie {
 					for(int i=1; i<= nbJVirtuel; i++){
 						this.listeJoueur.add(new JoueurVirtuel(i));
 					}
-				
-			}
+				}
 			}catch(InputMismatchException e) {
 				System.out.println("Veuillez entrer un nombre entre 0 et 5.\n");				
 			}catch(IndexOutOfBoundsException e) {
@@ -78,7 +79,6 @@ public class Partie {
 			
 	}
 		
-	
 	public int getNbJPhysique(){
 		return this.nbJPhysique;
 	}
@@ -95,11 +95,13 @@ public class Partie {
 			for(int i=0; i<this.nbManche; i++){
 				this.listeManche.add(new Manche());
 			}
+			
 			for (Iterator<Manche> it = listeManche.iterator(); it.hasNext();) {
 				Manche mancheActive = it.next();
 				this.mancheNumero++;
 				mancheActive.jouerManche(this);
 				System.out.println("La manche est terminée.\n");
+
 				for (Iterator<Joueur> it2 = listeJoueur.iterator(); it2.hasNext();) {
 					Joueur joueurActif = it2.next();
 					joueurActif.setNbMenhirTotalDuJoueur(joueurActif.getNbMenhirDuJoueur());
@@ -110,8 +112,6 @@ public class Partie {
 			
 			System.out.println("\nFin de la partie!\nClassement final:\n");
 			this.afficherClassement();
-			
-			
 		}else{ 
 			Manche manche = new Manche();
 			manche.jouerManche(this);
@@ -131,17 +131,20 @@ public class Partie {
 				grainesMax = joueurActif.getNbGraineDuJoueur();
 			}
 		}
+		
 		for (Iterator<Joueur> it = this.getListeJoueur().iterator(); it.hasNext();) {
 			Joueur joueurActif = it.next();
 			if (joueurActif.getNbMenhirDuJoueur() == menhirMax && joueurActif.getNbGraineDuJoueur() == grainesMax) {
 				joueursGagnants.add(joueurActif);
 			}
 		}
+		
 		if (joueursGagnants.size() == 1) {
 			System.out.println("Le gagnant est: ");
-		} else {
+		}else{
 			System.out.println("Les gagnants sont: ");
 		}
+		
 		for (Iterator<Joueur> it = joueursGagnants.iterator(); it.hasNext();) {
 			Joueur gagnant = it.next();
 			System.out.print(gagnant.getNom() + " avec " +gagnant.getNbMenhirDuJoueur()+ " ménhir(s) et " +gagnant.getNbGraineDuJoueur()+ " graine(s).\n");
@@ -152,6 +155,7 @@ public class Partie {
 		ArrayList<Joueur> classement = new ArrayList<Joueur>();
 		int position = 0;
 		int egalite = 0;
+		
 		for (Iterator<Joueur> it = listeJoueur.iterator(); it.hasNext();) {
 			Joueur joueurActif = it.next();
 			classement.add(joueurActif);
@@ -170,7 +174,6 @@ public class Partie {
 			}
 			System.out.println(position + ". " +joueurActif.getNom()+ " avec: " +joueurActif.getNbMenhirTotalDuJoueur()+ " ménhirs au total.");
 		}
-		
 	}
 	
 	public boolean getPartieAvancee() {
@@ -184,5 +187,4 @@ public class Partie {
 	public int getMancheNumero() {
 		return this.mancheNumero;
 	}
-
 }

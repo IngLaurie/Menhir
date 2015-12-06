@@ -1,12 +1,9 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-
 public class JoueurPhysique extends Joueur {
 
 	Joueur joueurChoisi = null;
-	
-	
 
 	public JoueurPhysique() {
 		super();
@@ -39,9 +36,7 @@ public class JoueurPhysique extends Joueur {
 		isJoueurPhysique = true;
 	}
 
-	
 	public void jouerCarte(Manche m, Partie p){
 		super.jouerCarte(m, p);
 	}
-
 }

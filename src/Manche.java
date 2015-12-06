@@ -4,20 +4,15 @@ import java.util.Scanner;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-
 public class Manche {
 
 	private int saisonEnCours;
 	private String listeSaison[] = {"printemps", "été", "automne", "hiver"};
-
 	private LinkedList<Carte> listeCIngredients = new LinkedList<Carte>();
 	private LinkedList<Carte> listeCAllies = new LinkedList<Carte>();
 		
-	
 	public Manche(){
-		
 		saisonEnCours = 0;
-		
 	}
 	
 	public void setSaisonEnCours(int saisonEnCours) {
@@ -42,11 +37,8 @@ public class Manche {
 					Carte c = this.listeCIngredients.removeFirst();
 					joueurActif.getMainDuJoueur().add(c);
 				}
-			}
-			
-						
-		}else{ 
-						
+			}	
+		}else{
 			this.initialisationListeCarte();
 			Collections.shuffle(listeCIngredients);
 			
@@ -80,12 +72,10 @@ public class Manche {
 						System.out.println("Choix incorrect.\n");
 					}
 				}
-				
 			}catch(InputMismatchException e) {
 				System.out.println("Veuillez entrer votre choix en tapant 1 ou 2.\n");
 			}
 		}while(choix != 1 && choix !=2);
-		
 	}
 
 	public void attribuerJoueurDeDebut(Partie p){
@@ -103,24 +93,24 @@ public class Manche {
 			int a = p.getListeJoueur().indexOf(p.getListeJoueur().get(0));
 			int b = p.getListeJoueur().indexOf(jQuiCommence);
 			Collections.swap(p.getListeJoueur(), a, b);
+		}else{
+			if(p.getListeJoueur().get(0).getAge() < p.getListeJoueur().get(1).getAge()){	
+				jQuiCommence = p.getListeJoueur().get(0);
+			}else{
+				jQuiCommence = p.getListeJoueur().get(1);
+			}
 			
-		}else{
-		if(p.getListeJoueur().get(0).getAge() < p.getListeJoueur().get(1).getAge()){	
-			jQuiCommence = p.getListeJoueur().get(0);
-		}else{
-			jQuiCommence = p.getListeJoueur().get(1);
-		}
-		for(int i=2; i<p.getListeJoueur().size(); i++){
+			for(int i=2; i<p.getListeJoueur().size(); i++){
 			
 			if(p.getListeJoueur().get(i).getAge() < jQuiCommence.getAge()){	
 				jQuiCommence = p.getListeJoueur().get(i);
 			}
 			
-		}
-		int a = p.getListeJoueur().indexOf(p.getListeJoueur().get(0));
-		int b = p.getListeJoueur().indexOf(jQuiCommence);
+			int a = p.getListeJoueur().indexOf(p.getListeJoueur().get(0));
+			int b = p.getListeJoueur().indexOf(jQuiCommence);
 		
-		Collections.swap(p.getListeJoueur(), a, b);
+			Collections.swap(p.getListeJoueur(), a, b);
+			}
 		}
 	}
 	
@@ -134,6 +124,7 @@ public class Manche {
 			this.attribuerJoueurDeDebut(p);
 			this.distribuerCarteJoueur(p);
 			System.out.println("\n-----------------\nDébut de la manche " +p.getMancheNumero()+ "!\n");
+			
 			for (int i=0; i<4; i++) {
 				for(Iterator<Joueur> it = p.getListeJoueur().iterator(); it.hasNext();) {
 					Joueur joueurActif = it.next();
@@ -143,24 +134,17 @@ public class Manche {
 				}
 				this.changerSaison();
 			}
+			
 			for(Iterator<Joueur> it = p.getListeJoueur().iterator(); it.hasNext();) {
 				Joueur joueurActif = it.next();
 				joueurActif.getMainDuJoueur().clear();
 				joueurActif.setNbChiens(0);
-				joueurActif.setNbGraineDuJoueur(0);
-				
+				joueurActif.setNbGraineDuJoueur(0);	
 			}
-			/*A la fin d'une manche de partie complexe, 
-			il se peut qu'il reste une carte dans la main d'un joueur
-			on supprime donc toutes les cartes des mains de tous les joueurs
-			et on leur enlève leurs graines et chiens
-			pour éviter d'avoir des problèmes pendant les manches suivantes*/
 			
-			} else {
-			//Distribuer les cartes
+		} else {
 			this.attribuerJoueurDeDebut(p);
 			this.distribuerCarteJoueur(p);
-			//Faire jouer chaque joueur
 			System.out.println("\n-----------------\nDébut de la manche!\n");
 			
 			for (int i=0; i<4; i++) {
@@ -174,7 +158,6 @@ public class Manche {
 			}
 		}
 	}
-	
 
 	public LinkedList<Carte> getListeCIngredients() {
 		return this.listeCIngredients;
@@ -184,14 +167,13 @@ public class Manche {
 		return this.listeCAllies;
 	}
 
-
 	public void changerSaison(){
 		int nouvSaison = this.saisonEnCours;
 		System.out.println("La saison " + this.listeSaison[this.saisonEnCours] + " est terminée.\n");
 		nouvSaison++;
 		if (nouvSaison == 4) {
 			nouvSaison = 0;
-		} else {
+		}else{
 			System.out.println("La nouvelle saison est " +this.listeSaison[this.saisonEnCours+1]);
 		}
 		this.saisonEnCours = nouvSaison;
@@ -222,7 +204,7 @@ public class Manche {
 		int tabIng21[][] = {{3, 3, 3, 0},{1, 3, 3, 2},{2, 3, 1, 3}};
 		int tabIng22[][] = {{1, 2, 2, 1},{1, 2, 3, 0},{0, 2, 2, 2}};
 		int tabIng23[][] = {{4, 0, 1, 1},{1, 1, 3, 1},{0, 0, 3, 3}};
-		int tabIng24[][] = {{2, 0, 1, 3},{0, 3, 0, 3},{1, 2, 2, 1}};     // vérifier s'il faut l'ajouter 
+		int tabIng24[][] = {{2, 0, 1, 3},{0, 3, 0, 3},{1, 2, 2, 1}};
 		
 		int tabTaupeGeante1[] = {1, 1, 1, 1};
 		int tabTaupeGeante2[] = {0, 2, 2, 0};
@@ -231,39 +213,36 @@ public class Manche {
 		int tabChienDeGarde2[] = {1, 2, 0, 1};
 		int tabChienDeGarde3[] = {0, 1, 3, 0};
 		
-		this.listeCIngredients.add(new Ingredient("ing1", tabIng1));
-		this.listeCIngredients.add(new Ingredient("ing2", tabIng2));
-		this.listeCIngredients.add(new Ingredient("ing3", tabIng3));
-		this.listeCIngredients.add(new Ingredient("ing4", tabIng4));
-		this.listeCIngredients.add(new Ingredient("ing5", tabIng5));
-		this.listeCIngredients.add(new Ingredient("ing6", tabIng6));
-		this.listeCIngredients.add(new Ingredient("ing7", tabIng7));
-		this.listeCIngredients.add(new Ingredient("ing8", tabIng8));
-		this.listeCIngredients.add(new Ingredient("ing9", tabIng9));
-		this.listeCIngredients.add(new Ingredient("ing10", tabIng10));
-		this.listeCIngredients.add(new Ingredient("ing11", tabIng11));
-		this.listeCIngredients.add(new Ingredient("ing12", tabIng12));
-		this.listeCIngredients.add(new Ingredient("ing13", tabIng13));
-		this.listeCIngredients.add(new Ingredient("ing14", tabIng14));
-		this.listeCIngredients.add(new Ingredient("ing15", tabIng15));
-		this.listeCIngredients.add(new Ingredient("ing16", tabIng16));
-		this.listeCIngredients.add(new Ingredient("ing17", tabIng17));
-		this.listeCIngredients.add(new Ingredient("ing18", tabIng18));
-		this.listeCIngredients.add(new Ingredient("ing19", tabIng19));
-		this.listeCIngredients.add(new Ingredient("ing20", tabIng20));
-		this.listeCIngredients.add(new Ingredient("ing21", tabIng21));
-		this.listeCIngredients.add(new Ingredient("ing22", tabIng22));
-		this.listeCIngredients.add(new Ingredient("ing23", tabIng23));
-		this.listeCIngredients.add(new Ingredient("ing24", tabIng24));
-		
-		this.listeCAllies.add(new ChienDeGarde("CdG1", tabChienDeGarde1));
-		this.listeCAllies.add(new ChienDeGarde("CdG2", tabChienDeGarde2));
-		this.listeCAllies.add(new ChienDeGarde("CdG3", tabChienDeGarde3));
-		this.listeCAllies.add(new TaupeGeante("TaupeG1", tabTaupeGeante1));
-		this.listeCAllies.add(new TaupeGeante("TaupeG2", tabTaupeGeante2));
-		this.listeCAllies.add(new TaupeGeante("TaupeG3", tabTaupeGeante3));
-	
-	}
-	
+		this.listeCIngredients.add(new Ingredient("ing1", tabIng1, "Rayon de Lune"));
+		this.listeCIngredients.add(new Ingredient("ing2", tabIng2, "Rayon de Lune"));
+		this.listeCIngredients.add(new Ingredient("ing3", tabIng3, "Rayon de Lune"));
+		this.listeCIngredients.add(new Ingredient("ing4", tabIng4, "Chant de sirène"));
+		this.listeCIngredients.add(new Ingredient("ing5", tabIng5, "Chant de sirène"));
+		this.listeCIngredients.add(new Ingredient("ing6", tabIng6, "Chant de sirène"));
+		this.listeCIngredients.add(new Ingredient("ing7", tabIng7, "Larmes de dryade"));
+		this.listeCIngredients.add(new Ingredient("ing8", tabIng8, "Larmes de dryade"));
+		this.listeCIngredients.add(new Ingredient("ing9", tabIng9, "Larmes de dryade"));
+		this.listeCIngredients.add(new Ingredient("ing10", tabIng10, "Fontaine d'eau pure"));
+		this.listeCIngredients.add(new Ingredient("ing11", tabIng11, "Fontaine d'eau pure"));
+		this.listeCIngredients.add(new Ingredient("ing12", tabIng12, "Fontaine d'eau pure"));
+		this.listeCIngredients.add(new Ingredient("ing13", tabIng13, "Poudre d'or"));
+		this.listeCIngredients.add(new Ingredient("ing14", tabIng14, "Poudre d'or"));
+		this.listeCIngredients.add(new Ingredient("ing15", tabIng15, "Poudre d'or"));
+		this.listeCIngredients.add(new Ingredient("ing16", tabIng16, "Racine d'arc en ciel"));
+		this.listeCIngredients.add(new Ingredient("ing17", tabIng17, "Racine d'arc en ciel"));
+		this.listeCIngredients.add(new Ingredient("ing18", tabIng18, "Racine d'arc en ciel"));
+		this.listeCIngredients.add(new Ingredient("ing19", tabIng19, "Esprit de dolmen"));
+		this.listeCIngredients.add(new Ingredient("ing20", tabIng20, "Esprit de dolmen"));
+		this.listeCIngredients.add(new Ingredient("ing21", tabIng21, "Esprit de dolmen"));
+		this.listeCIngredients.add(new Ingredient("ing22", tabIng22, "Rires de fées"));
+		this.listeCIngredients.add(new Ingredient("ing23", tabIng23, "Rires de fées"));
+		this.listeCIngredients.add(new Ingredient("ing24", tabIng24, "Rires de fées"));
 
+		this.listeCAllies.add(new ChienDeGarde("CdG1", tabChienDeGarde1, "Chien de garde"));
+		this.listeCAllies.add(new ChienDeGarde("CdG2", tabChienDeGarde2, "Chien de garde"));
+		this.listeCAllies.add(new ChienDeGarde("CdG3", tabChienDeGarde3, "Chien de garde"));
+		this.listeCAllies.add(new TaupeGeante("TaupeG1", tabTaupeGeante1, "Taupe Géante"));
+		this.listeCAllies.add(new TaupeGeante("TaupeG2", tabTaupeGeante2, "Taupe Géante"));
+		this.listeCAllies.add(new TaupeGeante("TaupeG3", tabTaupeGeante3, "Taupe Géante"));
+	}
 }

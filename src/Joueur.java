@@ -11,9 +11,7 @@ public abstract class Joueur implements Comparable<Joueur> {
 	protected int nbGraineDuJoueur = 0;
 	private int nbChiens = 0;
 	private boolean aDejaCommence = false;
-	protected boolean isJoueurPhysique;
-
-	
+	protected boolean isJoueurPhysique;	
 	protected int indiceDeStratDuJoueurVirtuel;
 
 	public Joueur(){
@@ -86,11 +84,11 @@ public abstract class Joueur implements Comparable<Joueur> {
 	
 	public void jouerCarte(Manche m, Partie p) {
 		if (this.isJoueurPhysique) {
-			System.out.println(+this.getNbGraineDuJoueur()+ " graines " +this.getNbMenhirDuJoueur()+ " ménhirs.\n");
+			System.out.println(+this.getNbGraineDuJoueur()+ " graines " +this.getNbMenhirDuJoueur()+ " Menhirs.\n");
 			this.choisirCarte(m, p);
 			
 			}else{
-				System.out.println(+this.getNbGraineDuJoueur()+ " graines " +this.getNbMenhirDuJoueur()+ " ménhirs.\n");
+				System.out.println(+this.getNbGraineDuJoueur()+ " graines " +this.getNbMenhirDuJoueur()+ " Menhirs.\n");
 				Carte c = this.getStrategy().choisirCarte(m, p, this);
 				this.getStrategy().choisirAction(c, m, p, this);
 			}
@@ -100,10 +98,8 @@ public abstract class Joueur implements Comparable<Joueur> {
 		System.out.println("\nChoisir une carte à jouer : ");
 		this.afficherMainJoueur();
 
-		
-
-		// parcourir la liste et indiquer laquelle est choisie en fonction d'un indice
 		int choixCarte = 0;
+
 		//do {
 			//try {
 				Scanner scanCarte = new Scanner(System.in); // pour scanner l'indice de la carte choisie
@@ -114,36 +110,16 @@ public abstract class Joueur implements Comparable<Joueur> {
 				System.out.println("Choisissez une carte en tapant 1, 2, 3, 4 ou 5.\n");
 			//}catch(IndexOutOfBoundsException e) {
 				System.out.println("Vous n'avez pas autant de cartes!\nRéessayez.\n");
+
 			//}
 			//}while(choixCarte < 1 || choixCarte >this.mainDuJoueur.size());
 	}
 		
 		
 	public void choisirCarte(Manche m, Partie p, Joueur j){
-			
-			
+					
 	}
 	
-
-	
-	//public void choisirAction(TaupeGeante c, Manche m, Partie p) {
-		
-	//}
-	
-	
-	
-	/*public void faireAction(){		
-		
-	}*/
-	
-	/*public String getJoueurDeDebut() {
-		return jQuiCommence;
-	}
-
-	public void setJoueurDeDebut(String jQuiCommence) {
-		this.jQuiCommence = jQuiCommence;
-	}*/
-
 	public int getAge() {
 		return age;
 	}
@@ -154,16 +130,13 @@ public abstract class Joueur implements Comparable<Joueur> {
 	
 	public Joueur choisirJoueur(ArrayList<Joueur> listDeJoueur){
 		int i = 0;
-		
 			for(Joueur j : listDeJoueur){
 				if(j.getNom() != this.getNom()){
-					System.out.println(+i+ " pour choisir " +j.nom+ ", " +j.getNbGraineDuJoueur()+ " graines et " +j.getNbMenhirDuJoueur()+ " ménhirs." );
-										
+					System.out.println(+i+ " pour choisir " +j.nom+ ", " +j.getNbGraineDuJoueur()+ " graines et " +j.getNbMenhirDuJoueur()+ " ménhirs." );					
 				}
 				i++;
 			}
-
-
+			
 		int choixJoueur = -1;
 		do {
 			try {
@@ -208,5 +181,4 @@ public abstract class Joueur implements Comparable<Joueur> {
 	public Strategy getStrategy() {
 		return strategy;
 	}
-
 }

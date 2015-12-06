@@ -1,22 +1,25 @@
-
-public class Carte {
+public abstract class Carte {
 
 	private String nom;
+	private String cheminImage;
 	private int[][] tableauIng;
 	private int[] tableauAlli;
 	protected boolean isAllie;
+	protected String nomReel;
 	
-	public Carte(String nom, int[][] tabValCarte) {
+	public Carte(String identifiant, int[][] tabValCarte, String nom) {
 		this.nom = nom;
 		this.tableauIng = tabValCarte;
 		this.tableauAlli = null;
+		//this.cheminImage = "img/" + nom + ".png";
 		this.isAllie = false;
 	}
 	
-	public Carte(String nom, int[] tabValCarte) {
+	public Carte(String identifiant, int[] tabValCarte, String nom) {
 		this.nom = nom;
 		this.tableauIng = null;
 		this.tableauAlli = tabValCarte;
+		this.nomReel = identifiant;
 	}
 	
 	public String getNom(){
@@ -32,17 +35,11 @@ public class Carte {
 		return this.tableauAlli[saison];
 	}
 
-	public void choisirAction(Joueur j, Manche m, Partie p) {
+	public abstract void choisirGeant(Joueur j, Manche m, Partie p);
+	public abstract void choisirEngrais(Joueur j, Manche m, Partie p);
+	public abstract void choisirFarfadet(Joueur j, Manche m, Partie p);
+	
+	public void choisirAction(Joueur j, Manche m, Partie p){
 		
 	}
-	
-	public void choisirGeant(Joueur j, Manche m, Partie p) {
-		
-	};
-	public void choisirEngrais(Joueur j, Manche m, Partie p) {
-		
-	};
-	public void choisirFarfadet(Joueur j, Manche m, Partie p) {
-		
-	};
 }

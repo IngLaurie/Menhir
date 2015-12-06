@@ -1,9 +1,7 @@
-
 public class TaupeGeante extends Carte {
 	
-	
-	public TaupeGeante(String nom, int[] tabValCarte) {
-		super(nom, tabValCarte);
+	public TaupeGeante(String identifiant, int[] tabValCarte, String nom) {
+		super(identifiant, tabValCarte, nom);
 		this.isAllie = true;
 	}
 	
@@ -35,6 +33,24 @@ public class TaupeGeante extends Carte {
 		sb.append("         Primpt.  Ete  Automne  Hiver\n");
 		sb.append("Taupe       " + this.getForce(0) + "      " + this.getForce(1) + "      " + this.getForce(2) + "       " + this.getForce(3) + "\n");
 		return sb.toString();
+	}
+
+	@Override
+	public void choisirGeant(Joueur j, Manche m, Partie p) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void choisirEngrais(Joueur j, Manche m, Partie p) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void choisirFarfadet(Joueur j, Manche m, Partie p) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

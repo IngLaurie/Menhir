@@ -21,9 +21,6 @@ public class JoueurVirtuel extends Joueur {
 			this.strategy = new DefensiveStrategy();
 		}
 	}
-
-/* 		
-	}*/
 	
 	public int attributionStrategieAJoueur(){
 		Random rn = new Random();
