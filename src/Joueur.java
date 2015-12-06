@@ -203,17 +203,26 @@ public abstract class Joueur implements Comparable<Joueur> {
 				}
 				i++;
 			}
-	
+		int choixJoueur = -1;
+		do {
+			try {
+				Scanner scanJ = new Scanner(System.in);
+				choixJoueur = scanJ.nextInt();
+				
+				if (listDeJoueur.get(choixJoueur) == this) {
+					choixJoueur = -1;
+					System.out.println("Ce n'est pas un choix valide, réessayez.\n");
+				}
+				
+				return listDeJoueur.get(choixJoueur);
+				
+			}catch(InputMismatchException e) {
+				System.out.println("Choisissez un joueur en entrant un nombre entier\n.");
+			}catch(IndexOutOfBoundsException e) {
+				System.out.println("Il n'y a pas de joueurs correspondant à ce choix.");
+			}
+		}while(choixJoueur < 0 || choixJoueur > listDeJoueur.size());
 		
-		
-		Scanner scanJ = new Scanner(System.in);
-		int choixJoueur = scanJ.nextInt();
-		
-		if (listDeJoueur.get(choixJoueur) == this) {
-			System.out.println("Vous vous êtes choisi...");
-		}
-		
-		return listDeJoueur.get(choixJoueur);
 	}
 	
 	public String getNom() {
