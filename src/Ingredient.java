@@ -52,27 +52,27 @@ public class Ingredient extends Carte {
 	public void choisirGeant(Joueur j, Manche m, Partie p) {
 		j.setNbGraineDuJoueur(j.getNbGraineDuJoueur(), this.getForce(0,m.getSaisonEnCours())); 
 		System.out.println("Vous avez pris " + this.getForce(0, m.getSaisonEnCours()) + " graines dans le pot commun !");
-		System.out.println("Vous avez maintenant " + j.getNbGraineDuJoueur() + " graines et " + j.getNbMenhirDuJoueur() + " Menhirs\n");
+		System.out.println("Vous avez maintenant " + j.getNbGraineDuJoueur() + " graines et " + j.getNbMenhirDuJoueur() + " menhirs\n");
 	}
 	
 	public void choisirEngrais(Joueur j, Manche m, Partie p) {
 		if(j.getNbGraineDuJoueur() == 0){
 			System.out.println("Vous n'avez pas de graines à planter!\n");
-			System.out.println("Vous avez toujours " +j.getNbGraineDuJoueur()+ " graines et " +j.getNbMenhirDuJoueur()+ " Menhirs.");
+			System.out.println("Vous avez toujours " +j.getNbGraineDuJoueur()+ " graines et " +j.getNbMenhirDuJoueur()+ " menhirs.");
 		}else{
 			if(j.getNbGraineDuJoueur() >= this.getForce(1, m.getSaisonEnCours())){
 				j.setNbMenhirDuJoueur(j.getNbMenhirDuJoueur()+this.getForce(1, m.getSaisonEnCours()));
 				j.setNbGraineDuJoueur(j.getNbGraineDuJoueur()-this.getForce(1, m.getSaisonEnCours())); 
 			
-				System.out.println("Résultat : " + this.getForce(1, m.getSaisonEnCours()) + " de vos graines sont devenues des Menhirs !");
-				System.out.println("Vous avez maintenant " + j.getNbGraineDuJoueur() + " graines et " + j.getNbMenhirDuJoueur() + " Menhirs\n");
+				System.out.println("Résultat : " + this.getForce(1, m.getSaisonEnCours()) + " de vos graines sont devenues des menhirs !");
+				System.out.println("Vous avez maintenant " + j.getNbGraineDuJoueur() + " graines et " + j.getNbMenhirDuJoueur() + " menhirs\n");
 			}else{
 				if(j.getNbGraineDuJoueur() < this.getForce(1, m.getSaisonEnCours())){
 					j.setNbMenhirDuJoueur(j.getNbMenhirDuJoueur()+j.getNbGraineDuJoueur()); 
 					j.setNbGraineDuJoueur(0); 
 				
-					System.out.println("Vous aviez moins de graines que la force de votre carte... Elles sont toutes devenues des Menhirs.");
-					System.out.println("Vous avez maintenant " + j.getNbGraineDuJoueur() + " graines et " + j.getNbMenhirDuJoueur() + " Menhirs\n");
+					System.out.println("Vous aviez moins de graines que la force de votre carte... Elles sont toutes devenues des menhirs.");
+					System.out.println("Vous avez maintenant " + j.getNbGraineDuJoueur() + " graines et " + j.getNbMenhirDuJoueur() + " menhirs\n");
 				}
 			}
 		}

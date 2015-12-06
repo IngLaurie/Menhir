@@ -127,7 +127,7 @@ public class Partie {
 		int grainesMax = -1;
 		for (Iterator<Joueur> it = this.getListeJoueur().iterator(); it.hasNext();) {
 			Joueur joueurActif = it.next();
-			if (joueurActif.getNbMenhirDuJoueur() > menhirMax) {
+			if (joueurActif.getNbMenhirDuJoueur() >= menhirMax) {
 				menhirMax = joueurActif.getNbMenhirDuJoueur();
 				grainesMax = joueurActif.getNbGraineDuJoueur();
 			}
@@ -173,7 +173,7 @@ public class Partie {
 			}else{
 				egalite++;
 			}
-			System.out.println(position + ". " +joueurActif.getNom()+ " avec: " +joueurActif.getNbMenhirTotalDuJoueur()+ " ménhirs au total.");
+			System.out.println(position + ". " +joueurActif.getNom()+ " avec: " +joueurActif.getNbMenhirTotalDuJoueur()+ " menhir(s) au total.");
 		}
 	}
 	

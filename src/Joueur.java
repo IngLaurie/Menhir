@@ -84,11 +84,11 @@ public abstract class Joueur implements Comparable<Joueur> {
 	
 	public void jouerCarte(Manche m, Partie p) {
 		if (this.isJoueurPhysique) {
-			System.out.println(+this.getNbGraineDuJoueur()+ " graines " +this.getNbMenhirDuJoueur()+ " Menhirs.\n");
+			System.out.println(+this.getNbGraineDuJoueur()+ " graines " +this.getNbMenhirDuJoueur()+ " menhirs.\n");
 			this.choisirCarte(m, p);
 			
 			}else{
-				System.out.println(+this.getNbGraineDuJoueur()+ " graines " +this.getNbMenhirDuJoueur()+ " Menhirs.\n");
+				System.out.println(+this.getNbGraineDuJoueur()+ " graines " +this.getNbMenhirDuJoueur()+ " menhirs.\n");
 				Carte c = this.getStrategy().choisirCarte(m, p, this);
 				this.getStrategy().choisirAction(c, m, p, this);
 			}
@@ -100,19 +100,19 @@ public abstract class Joueur implements Comparable<Joueur> {
 
 		int choixCarte = 0;
 
-		//do {
-			//try {
+		do {
+			try {
 				Scanner scanCarte = new Scanner(System.in); // pour scanner l'indice de la carte choisie
 				choixCarte = scanCarte.nextInt();
-				this.mainDuJoueur.get(choixCarte - 1).choisirAction(this, m, p);
 				
-			//}catch(InputMismatchException e) {
+			}catch(InputMismatchException e) {
 				System.out.println("Choisissez une carte en tapant 1, 2, 3, 4 ou 5.\n");
-			//}catch(IndexOutOfBoundsException e) {
+			}catch(IndexOutOfBoundsException e) {
 				System.out.println("Vous n'avez pas autant de cartes!\nRéessayez.\n");
 
-			//}
-			//}while(choixCarte < 1 || choixCarte >this.mainDuJoueur.size());
+			}
+			}while(choixCarte < 1 || choixCarte >this.mainDuJoueur.size());
+			this.mainDuJoueur.get(choixCarte - 1).choisirAction(this, m, p);
 	}
 		
 		
@@ -167,12 +167,12 @@ public abstract class Joueur implements Comparable<Joueur> {
 		int resultat;
 		
 		if (nbj1 > nbj2) {
-			resultat = 1;
+			resultat = -1;
 		}else{
 			if (nbj1 == nbj2) {
 				resultat =  0;
 			}else{
-				resultat = -1;
+				resultat = 1;
 			}
 		}
 		return resultat;
