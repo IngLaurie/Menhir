@@ -7,6 +7,7 @@ public class Carte {
 	private String identifiant;
 	private int[][] tableauIng;
 	private int[] tableauAlli;
+	protected boolean isAllie;
 	
 	public Carte(String nom, int[][] tabValCarte) {
 		this.nom = nom;
@@ -14,6 +15,7 @@ public class Carte {
 		this.tableauAlli = null;
 		//this.identifiant = id;
 		//this.cheminImage = "img/" + nom + ".png";
+		this.isAllie = false;
 	}
 	
 	public Carte(String nom, int[] tabValCarte) {

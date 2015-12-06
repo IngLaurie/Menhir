@@ -1,8 +1,9 @@
 
 public class ChienDeGarde extends Carte{
-
+	
 	public ChienDeGarde(String nom, int[] tabValCarte) {
 		super(nom, tabValCarte);
+		this.isAllie = true;
 	}
 
 	public int getForce (int saison) {

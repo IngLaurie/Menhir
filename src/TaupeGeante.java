@@ -1,8 +1,10 @@
 
 public class TaupeGeante extends Carte {
-
+	
+	
 	public TaupeGeante(String nom, int[] tabValCarte) {
 		super(nom, tabValCarte);
+		this.isAllie = true;
 	}
 	
 	public int getForce (int saison) {
