@@ -40,5 +40,4 @@ public class JoueurVirtuel extends Joueur {
 		super.getStrategy();
 		return strategy;
 	}
-
 }

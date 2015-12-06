@@ -54,19 +54,6 @@ public class Partie {
 		this.listeJoueur.add(new JoueurPhysique());
 		this.listeJoueur.add(new JoueurPhysique());		
 		
-		/*System.out.println("Combien y a t'il de joueur(s) physique(s) ?");
-		Scanner scanNbJ = new Scanner(System.in);
-		this.nbJPhysique = scanNbJ.nextInt();
-		
-		if(nbJPhysique >= 1 && nbJPhysique <= 6){
-			for(int i=1; i<= nbJPhysique; i++){
-				this.listeJoueur.add(new JoueurPhysique());
-			}
-
-		}else{
-		System.out.println("Nombre non valide, veuillez saisir 0 ou 1");
-	    }*/
-		
 		System.out.println("Combien y a t'il de joueur(s) virtuel(s) ?");
 		do {
 			try{
@@ -114,7 +101,6 @@ public class Partie {
 				this.mancheNumero++;
 				mancheActive.jouerManche(this);
 				System.out.println("La manche est terminée.\n");
-				int j = 0;
 				for (Iterator<Joueur> it2 = listeJoueur.iterator(); it2.hasNext();) {
 					Joueur joueurActif = it2.next();
 					joueurActif.setNbMenhirTotalDuJoueur(joueurActif.getNbMenhirDuJoueur());
