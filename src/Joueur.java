@@ -104,10 +104,7 @@ public abstract class Joueur implements Comparable<Joueur> {
 		System.out.println("\nChoisir une carte à jouer : ");
 		this.afficherMainJoueur();
 
-		Scanner scanCarte = new Scanner(System.in);
-		int choixCarte = scanCarte.nextInt();
-		this.mainDuJoueur.get(choixCarte - 1).choisirAction(this, m, p);
-	}
+		
 
 		// parcourir la liste et indiquer laquelle est choisie en fonction d'un indice
 		int choixCarte = 0;
@@ -170,13 +167,6 @@ public abstract class Joueur implements Comparable<Joueur> {
 				i++;
 			}
 
-	
-		Scanner scanJ = new Scanner(System.in);
-		int choixJoueur = scanJ.nextInt();
-		
-		if (listDeJoueur.get(choixJoueur) == this) {
-			System.out.println("Vous vous êtes choisi...");
-		}
 
 		int choixJoueur = -1;
 		do {
@@ -189,14 +179,13 @@ public abstract class Joueur implements Comparable<Joueur> {
 					System.out.println("Ce n'est pas un choix valide, réessayez.\n");
 				}
 				
-				return listDeJoueur.get(choixJoueur);
-				
 			}catch(InputMismatchException e) {
 				System.out.println("Choisissez un joueur en entrant un nombre entier\n.");
 			}catch(IndexOutOfBoundsException e) {
 				System.out.println("Il n'y a pas de joueurs correspondant à ce choix.");
 			}
 		}while(choixJoueur < 0 || choixJoueur > listDeJoueur.size());
+		return listDeJoueur.get(choixJoueur);
 	}
 	
 	public String getNom() {
