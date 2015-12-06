@@ -37,4 +37,22 @@ public class TaupeGeante extends Carte {
 		return sb.toString();
 	}
 
+	@Override
+	public void choisirGeant(Joueur j, Manche m, Partie p) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void choisirEngrais(Joueur j, Manche m, Partie p) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void choisirFarfadet(Joueur j, Manche m, Partie p) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

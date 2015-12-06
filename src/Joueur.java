@@ -6,19 +6,17 @@ public abstract class Joueur implements Comparable<Joueur> {
 //   /!\ GRAINES 
 	protected String nom;
 	protected int age;
+	protected Strategy strategy;
 
 	protected ArrayList<Carte> mainDuJoueur = new ArrayList<Carte>();
 	protected int nbMenhirDuJoueur = 0;
 	private int nbMenhirTotalDuJoueur = 0;
 	protected int nbGraineDuJoueur = 0;
-	//private boolean actif;
-	//private int choixAction;
 	private int nbChiens = 0;
 	private boolean aDejaCommence = false;
 	protected boolean isJoueurPhysique;
 
-	private static final String Defensive = null;
-	private static final String Offensive = null;
+	
 	protected int indiceDeStratDuJoueurVirtuel;
 
 	// /!\ gérer pour 2 à 6 joueurs
@@ -31,14 +29,8 @@ public abstract class Joueur implements Comparable<Joueur> {
 	public void afficherMainJoueur(){
 		int i = 1;
 		for(Carte c: this.mainDuJoueur){
-			// pour permettre au USER de faire afficher les valeurs de la carte
-
 			System.out.println("Carte " + i + " :");
-			// travailler la méthode afficherCarte() de carte pour permettre l'affichage de chaque cartes des joueurs
-
-			//System.out.println(c.afficherCarte() + "\n taper " + i);
 			i++;
-			
 			System.out.println(c.toString());
 		}
 	}
@@ -101,77 +93,20 @@ public abstract class Joueur implements Comparable<Joueur> {
 			System.out.println(+this.getNbGraineDuJoueur()+ " graines " +this.getNbMenhirDuJoueur()+ " ménhirs.\n");
 			this.choisirCarte(m, p);
 			
-			}else{ // joueur virtuel joue
-			//	if()
-				//Context context = new Context(new OffensiveStrategy());
-				//System.out.println(" " + context.executeStrategy());
-				//this.choisirCarte(m, p);
-				//this.strategy;
+			}else{
 				System.out.println(+this.getNbGraineDuJoueur()+ " graines " +this.getNbMenhirDuJoueur()+ " ménhirs.\n");
-				this.jouerCarteJVirtuel(m, p);
+				Carte c = this.getStrategy().choisirCarte(m, p, this);
+				this.getStrategy().choisirAction(c, m, p, this);
 			}
 	}
-	
-	public void jouerCarte(Manche m, Partie p, Joueur j, Ingredient i) {
-		 
-	}
-	
-	
-	public void jouerCarteJVirtuel(Manche m, Partie p){
-		Carte c = choisirCarte(m, p, this); // retourne INGREDIENT
-		//this.jouerUneStrategie(m,p,i);
-		
-		this.jouerUneStrategie(m,p,i);
-	}
 
-	//public void jouerUneStrategie(Manche m, Partie p, Ingredient i){
-	public void jouerUneStrategie(Manche m, Partie p, Carte c){
-		if(this.indiceDeStratDuJoueurVirtuel == 0){
-			Context context0 = new Context(new OffensiveStrategy(Offensive));
-			context0.executeStrategy(this,m,p,c);
-		}else{
-			Context context1 = new Context(new DefensiveStrategy(Defensive));
-			context1.executeStrategy(this,m,p,c);
-		}
-	}
-	
-	
-	//public abstract void jouerCarte(){
 	public void choisirCarte(Manche m, Partie p){
-	//// déplacer JOUEUR ////
-		
 		System.out.println("\nChoisir une carte à jouer : ");
 		this.afficherMainJoueur();
-		// parcourir la liste et indiquer laquelle est choisie en fonction d'un indice
-		Scanner scanCarte = new Scanner(System.in); // pour scanner l'indice de la carte choisie
+		Scanner scanCarte = new Scanner(System.in);
 		int choixCarte = scanCarte.nextInt();
 		this.mainDuJoueur.get(choixCarte - 1).choisirAction(this, m, p);
 	}
-	
-	public void choisirCarte(Manche m, Partie p, Joueur j){
-			
-			
-		}
-	
-
-	
-	//public void choisirAction(TaupeGeante c, Manche m, Partie p) {
-		
-	//}
-	
-	
-	
-	/*public void faireAction(){		
-		
-	}*/
-	
-	/*public String getJoueurDeDebut() {
-		return jQuiCommence;
-	}
-
-	public void setJoueurDeDebut(String jQuiCommence) {
-		this.jQuiCommence = jQuiCommence;
-	}*/
 
 	public int getAge() {
 		return age;
@@ -185,7 +120,6 @@ public abstract class Joueur implements Comparable<Joueur> {
 		int i = 0;
 		
 			for(Joueur j : listDeJoueur){
-				// /!\ nb 
 				if(j.getNom() != this.getNom()){
 					System.out.println(+i+ " pour choisir " +j.nom+ ", " +j.getNbGraineDuJoueur()+ " graines et " +j.getNbMenhirDuJoueur()+ " ménhirs." );
 										
@@ -193,8 +127,6 @@ public abstract class Joueur implements Comparable<Joueur> {
 				i++;
 			}
 	
-		
-		
 		Scanner scanJ = new Scanner(System.in);
 		int choixJoueur = scanJ.nextInt();
 		
@@ -224,7 +156,10 @@ public abstract class Joueur implements Comparable<Joueur> {
 			}
 		}
 		return resultat;
-		
 	}
 	
+	public Strategy getStrategy() {
+		return strategy;
+	}
+
 }

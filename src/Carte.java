@@ -1,5 +1,5 @@
 
-public class Carte {
+public abstract class Carte {
 
 	private String nom;
 	private String cheminImage;
@@ -44,4 +44,7 @@ public class Carte {
 		
 	}
 	
+	public abstract void choisirGeant(Joueur j, Manche m, Partie p);
+	public abstract void choisirEngrais(Joueur j, Manche m, Partie p);
+	public abstract void choisirFarfadet(Joueur j, Manche m, Partie p);
 }
