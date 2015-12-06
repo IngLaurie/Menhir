@@ -1,9 +1,7 @@
-
 public class TaupeGeante extends Carte {
 	
-	
-	public TaupeGeante(String nom, int[] tabValCarte) {
-		super(nom, tabValCarte);
+	public TaupeGeante(String identifiant, int[] tabValCarte, String nom) {
+		super(identifiant, tabValCarte, nom);
 		this.isAllie = true;
 	}
 	
