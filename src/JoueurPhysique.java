@@ -19,7 +19,7 @@ public class JoueurPhysique extends Joueur {
 				Scanner scanAge = new Scanner(System.in);
 				ageJoueurPhysique = scanAge.nextInt();
 				if (ageJoueurPhysique < 8) {
-					System.out.println("Vous êtes un peu jeune pour jouer! Le jeu du ménhir est pour les 8 ans et plus.\nEntrez un autre âge.\n");
+					System.out.println("Vous êtes un peu jeune pour jouer! Le jeu du Menhir est pour les 8 ans et plus.\nEntrez un autre âge.\n");
 				}
 				else{
 					if (ageJoueurPhysique > 122) {

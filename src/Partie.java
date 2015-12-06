@@ -48,11 +48,12 @@ public class Partie {
 							System.out.println("Merci d'entrer 0 ou 1.\n");
 					}
 
-		}while (typePartie != 0 && typePartie != 1);
+		}while(typePartie != 0 && typePartie != 1);
 		
-		this.nbJPhysique = 2;
+		this.nbJPhysique = 1;
+		//this.nbJPhysique = 2;
 		this.listeJoueur.add(new JoueurPhysique());
-		this.listeJoueur.add(new JoueurPhysique());
+		//this.listeJoueur.add(new JoueurPhysique());
 		
 		System.out.println("Combien y a t'il de joueur(s) virtuel(s) ?");
 		do {
