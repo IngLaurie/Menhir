@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-public class JoueurVirtuel extends Joueur implements Strategy {
+public class JoueurVirtuel extends Joueur{
 	
 	String strategieDuJVirtuel;
 	private int indice;
@@ -55,5 +55,4 @@ public class JoueurVirtuel extends Joueur implements Strategy {
 		super.getStrategy();
 		return strategy;
 	}
-
 }
