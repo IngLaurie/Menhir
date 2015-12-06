@@ -17,7 +17,9 @@ public abstract class Joueur implements Comparable<Joueur> {
 	private boolean aDejaCommence = false;
 	protected boolean isJoueurPhysique;
 
-	
+	private static final String Defensive = null;
+	private static final String Offensive = null;
+	protected int indiceDeStratDuJoueurVirtuel;
 
 	// /!\ gérer pour 2 à 6 joueurs
 	public Joueur(){
@@ -99,15 +101,41 @@ public abstract class Joueur implements Comparable<Joueur> {
 			System.out.println(+this.getNbGraineDuJoueur()+ " graines " +this.getNbMenhirDuJoueur()+ " ménhirs.\n");
 			this.choisirCarte(m, p);
 			
-// ICI FAIRE LE STRATEGY ?!?
-			
 			}else{ // joueur virtuel joue
 			//	if()
 				//Context context = new Context(new OffensiveStrategy());
 				//System.out.println(" " + context.executeStrategy());
+				//this.choisirCarte(m, p);
+				//this.strategy;
+				System.out.println(+this.getNbGraineDuJoueur()+ " graines " +this.getNbMenhirDuJoueur()+ " ménhirs.\n");
+				this.jouerCarteJVirtuel(m, p);
 			}
 	}
+	
+	public void jouerCarte(Manche m, Partie p, Joueur j, Ingredient i) {
+		 
+	}
+	
+	
+	public void jouerCarteJVirtuel(Manche m, Partie p){
+		Carte c = choisirCarte(m, p, this); // retourne INGREDIENT
+		//this.jouerUneStrategie(m,p,i);
+		
+		this.jouerUneStrategie(m,p,i);
+	}
 
+	//public void jouerUneStrategie(Manche m, Partie p, Ingredient i){
+	public void jouerUneStrategie(Manche m, Partie p, Carte c){
+		if(this.indiceDeStratDuJoueurVirtuel == 0){
+			Context context0 = new Context(new OffensiveStrategy(Offensive));
+			context0.executeStrategy(this,m,p,c);
+		}else{
+			Context context1 = new Context(new DefensiveStrategy(Defensive));
+			context1.executeStrategy(this,m,p,c);
+		}
+	}
+	
+	
 	//public abstract void jouerCarte(){
 	public void choisirCarte(Manche m, Partie p){
 	//// déplacer JOUEUR ////
@@ -119,6 +147,11 @@ public abstract class Joueur implements Comparable<Joueur> {
 		int choixCarte = scanCarte.nextInt();
 		this.mainDuJoueur.get(choixCarte - 1).choisirAction(this, m, p);
 	}
+	
+	public void choisirCarte(Manche m, Partie p, Joueur j){
+			
+			
+		}
 	
 
 	

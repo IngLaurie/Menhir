@@ -1,3 +1,4 @@
+import java.lang.reflect.Method;
 import java.util.Iterator;
 
 // EN COURS DE TEST ----
@@ -13,14 +14,17 @@ public class DefensiveStrategy implements Strategy {
 		this.nomStrat = strat;
 		this.utiliserGeant = false;
 	}
-
-	public void jouerCarte(Manche m, Partie p, Joueur j, Ingredient i) {
+	
+	
+//	public void jouerCarte(Manche m, Partie p, Joueur j, Ingredient i) {
+	//public void jouerCarte(Joueur j, Manche m, Partie p) {
+	public void jouerCarte(Joueur j, Manche m, Partie p, Class i) {
 		System.out.println("Execution du joueurCarte de " + this.nomStrat + "Strategy après être passé dans executeStrategy");
 
 		Carte c = this.choisirCarte(m, p, j);
 		this.choisirAction(c, m, p, j, i);
 	}
-
+	
 	public Carte choisirCarte(Manche m, Partie p, Joueur j) {
 		System.out.println("\nAu tour de joueur virtuel " + "de jouer!\n");
 		System.out.println("Le joueur virtuel choisi sa carte...");
@@ -56,12 +60,13 @@ public class DefensiveStrategy implements Strategy {
 		return choixCartePrivilegie;
 	}
 
-	public void choisirAction(Carte c, Manche m, Partie p, Joueur j, Ingredient i) {
+	public void choisirAction(Carte c, Manche m, Partie p, Joueur j, Class i) {
 		System.out.println("Le joueur virtuel choisi son action...");
 		System.out.println("La strategie est defensive donc il va choisir l'action GEANT ou bien ENGRAIS");
 		
 		if(utiliserGeant){  // Je pense qu'il faudrait déplacer le test pour plus d'optimisation..
 			i.choisirGeant(j, m, p);
+			Method[] x = i.getClass().getMethods();
 			System.out.println("Le joueur virtuel à joué l'action GEANT");
 		}else{
 			if(i.getForce(ENGRAIS, m.getSaisonEnCours()) <= j.getNbGraineDuJoueur()){

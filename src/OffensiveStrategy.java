@@ -77,4 +77,19 @@ public class OffensiveStrategy implements Strategy {
 			}
 		}
 	}
+
+	public void jouerCarte(Manche m, Partie p) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void jouerCarte(Joueur j, Manche m, Partie p, Class i) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void choisirAction(Carte c, Manche m, Partie p, Joueur j, Class i) {
+		// TODO Auto-generated method stub
+		
+	}
 }

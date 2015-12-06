@@ -4,12 +4,10 @@ import java.util.Scanner;
 
 public class JoueurVirtuel extends Joueur /*implements Strategy*/ {
 	
-	private static final String Defensive = null;
-	private static final String Offensive = null;
-	private ArrayList<Strategy> listeStrategies = new ArrayList<Strategy>();
 	String strategieDuJVirtuel;
 	private int indice;
-	private int indiceDeStratDuJoueurVirtuel;
+	private Strategy strategy;
+	
  
 	public JoueurVirtuel(int i) {
 		this.indice = i;
@@ -20,6 +18,7 @@ public class JoueurVirtuel extends Joueur /*implements Strategy*/ {
 		//System.out.println("Dans le constructeur de JV, le nb récupéré est " + leNbRecup);
 		this.indiceDeStratDuJoueurVirtuel = leNbRecup;
 		isJoueurPhysique = false;
+		this.strategy = strategy;
 		
 		/*if(leNbRecup == 0){
 			//Context context = new Context(new OffensiveStrategy());
@@ -32,7 +31,18 @@ public class JoueurVirtuel extends Joueur /*implements Strategy*/ {
 	}
 
 
-	public void jouerCarte(Manche m, Partie p, Joueur j, Ingredient i) {
+
+//	public void executeStrategy(Manche m, Partie p, Joueur j, Ingredient i){
+	//public void executeStrategy(Joueur j, Manche m, Partie p){
+	public void executeStrategy(Joueur j, Manche m, Partie p, Carte c){
+		// on execute la strategy
+		// exemple de return :
+		System.out.println("Execution de executeStrategy dans context");
+		//strategy.jouerCarte(m,p,j,i);
+		strategy.jouerCarte(j,m,p,i);
+	}
+	
+	/*public void jouerCarte(Manche m, Partie p, Joueur j, Ingredient i) {
 		// le joueur virtuel choisi sa carte
 		//super.jouerCarte(m, p);
 		//this.choisirCarte(m, p);
@@ -44,7 +54,7 @@ public class JoueurVirtuel extends Joueur /*implements Strategy*/ {
 			Context context1 = new Context(new DefensiveStrategy(Defensive));
 			context1.executeStrategy(m,p,j,i);
 		}
-	}
+	}*/
 
 	/*@Override
 	public Carte choisirCarte(Manche m, Partie p) {
@@ -78,16 +88,7 @@ public class JoueurVirtuel extends Joueur /*implements Strategy*/ {
 	}
 
 
-	/*public Carte choisirCarte(Manche m, Partie p, Joueur j) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	public void choisirAction(Carte c, Manche m, Partie p, Joueur j) {
-		// TODO Auto-generated method stub
-		
-	}*/
+	
 
 
 	/*@Override
@@ -117,8 +118,11 @@ public class JoueurVirtuel extends Joueur /*implements Strategy*/ {
 	}*/
 
 
-	/*public void jouerCarte() {
-		// TODO Auto-generated method stub
+	public void jouerCarte(Manche m, Partie p) {
+		super.jouerCarte(m, p);		
+	}
+	
+	public void choisirCarte(Manche m, Partie p, Joueur j){
 		
-	}*/
+	}
 }
