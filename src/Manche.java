@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -109,25 +110,34 @@ public class Manche {
 	public void demanderGrainesOuCarteAllie(Partie p, Joueur j)
 	{
 		System.out.println(j.getNom()+ " choisissez-vous une carte allié (1) ou deux graines (2)?\n");
-		Scanner reponse = new Scanner(System.in);
-		int choix = reponse.nextInt();
-		if (choix == 1) {
-			Carte c = listeCAllies.get(0);
-			j.getMainDuJoueur().add(c);
-			listeCAllies.remove(0);
-		}else{
-			if (choix == 2) {
-				j.setNbGraineDuJoueur(2);
-			}else{
-				System.out.println("Choix incorrect.\n");
+		int choix = 0;
+		do {
+			try {
+				Scanner reponse = new Scanner(System.in);
+				choix = reponse.nextInt();
+				if (choix == 1) {
+					Carte c = listeCAllies.get(0);
+					j.getMainDuJoueur().add(c);
+					listeCAllies.remove(0);
+				}else{
+					if (choix == 2) {
+						j.setNbGraineDuJoueur(2);
+					}else{
+						System.out.println("Choix incorrect.\n");
+					}
+				}
+				
+			}catch(InputMismatchException e) {
+				System.out.println("Veuillez entrer votre choix en tapant 1 ou 2.\n");
 			}
-		}
+		}while(choix != 1 && choix !=2);
+		
 	}
 
 	public void attribuerJoueurDeDebut(Partie p){
 		Joueur jQuiCommence = null;
 		if(p.getPartieAvancee()) {
-			int ageMini = 100;
+			int ageMini = 130;
 			for (Iterator<Joueur> it = p.getListeJoueur().iterator(); it.hasNext();) {
 				Joueur joueurActif = it.next();
 				if ((ageMini > joueurActif.getAge()) && !(joueurActif.getADejaCommence())) {
