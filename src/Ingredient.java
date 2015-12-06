@@ -119,7 +119,7 @@ public class Ingredient extends Carte {
 					if(joueurChoisi.getNbGraineDuJoueur() >= this.getForce(2, m.getSaisonEnCours())) {
 						j.setNbGraineDuJoueur(j.getNbGraineDuJoueur()+this.getForce(2, m.getSaisonEnCours()));
 						joueurChoisi.setNbGraineDuJoueur(joueurChoisi.getNbGraineDuJoueur()-this.getForce(2, m.getSaisonEnCours()));
-						System.out.println("Vous avez volé " +this.getForce(2, m.getSaisonEnCours())+ " graines, vous en avez maintenant " +j.getNbGraineDuJoueur());
+						System.out.println("Vous avez volé " +this.getForce(2, m.getSaisonEnCours())+ " graine(s), vous en avez maintenant " +j.getNbGraineDuJoueur());
 					}
 				}
 			}

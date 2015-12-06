@@ -19,11 +19,11 @@ public class TaupeGeante extends Carte {
 		Joueur joueurChoisi = j.choisirJoueur(p.getListeJoueur());
 		if (joueurChoisi.getNbMenhirDuJoueur() < this.getForce(m.getSaisonEnCours())) {
 			joueurChoisi.setNbMenhirDuJoueur(0);
-			System.out.println(joueurChoisi.getNom()+ " avait moins de ménhirs que la force de votre carte, il a désormais 0 ménhirs!");
+			System.out.println(joueurChoisi.getNom()+ " avait moins de ménhirs que la force de votre carte, il a désormais 0 ménhir!");
 		}else{
-			if (joueurChoisi.getNbMenhirDuJoueur() <= this.getForce(m.getSaisonEnCours())) {
+			if (joueurChoisi.getNbMenhirDuJoueur() >= this.getForce(m.getSaisonEnCours())) {
 				joueurChoisi.setNbMenhirDuJoueur(joueurChoisi.getNbMenhirDuJoueur()-this.getForce(m.getSaisonEnCours()));
-				System.out.println("Vous avez retiré " +this.getForce(m.getSaisonEnCours())+ "ménhirs du champe de " +joueurChoisi.getNom()+ ", il lui en reste " +joueurChoisi.getNbMenhirDuJoueur());
+				System.out.println("Vous avez retiré " +this.getForce(m.getSaisonEnCours())+ " ménhirs du champs de " +joueurChoisi.getNom()+ ", il lui en reste " +joueurChoisi.getNbMenhirDuJoueur());
 			}
 		}
 		j.getMainDuJoueur().remove(this);

@@ -165,7 +165,7 @@ public class Partie {
 			}else{
 				egalite++;
 			}
-			System.out.println(position + ". " +joueurActif.getNom()+ " avec: " +joueurActif.getNbMenhirTotalDuJoueur());
+			System.out.println(position + ". " +joueurActif.getNom()+ " avec: " +joueurActif.getNbMenhirTotalDuJoueur()+ " ménhirs au total.");
 		}
 		
 	}

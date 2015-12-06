@@ -183,11 +183,14 @@ public class Manche {
 			for(Iterator<Joueur> it = p.getListeJoueur().iterator(); it.hasNext();) {
 				Joueur joueurActif = it.next();
 				joueurActif.getMainDuJoueur().clear();
+				joueurActif.setNbChiens(0);
+				joueurActif.setNbGraineDuJoueur(0);
 				
 			}
 			/*A la fin d'une manche de partie complexe, 
 			il se peut qu'il reste une carte dans la main d'un joueur
 			on supprime donc toutes les cartes des mains de tous les joueurs
+			et on leur enlève leurs graines et chiens
 			pour éviter d'avoir des problèmes pendant les manches suivantes*/
 			
 			} else {
