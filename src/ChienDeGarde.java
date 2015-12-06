@@ -12,8 +12,11 @@ public class ChienDeGarde extends Carte{
 	
 	public void choisirAction(Joueur j, Manche m, Partie p) {
 		super.choisirAction(j, m, p);
+		System.out.println("Vous avez choisi la carte:\n");
+		System.out.println(this.toString());
 		j.setNbChiens(this.getForce(m.getSaisonEnCours()));
 		System.out.println("Vos chiens de garde permettent d'empêcher le vol de " +j.getNbChiens()+ " graines jusqu'à la fin de cette manche!\n");
+		j.getMainDuJoueur().remove(this);
 	}
 	
 	public String toString() {

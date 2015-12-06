@@ -13,6 +13,8 @@ public class TaupeGeante extends Carte {
 	
 	public void choisirAction(Joueur j, Manche m, Partie p) {
 		super.choisirAction(j, m, p);
+		System.out.println("Vous avez choisi la carte:\n");
+		System.out.println(this.toString());
 		System.out.println("Veuillez choisir un joueur: \n");
 		Joueur joueurChoisi = j.choisirJoueur(p.getListeJoueur());
 		if (joueurChoisi.getNbMenhirDuJoueur() < this.getForce(m.getSaisonEnCours())) {
@@ -24,6 +26,7 @@ public class TaupeGeante extends Carte {
 				System.out.println("Vous avez retiré " +this.getForce(m.getSaisonEnCours())+ "ménhirs du champe de " +joueurChoisi.getNom()+ ", il lui en reste " +joueurChoisi.getNbMenhirDuJoueur());
 			}
 		}
+		j.getMainDuJoueur().remove(this);
 	}
 	
 	public String toString() {

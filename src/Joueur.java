@@ -117,7 +117,7 @@ public abstract class Joueur implements Comparable<Joueur> {
 		// parcourir la liste et indiquer laquelle est choisie en fonction d'un indice
 		Scanner scanCarte = new Scanner(System.in); // pour scanner l'indice de la carte choisie
 		int choixCarte = scanCarte.nextInt();
-		this.mainDuJoueur.get(choixCarte - 1).choisirAction(this, m, p);  // retourne une carte
+		this.mainDuJoueur.get(choixCarte - 1).choisirAction(this, m, p);
 	}
 	
 

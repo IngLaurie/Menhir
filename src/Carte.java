@@ -41,8 +41,7 @@ public class Carte {
 	}
 
 	public void choisirAction(Joueur j, Manche m, Partie p) {
-		System.out.println("Vous avez choisi la carte:\n");
-		System.out.println(this.toString());
+		
 	}
 	
 }

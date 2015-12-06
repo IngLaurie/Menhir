@@ -16,8 +16,10 @@ public class Ingredient extends Carte {
 	}
 	
 	
-	public void choisirAction(Joueur j, Manche m, Partie p, Ingredient i) {
+	public void choisirAction(Joueur j, Manche m, Partie p) {
 		super.choisirAction(j, m, p);
+		System.out.println("Vous avez choisi la carte:\n");
+		System.out.println(this.toString());
 		System.out.println("Choisir l'action à effectuer : \n");
 		System.out.println("1- Géant");
 		System.out.println("2- Engrais");
