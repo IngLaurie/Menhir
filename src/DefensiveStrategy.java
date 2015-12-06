@@ -1,7 +1,7 @@
 import java.util.Iterator;
 
 public class DefensiveStrategy implements Strategy {
-	
+
 	private boolean utiliserGeant;
 	private final int GEANT = 1;
 	private final int ENGRAIS = 2;
@@ -10,7 +10,7 @@ public class DefensiveStrategy implements Strategy {
 		super();
 		this.utiliserGeant = false;
 	}
-	
+
 	public Carte choisirCarte(Manche m, Partie p, Joueur j) {
 		System.out.println("\nAu tour de joueur virtuel " + "de jouer!\n");
 		System.out.println("Le joueur virtuel choisi sa carte...");

@@ -1,7 +1,7 @@
 import java.util.Iterator;
 
 public class OffensiveStrategy implements Strategy {
-	
+
 	private boolean utiliserFarfadet;
 	private final int ENGRAIS = 2;
 	private final int FARFADET = 3;
@@ -10,7 +10,7 @@ public class OffensiveStrategy implements Strategy {
 		super();
 		this.utiliserFarfadet = false;
 	}
-
+	
 	public Carte choisirCarte(Manche m, Partie p, Joueur j) {
 		System.out.println("\nAu tour de joueur virtuel " + "de jouer!\n");
 		System.out.println("Le joueur virtuel choisi sa carte...");

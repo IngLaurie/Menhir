@@ -122,8 +122,6 @@ public class Ingredient extends Carte {
 			}
 		}
 	}
- 
-	//private Arrays valeurCarteIngredient;
 	
 	public String toString(){
 		StringBuffer sb = new StringBuffer();

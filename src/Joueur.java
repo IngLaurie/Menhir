@@ -1,7 +1,7 @@
 import java.util.*;
 
 public abstract class Joueur implements Comparable<Joueur> {
-	
+
 	protected String nom;
 	protected int age = 0;
 	protected Strategy strategy;

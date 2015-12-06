@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class JoueurVirtuel extends Joueur{
+public class JoueurVirtuel extends Joueur {
 	
 	String strategieDuJVirtuel;
 	private int indice;

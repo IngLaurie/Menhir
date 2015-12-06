@@ -44,4 +44,5 @@ public class ChienDeGarde extends Carte{
 		
 	}
 
+
 }

@@ -12,7 +12,6 @@ public class Manche {
 	private LinkedList<Carte> listeCAllies = new LinkedList<Carte>();
 		
 	public Manche(){
-		
 		saisonEnCours = 0;
 	}
 	
@@ -22,6 +21,7 @@ public class Manche {
 
 	public void distribuerCarteJoueur(Partie p){
 		if(p.getPartieAvancee()){
+			
 			this.initialisationListeCarte();
 			Collections.shuffle(listeCIngredients);
 			Collections.shuffle(listeCAllies);
@@ -38,7 +38,7 @@ public class Manche {
 					joueurActif.getMainDuJoueur().add(c);
 				}
 			}	
-		}else{ 			
+		}else{
 			this.initialisationListeCarte();
 			Collections.shuffle(listeCIngredients);
 			
@@ -101,15 +101,16 @@ public class Manche {
 			}
 			
 			for(int i=2; i<p.getListeJoueur().size(); i++){
-				if(p.getListeJoueur().get(i).getAge() < jQuiCommence.getAge()){	
-					jQuiCommence = p.getListeJoueur().get(i);
-				}	
+			
+			if(p.getListeJoueur().get(i).getAge() < jQuiCommence.getAge()){	
+				jQuiCommence = p.getListeJoueur().get(i);
 			}
 			
 			int a = p.getListeJoueur().indexOf(p.getListeJoueur().get(0));
 			int b = p.getListeJoueur().indexOf(jQuiCommence);
 		
 			Collections.swap(p.getListeJoueur(), a, b);
+			}
 		}
 	}
 	
@@ -236,20 +237,12 @@ public class Manche {
 		this.listeCIngredients.add(new Ingredient("ing22", tabIng22, "Rires de fées"));
 		this.listeCIngredients.add(new Ingredient("ing23", tabIng23, "Rires de fées"));
 		this.listeCIngredients.add(new Ingredient("ing24", tabIng24, "Rires de fées"));
-		
+
 		this.listeCAllies.add(new ChienDeGarde("CdG1", tabChienDeGarde1, "Chien de garde"));
 		this.listeCAllies.add(new ChienDeGarde("CdG2", tabChienDeGarde2, "Chien de garde"));
 		this.listeCAllies.add(new ChienDeGarde("CdG3", tabChienDeGarde3, "Chien de garde"));
 		this.listeCAllies.add(new TaupeGeante("TaupeG1", tabTaupeGeante1, "Taupe Géante"));
 		this.listeCAllies.add(new TaupeGeante("TaupeG2", tabTaupeGeante2, "Taupe Géante"));
 		this.listeCAllies.add(new TaupeGeante("TaupeG3", tabTaupeGeante3, "Taupe Géante"));
-		
-		/* CARTES RESTANTES :
-		 * 
-		 * verso Menhir 
-		 * champ 
-		 * autre verso (verso alliés ?) (pas encore besoin)
-		 * comptage de points
-		 */
 	}
 }

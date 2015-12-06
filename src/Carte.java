@@ -26,9 +26,6 @@ public abstract class Carte {
 		return this.nom;
 	}
 	
-	public String getCheminImage(){
-		return this.cheminImage;
-	}
 
 	public int getForce(int action, int saison) {
 		return this.tableauIng[action][saison];
@@ -37,7 +34,7 @@ public abstract class Carte {
 	public int getForce(int saison) {
 		return this.tableauAlli[saison];
 	}
-	
+
 	public abstract void choisirGeant(Joueur j, Manche m, Partie p);
 	public abstract void choisirEngrais(Joueur j, Manche m, Partie p);
 	public abstract void choisirFarfadet(Joueur j, Manche m, Partie p);
