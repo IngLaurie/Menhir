@@ -3,6 +3,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.Scanner;
 import java.util.HashSet;
+import java.util.InputMismatchException;
 
 // PENSER AU SINGLETON
 // THREAD ?
@@ -22,19 +23,31 @@ public class Partie {
 	public Partie(){
 	
 		System.out.println("Partie RAPIDE (0) ou avec des REGLES AVANCEES (1) ?");
-		Scanner scanTypeP = new Scanner(System.in);
-		int typePartie = scanTypeP.nextInt();
-		
-		if(typePartie == 0){
-			this.partieAvancee = false;
+		int typePartie = -1;
+		do {
 			
-		}else{
-			if(typePartie == 1){
-				this.partieAvancee = true;
-			}else{
-				System.out.println("Nombre non valide, veuillez saisir 0 ou 1");
-			}
-		}
+			try{
+				Scanner scanTypeP = new Scanner(System.in);
+				typePartie = scanTypeP.nextInt();
+			
+				if(typePartie == 0){
+				this.partieAvancee = false;
+				System.out.println("Règles simples.\n");
+				
+				}else{
+					if(typePartie == 1){
+						this.partieAvancee = true;
+						System.out.println("Règles avancées.\n");
+					}else{
+						System.out.println("Nombre non valide, veuillez saisir 0 ou 1");
+					}
+				}
+			}catch(InputMismatchException e) {
+							System.out.println("Merci d'entrer 0 ou 1.\n");
+					}
+
+		}while (typePartie != 0 && typePartie != 1);
+		
 		
 		// /!\ 1 seul joueur physique !
 		this.nbJPhysique = 2; //Penser à en remettre un seul
@@ -55,25 +68,30 @@ public class Partie {
 	    }*/
 		
 		System.out.println("Combien y a t'il de joueur(s) virtuel(s) ?");
-		Scanner scanNbJ = new Scanner(System.in);
-		this.nbJVirtuel = scanNbJ.nextInt();
-	
-		if(nbJVirtuel >= 0 && nbJVirtuel <= 5){
-			for(int i=1; i<= nbJVirtuel; i++){
-				this.listeJoueur.add(new JoueurVirtuel(i));
+		do {
+			try{
+				Scanner scanNbJ = new Scanner(System.in);
+				this.nbJVirtuel = scanNbJ.nextInt();
+			
+				if(nbJVirtuel >= 0 && nbJVirtuel <= 5){
+					for(int i=1; i<= nbJVirtuel; i++){
+						this.listeJoueur.add(new JoueurVirtuel(i));
+					}
+				
 			}
+			}catch(InputMismatchException e) {
+				System.out.println("Veuillez entrer un nombre entre 0 et 5.\n");
+				
+			}
+		}while(this.nbJVirtuel <0 && this.nbJVirtuel >5);
 			
 		for (Iterator<Joueur> it2 = this.listeJoueur.iterator(); it2.hasNext();) {
 			Joueur lJoueur = it2.next();
 			lJoueur.setNbGraineDuJoueur(2);			
 		}
 			
-		}else{
-		System.out.println("Nombre non valide, veuillez saisir 0 ou 1");
-	    }
-		
-		
 	}
+		
 	
 	public int getNbJPhysique(){
 		return this.nbJPhysique;
