@@ -5,9 +5,9 @@ import org.omg.CORBA.portable.IndirectionException;
 public abstract class Joueur implements Comparable<Joueur> {
 //   /!\ GRAINES 
 	protected String nom;
-	protected int age;
-	protected Strategy strategy;
 
+	protected int age = 0;
+	protected Strategy strategy;
 	protected ArrayList<Carte> mainDuJoueur = new ArrayList<Carte>();
 	protected int nbMenhirDuJoueur = 0;
 	private int nbMenhirTotalDuJoueur = 0;
@@ -103,10 +103,53 @@ public abstract class Joueur implements Comparable<Joueur> {
 	public void choisirCarte(Manche m, Partie p){
 		System.out.println("\nChoisir une carte à jouer : ");
 		this.afficherMainJoueur();
+
 		Scanner scanCarte = new Scanner(System.in);
 		int choixCarte = scanCarte.nextInt();
 		this.mainDuJoueur.get(choixCarte - 1).choisirAction(this, m, p);
 	}
+
+		// parcourir la liste et indiquer laquelle est choisie en fonction d'un indice
+		int choixCarte = 0;
+		do {
+			try {
+				Scanner scanCarte = new Scanner(System.in); // pour scanner l'indice de la carte choisie
+				choixCarte = scanCarte.nextInt();
+				this.mainDuJoueur.get(choixCarte - 1).choisirAction(this, m, p);
+				
+			}catch(InputMismatchException e) {
+				System.out.println("Choisissez une carte en tapant 1, 2, 3, 4 ou 5.\n");
+			}catch(IndexOutOfBoundsException e) {
+				System.out.println("Vous n'avez pas autant de cartes!\nRéessayez.\n");
+			}
+			}while(choixCarte < 1 || choixCarte >this.mainDuJoueur.size());
+	}
+		
+		
+	public void choisirCarte(Manche m, Partie p, Joueur j){
+			
+			
+	}
+	
+
+	
+	//public void choisirAction(TaupeGeante c, Manche m, Partie p) {
+		
+	//}
+	
+	
+	
+	/*public void faireAction(){		
+		
+	}*/
+	
+	/*public String getJoueurDeDebut() {
+		return jQuiCommence;
+	}
+
+	public void setJoueurDeDebut(String jQuiCommence) {
+		this.jQuiCommence = jQuiCommence;
+	}*/
 
 	public int getAge() {
 		return age;
@@ -126,6 +169,7 @@ public abstract class Joueur implements Comparable<Joueur> {
 				}
 				i++;
 			}
+
 	
 		Scanner scanJ = new Scanner(System.in);
 		int choixJoueur = scanJ.nextInt();
@@ -133,8 +177,26 @@ public abstract class Joueur implements Comparable<Joueur> {
 		if (listDeJoueur.get(choixJoueur) == this) {
 			System.out.println("Vous vous êtes choisi...");
 		}
-		
-		return listDeJoueur.get(choixJoueur);
+
+		int choixJoueur = -1;
+		do {
+			try {
+				Scanner scanJ = new Scanner(System.in);
+				choixJoueur = scanJ.nextInt();
+				
+				if (listDeJoueur.get(choixJoueur) == this) {
+					choixJoueur = -1;
+					System.out.println("Ce n'est pas un choix valide, réessayez.\n");
+				}
+				
+				return listDeJoueur.get(choixJoueur);
+				
+			}catch(InputMismatchException e) {
+				System.out.println("Choisissez un joueur en entrant un nombre entier\n.");
+			}catch(IndexOutOfBoundsException e) {
+				System.out.println("Il n'y a pas de joueurs correspondant à ce choix.");
+			}
+		}while(choixJoueur < 0 || choixJoueur > listDeJoueur.size());
 	}
 	
 	public String getNom() {

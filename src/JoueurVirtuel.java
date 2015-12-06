@@ -61,9 +61,8 @@ public class JoueurVirtuel extends Joueur implements Strategy {
 		
 	}
 
-	public Carte choisirCarte(Manche m, Partie p, Joueur j) {
+	public void choisirCarte(Manche m, Partie p, Joueur j) {
 		// TODO Auto-generated method stub
-		return null;
 	}
 
 	public void choisirAction(Carte c, Manche m, Partie p, Joueur j) {
