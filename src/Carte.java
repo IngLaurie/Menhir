@@ -1,7 +1,7 @@
 public abstract class Carte {
 
 	private String nom;
-	private String cheminImage;
+	//private String cheminImage;
 	private int[][] tableauIng;
 	private int[] tableauAlli;
 	protected boolean isAllie;

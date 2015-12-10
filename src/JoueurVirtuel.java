@@ -1,4 +1,6 @@
 import java.util.Random;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class JoueurVirtuel extends Joueur {
 	
@@ -7,9 +9,11 @@ public class JoueurVirtuel extends Joueur {
 	private Strategy strategy;	
  
 	public JoueurVirtuel(int i) {
+		super();
+		this.isJoueurPhysique = true;
 		this.indice = i;
 		this.nom = "JoueurV"+i;  
-		this.age = (int) (Math.random() * 88 ); 
+		this.age = (int) (8+Math.random() * 80 ); 
 		System.out.println("Age de JoueurV" + this.indice + " = " + this.age);
 		int leNbRecup = this.attributionStrategieAJoueur();
 		this.indiceDeStratDuJoueurVirtuel = leNbRecup;
@@ -36,5 +40,26 @@ public class JoueurVirtuel extends Joueur {
 	public Strategy getStrategy() {
 		super.getStrategy();
 		return strategy;
+	}
+	
+	public Joueur choisirJoueur(ArrayList<Joueur> joueurs) {
+		Joueur choixJoueur = null;
+		int nbGrainesMax = -1;
+		int nbMenhirsMax = -1;
+		for(Iterator<Joueur> it = joueurs.iterator(); it.hasNext();) {
+		Joueur joueurActif = it.next();
+		if (joueurActif.getNbGraineDuJoueur()>=nbGrainesMax) {
+			if (joueurActif.getNbGraineDuJoueur() > nbGrainesMax) {
+				choixJoueur = joueurActif;
+				nbGrainesMax = joueurActif.getNbGraineDuJoueur();
+				nbMenhirsMax = joueurActif.getNbMenhirDuJoueur();
+			}
+			else if (joueurActif.getNbMenhirDuJoueur() > nbMenhirsMax) {
+				choixJoueur = joueurActif;
+				nbMenhirsMax = joueurActif.getNbMenhirDuJoueur();
+			}
+		}
+		}	
+		return choixJoueur;
 	}
 }

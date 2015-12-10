@@ -50,9 +50,9 @@ public class Partie {
 
 		}while(typePartie != 0 && typePartie != 1);
 		
-		this.nbJPhysique = 1;
+		//this.nbJPhysique = 1;
 		//this.nbJPhysique = 2;
-		this.listeJoueur.add(new JoueurPhysique());
+		//this.listeJoueur.add(new JoueurPhysique());
 		//this.listeJoueur.add(new JoueurPhysique());
 		
 		System.out.println("Combien y a t'il de joueur(s) virtuel(s) ?");

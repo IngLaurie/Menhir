@@ -6,18 +6,18 @@ public abstract class Joueur implements Comparable<Joueur> {
 	protected int age = 0;
 	protected Strategy strategy;
 	protected ArrayList<Carte> mainDuJoueur = new ArrayList<Carte>();
-	protected int nbMenhirDuJoueur = 0;
+	private int nbMenhirDuJoueur = 0;
 	private int nbMenhirTotalDuJoueur = 0;
-	protected int nbGraineDuJoueur = 0;
+	private int nbGraineDuJoueur = 0;
 	private int nbChiens = 0;
-	private boolean aDejaCommence = false;
+	private boolean aDejaCommence;
 	protected boolean isJoueurPhysique;	
 	protected int indiceDeStratDuJoueurVirtuel;
 
 	public Joueur(){
 		this.nbGraineDuJoueur = 0;
 		this.nbMenhirDuJoueur = 0;
-		this.isJoueurPhysique = false;
+		this.aDejaCommence = false;
 	}
 	
 	public void afficherMainJoueur(){
@@ -128,34 +128,7 @@ public abstract class Joueur implements Comparable<Joueur> {
 		this.age = age;
 	}
 	
-	public Joueur choisirJoueur(ArrayList<Joueur> listDeJoueur){
-		int i = 0;
-			for(Joueur j : listDeJoueur){
-				if(j.getNom() != this.getNom()){
-					System.out.println(+i+ " pour choisir " +j.nom+ ", " +j.getNbGraineDuJoueur()+ " graines et " +j.getNbMenhirDuJoueur()+ " ménhirs." );					
-				}
-				i++;
-			}
-			
-		int choixJoueur = -1;
-		do {
-			try {
-				Scanner scanJ = new Scanner(System.in);
-				choixJoueur = scanJ.nextInt();
-				
-				if (listDeJoueur.get(choixJoueur) == this) {
-					choixJoueur = -1;
-					System.out.println("Ce n'est pas un choix valide, réessayez.\n");
-				}
-				
-			}catch(InputMismatchException e) {
-				System.out.println("Choisissez un joueur en entrant un nombre entier\n.");
-			}catch(IndexOutOfBoundsException e) {
-				System.out.println("Il n'y a pas de joueurs correspondant à ce choix.");
-			}
-		}while(choixJoueur < 0 || choixJoueur > listDeJoueur.size());
-		return listDeJoueur.get(choixJoueur);
-	}
+	public abstract Joueur choisirJoueur(ArrayList<Joueur> listDeJoueur);
 	
 	public String getNom() {
 		return nom;

@@ -60,7 +60,7 @@ public class OffensiveStrategy implements Strategy {
 		
 		if(utiliserFarfadet){
 			c.choisirFarfadet(j, m, p);
-			//System.out.println("Le joueur virtuel à joué l'action FARFADET");
+			System.out.println("Le joueur virtuel à joué l'action FARFADET");
 		}else{
 			if(c.getForce(ENGRAIS, m.getSaisonEnCours()) <= j.getNbMenhirDuJoueur()){
 				c.choisirEngrais(j, m, p);

@@ -87,11 +87,11 @@ public class Manche {
 				if ((ageMini > joueurActif.getAge()) && !(joueurActif.getADejaCommence())) {
 					jQuiCommence = joueurActif;
 					ageMini = joueurActif.getAge();
-					joueurActif.setADejaCommence(true);
 				}
 			}
 			int a = p.getListeJoueur().indexOf(p.getListeJoueur().get(0));
 			int b = p.getListeJoueur().indexOf(jQuiCommence);
+			jQuiCommence.setADejaCommence(true);
 			Collections.swap(p.getListeJoueur(), a, b);
 		}else{
 			if(p.getListeJoueur().get(0).getAge() < p.getListeJoueur().get(1).getAge()){	

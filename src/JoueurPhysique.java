@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -7,6 +8,7 @@ public class JoueurPhysique extends Joueur {
 
 	public JoueurPhysique() {
 		super();
+		this.isJoueurPhysique = false;
 		
 		System.out.println("Nom du joueur :");
 		Scanner scanNom = new Scanner(System.in);
@@ -39,4 +41,34 @@ public class JoueurPhysique extends Joueur {
 	public void jouerCarte(Manche m, Partie p){
 		super.jouerCarte(m, p);
 	}
+	
+	public Joueur choisirJoueur(ArrayList<Joueur> listDeJoueur){
+		int i = 0;
+			for(Joueur j : listDeJoueur){
+				if(j.getNom() != this.getNom()){
+					System.out.println(+i+ " pour choisir " +j.nom+ ", " +j.getNbGraineDuJoueur()+ " graines et " +j.getNbMenhirDuJoueur()+ " ménhirs." );					
+				}
+				i++;
+			}
+			
+		int choixJoueur = -1;
+		do {
+			try {
+				Scanner scanJ = new Scanner(System.in);
+				choixJoueur = scanJ.nextInt();
+				
+				if (listDeJoueur.get(choixJoueur) == this) {
+					choixJoueur = -1;
+					System.out.println("Ce n'est pas un choix valide, réessayez.\n");
+				}
+				
+			}catch(InputMismatchException e) {
+				System.out.println("Choisissez un joueur en entrant un nombre entier\n.");
+			}catch(IndexOutOfBoundsException e) {
+				System.out.println("Il n'y a pas de joueurs correspondant à ce choix.");
+			}
+		}while(choixJoueur < 0 || choixJoueur > listDeJoueur.size());
+		return listDeJoueur.get(choixJoueur);
+	}
+	
 }

@@ -79,47 +79,92 @@ public class Ingredient extends Carte {
 	}		
 	
 	public void choisirFarfadet(Joueur j, Manche m, Partie p) {
-		System.out.println("Veuillez choisir un joueur :\n");
-		Joueur joueurChoisi = j.choisirJoueur(p.getListeJoueur());
-		
-		if(p.getPartieAvancee()) {
-			System.out.println(joueurChoisi.getNom() + " possède " +joueurChoisi.getNbChiens() + " chiens de garde.\n");
-			if(joueurChoisi.getNbGraineDuJoueur() == 0) {
-				System.out.println("Il n'y avait aucune graine à voler...\n");
-			}else{
-				if(joueurChoisi.getNbGraineDuJoueur()<joueurChoisi.getNbChiens()) {
-					System.out.println("Les graines de " +joueurChoisi.getNom() + " sont trop bien gardées, vous n'avez pas pu en voler.");
+		if(j.isJoueurPhysique) {
+			System.out.println("Veuillez choisir un joueur :\n");
+			Joueur joueurChoisi = j.choisirJoueur(p.getListeJoueur());
+			
+			if(p.getPartieAvancee()) {
+				System.out.println(joueurChoisi.getNom() + " possède " +joueurChoisi.getNbChiens() + " chiens de garde.\n");
+				if(joueurChoisi.getNbGraineDuJoueur() == 0) {
+					System.out.println("Il n'y avait aucune graine à voler...\n");
 				}else{
-					if(joueurChoisi.getNbGraineDuJoueur() >= joueurChoisi.getNbChiens()) {
-						int volPossible = joueurChoisi.getNbGraineDuJoueur()-joueurChoisi.getNbChiens();
-						if(volPossible < this.getForce(2, m.getSaisonEnCours())) {
-							j.setNbGraineDuJoueur(j.getNbGraineDuJoueur()+volPossible);
-							System.out.println("Vous avez volé " +volPossible+ " graines, vous en avez maintenant " +j.getNbGraineDuJoueur());
-						}else{
-							if(volPossible >= this.getForce(2, m.getSaisonEnCours())) {
-								j.setNbGraineDuJoueur(j.getNbGraineDuJoueur()+this.getForce(2, m.getSaisonEnCours()));
-								System.out.println("Vous avez volé " +this.getForce(2, m.getSaisonEnCours())+ " graines, vous en avez maintenant " +j.getNbGraineDuJoueur());
+					if(joueurChoisi.getNbGraineDuJoueur()<joueurChoisi.getNbChiens()) {
+						System.out.println("Les graines de " +joueurChoisi.getNom() + " sont trop bien gardées, vous n'avez pas pu en voler.");
+					}else{
+						if(joueurChoisi.getNbGraineDuJoueur() >= joueurChoisi.getNbChiens()) {
+							int volPossible = joueurChoisi.getNbGraineDuJoueur()-joueurChoisi.getNbChiens();
+							if(volPossible < this.getForce(2, m.getSaisonEnCours())) {
+								j.setNbGraineDuJoueur(j.getNbGraineDuJoueur()+volPossible);
+								System.out.println("Vous avez volé " +volPossible+ " graines, vous en avez maintenant " +j.getNbGraineDuJoueur());
+							}else{
+								if(volPossible >= this.getForce(2, m.getSaisonEnCours())) {
+									j.setNbGraineDuJoueur(j.getNbGraineDuJoueur()+this.getForce(2, m.getSaisonEnCours()));
+									System.out.println("Vous avez volé " +this.getForce(2, m.getSaisonEnCours())+ " graines, vous en avez maintenant " +j.getNbGraineDuJoueur());
+								}
 							}
 						}
 					}
 				}
-			}
-		}else{
-			if(joueurChoisi.getNbGraineDuJoueur() == 0) {
-				System.out.println("Il n'y aucune graine à voler...\n");
 			}else{
-				if(joueurChoisi.getNbGraineDuJoueur() < this.getForce(2, m.getSaisonEnCours())) {
-					j.setNbGraineDuJoueur(j.getNbGraineDuJoueur()+joueurChoisi.getNbGraineDuJoueur());
-					joueurChoisi.setNbGraineDuJoueur(0);
-					System.out.println("Il y avait moins de graines à voler que la force de votre carte.\nVous possédez maintenant " +j.getNbGraineDuJoueur() + " graines!");
+				if(joueurChoisi.getNbGraineDuJoueur() == 0) {
+					System.out.println("Il n'y aucune graine à voler...\n");
 				}else{
-					if(joueurChoisi.getNbGraineDuJoueur() >= this.getForce(2, m.getSaisonEnCours())) {
-						j.setNbGraineDuJoueur(j.getNbGraineDuJoueur()+this.getForce(2, m.getSaisonEnCours()));
-						joueurChoisi.setNbGraineDuJoueur(joueurChoisi.getNbGraineDuJoueur()-this.getForce(2, m.getSaisonEnCours()));
-						System.out.println("Vous avez volé " +this.getForce(2, m.getSaisonEnCours())+ " graine(s), vous en avez maintenant " +j.getNbGraineDuJoueur());
+					if(joueurChoisi.getNbGraineDuJoueur() < this.getForce(2, m.getSaisonEnCours())) {
+						j.setNbGraineDuJoueur(j.getNbGraineDuJoueur()+joueurChoisi.getNbGraineDuJoueur());
+						System.out.println("Il y avait moins de graines à voler que la force de votre carte.\nVous avez volé les "+joueurChoisi.getNbGraineDuJoueur()+ "\nVous possédez maintenant " +j.getNbGraineDuJoueur() + " graines!");
+						joueurChoisi.setNbGraineDuJoueur(0);
+					}else{
+						if(joueurChoisi.getNbGraineDuJoueur() >= this.getForce(2, m.getSaisonEnCours())) {
+							j.setNbGraineDuJoueur(j.getNbGraineDuJoueur()+this.getForce(2, m.getSaisonEnCours()));
+							joueurChoisi.setNbGraineDuJoueur(joueurChoisi.getNbGraineDuJoueur()-this.getForce(2, m.getSaisonEnCours()));
+							System.out.println("Vous avez volé " +this.getForce(2, m.getSaisonEnCours())+ " graine(s), vous en avez maintenant " +j.getNbGraineDuJoueur());
+						}
 					}
 				}
 			}
+		}
+		else{
+			Joueur joueurChoisi = j.choisirJoueur(p.getListeJoueur());
+			if(p.getPartieAvancee()) {
+				System.out.println(joueurChoisi.getNom() + " possède " +joueurChoisi.getNbChiens() + " chiens de garde.\n");
+				if(joueurChoisi.getNbGraineDuJoueur() == 0) {
+					System.out.println("Il n'y avait aucune graine à voler...\n");
+				}else{
+					if(joueurChoisi.getNbGraineDuJoueur()<joueurChoisi.getNbChiens()) {
+						System.out.println("Les graines de " +joueurChoisi.getNom() + " sont trop bien gardées, vous n'avez pas pu en voler.");
+					}else{
+						if(joueurChoisi.getNbGraineDuJoueur() >= joueurChoisi.getNbChiens()) {
+							int volPossible = joueurChoisi.getNbGraineDuJoueur()-joueurChoisi.getNbChiens();
+							if(volPossible < this.getForce(2, m.getSaisonEnCours())) {
+								j.setNbGraineDuJoueur(j.getNbGraineDuJoueur()+volPossible);
+								System.out.println("Vous avez volé " +volPossible+ " graines, vous en avez maintenant " +j.getNbGraineDuJoueur());
+							}else{
+								if(volPossible >= this.getForce(2, m.getSaisonEnCours())) {
+									j.setNbGraineDuJoueur(j.getNbGraineDuJoueur()+this.getForce(2, m.getSaisonEnCours()));
+									System.out.println("Vous avez volé " +this.getForce(2, m.getSaisonEnCours())+ " graines, vous en avez maintenant " +j.getNbGraineDuJoueur());
+								}
+							}
+						}
+					}
+				}
+			}else{
+				if(joueurChoisi.getNbGraineDuJoueur() == 0) {
+					System.out.println("Il n'y aucune graine à voler...\n");
+				}else{
+					if(joueurChoisi.getNbGraineDuJoueur() < this.getForce(2, m.getSaisonEnCours())) {
+						j.setNbGraineDuJoueur(j.getNbGraineDuJoueur()+joueurChoisi.getNbGraineDuJoueur());
+						System.out.println("Il y avait moins de graines à voler que la force de votre carte.\nVous avez volé les "+joueurChoisi.getNbGraineDuJoueur()+ "\nVous possédez maintenant " +j.getNbGraineDuJoueur() + " graines!");
+						joueurChoisi.setNbGraineDuJoueur(0);
+					}else{
+						if(joueurChoisi.getNbGraineDuJoueur() >= this.getForce(2, m.getSaisonEnCours())) {
+							j.setNbGraineDuJoueur(j.getNbGraineDuJoueur()+this.getForce(2, m.getSaisonEnCours()));
+							joueurChoisi.setNbGraineDuJoueur(joueurChoisi.getNbGraineDuJoueur()-this.getForce(2, m.getSaisonEnCours()));
+							System.out.println("Vous avez volé " +this.getForce(2, m.getSaisonEnCours())+ " graine(s), vous en avez maintenant " +j.getNbGraineDuJoueur());
+						}
+					}
+				}
+			}
+			
 		}
 	}
 	
