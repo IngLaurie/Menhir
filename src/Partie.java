@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.Observable;
 import java.util.Scanner;
 import java.util.HashSet;
 import java.util.InputMismatchException;
@@ -9,10 +10,10 @@ import java.util.InputMismatchException;
  * Implémentation :
  * 		SINGLETON
  * 		MVC
- * 		Thread
+ * 		Thread?
  */
 
-public class Partie {
+public class Partie extends Observable {
 
 	private boolean partieAvancee;
 	private ArrayList<Joueur> listeJoueur = new ArrayList<Joueur>();
@@ -23,7 +24,11 @@ public class Partie {
 	private int nbManche = 0;
 	private int mancheNumero = 0;
 	
-	public Partie(){
+	public Partie() {
+		
+	}
+	
+	/*public Partie(){
 	
 		System.out.println("Partie RAPIDE (0) ou avec des REGLES AVANCEES (1) ?");
 		int typePartie = -1;
@@ -78,7 +83,7 @@ public class Partie {
 			lJoueur.setNbGraineDuJoueur(2);			
 		}
 			
-	}
+	}*/
 		
 	public int getNbJPhysique(){
 		return this.nbJPhysique;

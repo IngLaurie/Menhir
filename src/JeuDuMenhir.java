@@ -21,7 +21,10 @@
 public class JeuDuMenhir {
 
 	public static void main(String[] args) {
-		Partie p = new Partie();
-		p.lancerPartie(); 
+		Partie p = new Partie(); //Modifier le constructeur de partie pour ne pas tout demander à l'utilisateur
+		PartieListener pl = new PartieListener();
+		VuePartie vp = new VuePartie();
+		p.addObserver(vp);
+		//p.lancerPartie(); 
 	}
 }

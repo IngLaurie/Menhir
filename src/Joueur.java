@@ -1,6 +1,6 @@
 import java.util.*;
 
-public abstract class Joueur implements Comparable<Joueur> {
+public abstract class Joueur extends Observable implements Comparable<Joueur> {
 
 	protected String nom;
 	protected int age = 0;
