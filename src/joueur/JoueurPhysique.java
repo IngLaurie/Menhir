@@ -1,6 +1,13 @@
+package joueur;
+
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import partie.Manche;
+import partie.Partie;
+
+
 
 public class JoueurPhysique extends Joueur {
 

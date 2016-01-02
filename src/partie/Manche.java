@@ -1,8 +1,20 @@
+package partie;
+
+
+
 import java.util.Collections;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.Iterator;
 import java.util.LinkedList;
+
+import joueur.Joueur;
+
+import carte.Carte;
+import carte.ChienDeGarde;
+import carte.Ingredient;
+import carte.TaupeGeante;
+
 
 public class Manche {
 

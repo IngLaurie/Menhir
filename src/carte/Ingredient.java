@@ -1,5 +1,14 @@
+package carte;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import partie.Manche;
+import partie.Partie;
+
+import joueur.Joueur;
+
+
 
 public class Ingredient extends Carte {
 

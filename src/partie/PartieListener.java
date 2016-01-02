@@ -1,4 +1,7 @@
+package partie;
 import java.awt.event.ActionListener;
+
+
 
 public class PartieListener {
 

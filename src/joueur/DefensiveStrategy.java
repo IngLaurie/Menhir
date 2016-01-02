@@ -1,4 +1,13 @@
+package joueur;
+
 import java.util.Iterator;
+
+import partie.Manche;
+import partie.Partie;
+
+
+import carte.Carte;
+
 
 /*NB:
  * Les IA sont toujours en cours de développement.

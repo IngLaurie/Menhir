@@ -1,3 +1,9 @@
+package carte;
+import partie.Manche;
+import partie.Partie;
+import joueur.Joueur;
+
+
 public class ChienDeGarde extends Carte{
 	
 	public ChienDeGarde(String identifiant, int[] tabValCarte, String nom) {

@@ -1,4 +1,12 @@
+package joueur;
+
 import java.util.*;
+
+import partie.Manche;
+import partie.Partie;
+
+import carte.Carte;
+
 
 public abstract class Joueur extends Observable implements Comparable<Joueur> {
 
@@ -11,7 +19,7 @@ public abstract class Joueur extends Observable implements Comparable<Joueur> {
 	private int nbGraineDuJoueur = 0;
 	private int nbChiens = 0;
 	private boolean aDejaCommence;
-	protected boolean isJoueurPhysique;	
+	public boolean isJoueurPhysique;	
 	protected int indiceDeStratDuJoueurVirtuel;
 
 	public Joueur(){

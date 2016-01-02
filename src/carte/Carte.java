@@ -1,10 +1,16 @@
+package carte;
+import partie.Manche;
+import partie.Partie;
+import joueur.Joueur;
+
+
 public abstract class Carte {
 
 	private String nom;
 	//private String cheminImage;
 	private int[][] tableauIng;
 	private int[] tableauAlli;
-	protected boolean isAllie;
+	public boolean isAllie;
 	protected String nomReel;
 	
 	public Carte(String identifiant, int[][] tabValCarte, String nom) {

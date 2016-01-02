@@ -1,3 +1,9 @@
+package carte;
+import partie.Manche;
+import partie.Partie;
+import joueur.Joueur;
+
+
 public class TaupeGeante extends Carte {
 	
 	public TaupeGeante(String identifiant, int[] tabValCarte, String nom) {

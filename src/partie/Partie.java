@@ -1,3 +1,6 @@
+package partie;
+
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -5,6 +8,11 @@ import java.util.Observable;
 import java.util.Scanner;
 import java.util.HashSet;
 import java.util.InputMismatchException;
+
+import javax.swing.SwingUtilities;
+
+
+import joueur.Joueur;
 
 /*
  * Implémentation :
@@ -25,8 +33,14 @@ public class Partie extends Observable {
 	private int mancheNumero = 0;
 	
 	public Partie() {
-		
+		SwingUtilities.invokeLater(new Runnable(){
+			public void run(){
+				JeuDuMenhir fenetre = new JeuDuMenhir();
+				fenetre.setVisible(true);
+			}
+			});
 	}
+	
 	
 	/*public Partie(){
 	
