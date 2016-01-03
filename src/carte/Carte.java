@@ -45,7 +45,5 @@ public abstract class Carte {
 	public abstract void choisirEngrais(Joueur j, Manche m, Partie p);
 	public abstract void choisirFarfadet(Joueur j, Manche m, Partie p);
 	
-	public void choisirAction(Joueur j, Manche m, Partie p){
-		
-	}
+	public abstract void choisirAction(Joueur j, Manche m, Partie p);
 }

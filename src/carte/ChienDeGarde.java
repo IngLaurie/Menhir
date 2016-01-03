@@ -16,7 +16,6 @@ public class ChienDeGarde extends Carte{
 	}
 	
 	public void choisirAction(Joueur j, Manche m, Partie p) {
-		super.choisirAction(j, m, p);
 		System.out.println("Vous avez choisi la carte:\n");
 		System.out.println(this.toString());
 		j.setNbChiens(this.getForce(m.getSaisonEnCours()));

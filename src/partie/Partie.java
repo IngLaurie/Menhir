@@ -207,4 +207,5 @@ public class Partie extends Observable {
 	public int getMancheNumero() {
 		return this.mancheNumero;
 	}
+	
 }

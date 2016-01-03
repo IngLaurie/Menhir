@@ -16,7 +16,6 @@ public class TaupeGeante extends Carte {
 	}
 	
 	public void choisirAction(Joueur j, Manche m, Partie p) {
-		super.choisirAction(j, m, p);
 		System.out.println("Vous avez choisi la carte:\n");
 		System.out.println(this.toString());
 		System.out.println("Veuillez choisir un joueur: \n");

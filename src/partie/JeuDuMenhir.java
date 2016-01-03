@@ -119,7 +119,7 @@ public class JeuDuMenhir extends JFrame implements ActionListener{
 	
 	
 	public static void main(String[] args) {
-		Partie p = new Partie(); //Modifier le constructeur de partie pour ne pas tout demander à l'utilisateur
+		Partie p = new Partie(); //Modifier le constructeur de partie pour ne pas tout demander à l'utilisateur sur la console
 		PartieListener pl = new PartieListener();
 		VuePartie vp = new VuePartie();
 		p.addObserver(vp);
