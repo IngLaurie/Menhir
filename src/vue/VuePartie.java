@@ -8,7 +8,7 @@ import partie.JeuDuMenhir;
 import partie.Partie;
 
 
-public class VuePartie implements Observer {
+public class VuePartie implements Observer{
 	
 	private Partie partie;
 	private JFrame fenetre;

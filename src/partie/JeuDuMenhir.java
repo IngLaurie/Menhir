@@ -113,7 +113,7 @@ public class JeuDuMenhir extends JFrame implements ActionListener{
 		Object source = evt.getSource();
 		if(source == btnLancerPartie){
 			Partie p = new Partie();
-		  //  p.lancerPartie();
+		    p.lancerPartie();
 		}	
 	}
 	
